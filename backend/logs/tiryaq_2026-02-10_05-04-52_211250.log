@@ -1,0 +1,417 @@
+2026-02-10 05:04:52.214 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:04:52.481 | INFO     | Starting Tiryaq Voice AI Server...
+2026-02-10 05:05:05.733 | INFO     | Session started: tenant1/user1
+2026-02-10 05:05:11.256 | INFO     | VAD trigger | Buffer: 98304 bytes | Speech: 1.71s
+2026-02-10 05:05:11.257 | INFO     | Pipeline_Start: 0.30ms
+2026-02-10 05:05:13.046 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:05:13.047 | INFO     | Whisper_STT: 1789.63ms
+2026-02-10 05:05:13.047 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:05:17.915 | INFO     | VAD trigger | Buffer: 114688 bytes | Speech: 1.79s
+2026-02-10 05:05:17.916 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:05:18.670 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:05:18.670 | INFO     | Whisper_STT: 753.19ms
+2026-02-10 05:05:18.671 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:05:25.009 | ERROR    | Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:05:27.802 | INFO     | Session started: tenant1/user1
+2026-02-10 05:05:33.936 | INFO     | VAD trigger | Buffer: 106496 bytes | Speech: 1.71s
+2026-02-10 05:05:33.938 | INFO     | Pipeline_Start: 0.22ms
+2026-02-10 05:05:34.891 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:05:34.893 | INFO     | Whisper_STT: 954.49ms
+2026-02-10 05:05:34.893 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:06:00.811 | INFO     | VAD trigger | Buffer: 57344 bytes | Speech: 1.47s
+2026-02-10 05:06:00.812 | INFO     | Pipeline_Start: 0.34ms
+2026-02-10 05:06:01.498 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:06:01.499 | INFO     | Whisper_STT: 686.32ms
+2026-02-10 05:06:01.499 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:06:19.284 | ERROR    | Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:06:20.574 | INFO     | Session started: tenant1/user1
+2026-02-10 05:06:29.205 | INFO     | VAD trigger | Buffer: 73728 bytes | Speech: 1.71s
+2026-02-10 05:06:29.206 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:06:30.222 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:06:30.223 | INFO     | Whisper_STT: 1016.04ms
+2026-02-10 05:06:30.224 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:06:52.033 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.64s
+2026-02-10 05:07:03.878 | INFO     | VAD trigger | Buffer: 49152 bytes | Speech: 2.98s
+2026-02-10 05:07:03.879 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:07:04.662 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:04.662 | INFO     | Whisper_STT: 782.77ms
+2026-02-10 05:07:04.663 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:07:23.730 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.78s
+2026-02-10 05:07:23.731 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:07:24.349 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:24.350 | INFO     | Whisper_STT: 618.20ms
+2026-02-10 05:07:24.351 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:07:25.844 | INFO     | VAD trigger | Buffer: 24576 bytes | Speech: 1.44s
+2026-02-10 05:07:25.846 | INFO     | Pipeline_Start: 0.32ms
+2026-02-10 05:07:26.593 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:26.594 | INFO     | Whisper_STT: 747.66ms
+2026-02-10 05:07:26.594 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:07:49.457 | INFO     | VAD trigger | Buffer: 73728 bytes | Speech: 1.94s
+2026-02-10 05:07:49.459 | INFO     | Pipeline_Start: 0.28ms
+2026-02-10 05:07:50.456 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:50.458 | INFO     | Whisper_STT: 997.86ms
+2026-02-10 05:07:50.458 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:07:56.559 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.77s
+2026-02-10 05:07:56.560 | INFO     | Pipeline_Start: 0.22ms
+2026-02-10 05:07:57.063 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:57.064 | INFO     | Whisper_STT: 503.02ms
+2026-02-10 05:07:57.064 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:07:59.096 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:08:06.645 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.78s
+2026-02-10 05:08:06.647 | INFO     | Pipeline_Start: 0.28ms
+2026-02-10 05:08:07.363 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:07.364 | INFO     | Whisper_STT: 716.67ms
+2026-02-10 05:08:07.366 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:08:27.137 | INFO     | VAD trigger | Buffer: 40960 bytes | Speech: 1.17s
+2026-02-10 05:08:27.138 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:08:28.378 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:28.379 | INFO     | Whisper_STT: 1239.73ms
+2026-02-10 05:08:28.380 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:08:31.930 | INFO     | VAD trigger | Buffer: 24576 bytes | Speech: 1.07s
+2026-02-10 05:08:31.931 | INFO     | Pipeline_Start: 0.45ms
+2026-02-10 05:08:32.662 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:32.662 | INFO     | Whisper_STT: 730.59ms
+2026-02-10 05:08:32.662 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:08:41.468 | INFO     | VAD trigger | Buffer: 81920 bytes | Speech: 1.85s
+2026-02-10 05:08:41.469 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:08:42.140 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:42.140 | INFO     | Whisper_STT: 670.92ms
+2026-02-10 05:08:42.141 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:08:45.426 | INFO     | VAD trigger | Buffer: 122880 bytes | Speech: 3.17s
+2026-02-10 05:08:45.428 | INFO     | Pipeline_Start: 0.30ms
+2026-02-10 05:08:46.349 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:46.350 | INFO     | Whisper_STT: 921.55ms
+2026-02-10 05:08:46.350 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:09:04.423 | INFO     | VAD trigger | Buffer: 40960 bytes | Speech: 1.18s
+2026-02-10 05:09:04.424 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:09:05.212 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:05.214 | INFO     | Whisper_STT: 789.73ms
+2026-02-10 05:09:05.214 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:09:14.023 | INFO     | VAD trigger | Buffer: 24576 bytes | Speech: 1.20s
+2026-02-10 05:09:14.024 | INFO     | Pipeline_Start: 0.27ms
+2026-02-10 05:09:14.776 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:14.777 | INFO     | Whisper_STT: 752.24ms
+2026-02-10 05:09:14.777 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:09:16.902 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.64s
+2026-02-10 05:09:21.796 | INFO     | VAD trigger | Buffer: 139264 bytes | Speech: 4.35s
+2026-02-10 05:09:21.797 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:09:22.719 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:22.720 | INFO     | Whisper_STT: 921.90ms
+2026-02-10 05:09:22.720 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:09:24.293 | INFO     | VAD trigger | Buffer: 32768 bytes | Speech: 1.05s
+2026-02-10 05:09:24.294 | INFO     | Pipeline_Start: 0.28ms
+2026-02-10 05:09:25.020 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:25.021 | INFO     | Whisper_STT: 726.40ms
+2026-02-10 05:09:25.021 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:09:28.054 | INFO     | VAD trigger | Buffer: 65536 bytes | Speech: 1.55s
+2026-02-10 05:09:28.055 | INFO     | Pipeline_Start: 0.15ms
+2026-02-10 05:09:28.677 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:28.677 | INFO     | Whisper_STT: 622.46ms
+2026-02-10 05:09:28.678 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:09:38.382 | INFO     | VAD trigger | Buffer: 32768 bytes | Speech: 1.44s
+2026-02-10 05:09:38.383 | INFO     | Pipeline_Start: 0.58ms
+2026-02-10 05:09:39.067 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:39.068 | INFO     | Whisper_STT: 684.33ms
+2026-02-10 05:09:39.068 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:09:56.007 | INFO     | VAD trigger | Buffer: 65536 bytes | Speech: 1.93s
+2026-02-10 05:09:56.008 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:09:56.946 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:56.947 | INFO     | Whisper_STT: 938.33ms
+2026-02-10 05:09:56.947 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:10:00.047 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.90s
+2026-02-10 05:10:00.048 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:10:00.586 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:00.586 | INFO     | Whisper_STT: 538.30ms
+2026-02-10 05:10:00.587 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:10:04.117 | INFO     | VAD trigger | Buffer: 114688 bytes | Speech: 2.62s
+2026-02-10 05:10:04.118 | INFO     | Pipeline_Start: 0.27ms
+2026-02-10 05:10:05.025 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:05.026 | INFO     | Whisper_STT: 907.16ms
+2026-02-10 05:10:05.026 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:10:09.384 | INFO     | VAD trigger | Buffer: 73728 bytes | Speech: 2.78s
+2026-02-10 05:10:09.385 | INFO     | Pipeline_Start: 0.29ms
+2026-02-10 05:10:10.217 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:10.218 | INFO     | Whisper_STT: 831.91ms
+2026-02-10 05:10:10.218 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:10:11.090 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:10:32.075 | INFO     | VAD trigger | Buffer: 90112 bytes | Speech: 2.50s
+2026-02-10 05:10:32.076 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:10:32.967 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:32.967 | INFO     | Whisper_STT: 890.95ms
+2026-02-10 05:10:32.968 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:10:34.187 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:10:41.469 | INFO     | VAD trigger | Buffer: 90112 bytes | Speech: 1.98s
+2026-02-10 05:10:41.470 | INFO     | Pipeline_Start: 0.36ms
+2026-02-10 05:10:42.182 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:42.183 | INFO     | Whisper_STT: 712.14ms
+2026-02-10 05:10:42.183 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:10:43.795 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:10:48.479 | INFO     | VAD trigger | Buffer: 32768 bytes | Speech: 1.17s
+2026-02-10 05:10:48.480 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:10:49.232 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:49.232 | INFO     | Whisper_STT: 752.08ms
+2026-02-10 05:10:49.233 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:10:58.705 | INFO     | VAD trigger | Buffer: 40960 bytes | Speech: 1.15s
+2026-02-10 05:10:58.706 | INFO     | Pipeline_Start: 0.21ms
+2026-02-10 05:10:59.584 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:59.585 | INFO     | Whisper_STT: 878.83ms
+2026-02-10 05:10:59.585 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:11:02.559 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:11:15.387 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:11:18.547 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.59s
+2026-02-10 05:11:26.836 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:11:31.106 | INFO     | VAD trigger | Buffer: 139264 bytes | Speech: 2.05s
+2026-02-10 05:11:31.107 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:11:31.974 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:31.974 | INFO     | Whisper_STT: 867.27ms
+2026-02-10 05:11:31.975 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:11:39.907 | INFO     | VAD trigger | Buffer: 81920 bytes | Speech: 1.37s
+2026-02-10 05:11:39.908 | INFO     | Pipeline_Start: 0.53ms
+2026-02-10 05:11:40.634 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:40.635 | INFO     | Whisper_STT: 725.96ms
+2026-02-10 05:11:40.635 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:11:42.728 | INFO     | VAD trigger | Buffer: 49152 bytes | Speech: 1.53s
+2026-02-10 05:11:42.730 | INFO     | Pipeline_Start: 0.26ms
+2026-02-10 05:11:43.482 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:43.482 | INFO     | Whisper_STT: 751.81ms
+2026-02-10 05:11:43.483 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:11:44.696 | INFO     | VAD trigger | Buffer: 57344 bytes | Speech: 1.20s
+2026-02-10 05:11:44.698 | INFO     | Pipeline_Start: 0.38ms
+2026-02-10 05:11:45.432 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:45.433 | INFO     | Whisper_STT: 734.55ms
+2026-02-10 05:11:45.434 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:11:53.742 | INFO     | VAD trigger | Buffer: 73728 bytes | Speech: 1.61s
+2026-02-10 05:11:53.743 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:11:54.405 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:54.407 | INFO     | Whisper_STT: 662.80ms
+2026-02-10 05:11:54.407 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:11:57.846 | INFO     | VAD trigger | Buffer: 24576 bytes | Speech: 1.11s
+2026-02-10 05:11:57.847 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:11:58.612 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:58.612 | INFO     | Whisper_STT: 765.21ms
+2026-02-10 05:11:58.613 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:11:59.292 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:12:02.833 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.90s
+2026-02-10 05:12:02.834 | INFO     | Pipeline_Start: 0.51ms
+2026-02-10 05:12:03.929 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:03.930 | INFO     | Whisper_STT: 1095.73ms
+2026-02-10 05:12:03.931 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:05.330 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.79s
+2026-02-10 05:12:05.331 | INFO     | Pipeline_Start: 0.20ms
+2026-02-10 05:12:06.297 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:06.297 | INFO     | Whisper_STT: 965.93ms
+2026-02-10 05:12:06.298 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:13.127 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.69s
+2026-02-10 05:12:13.128 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:12:13.795 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:13.796 | INFO     | Whisper_STT: 667.18ms
+2026-02-10 05:12:13.796 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:15.769 | INFO     | VAD trigger | Buffer: 49152 bytes | Speech: 1.02s
+2026-02-10 05:12:15.772 | INFO     | Pipeline_Start: 0.83ms
+2026-02-10 05:12:16.591 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:16.591 | INFO     | Whisper_STT: 816.87ms
+2026-02-10 05:12:16.592 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:18.677 | INFO     | VAD trigger | Buffer: 24576 bytes | Speech: 0.77s
+2026-02-10 05:12:18.679 | INFO     | Pipeline_Start: 0.41ms
+2026-02-10 05:12:19.568 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:19.568 | INFO     | Whisper_STT: 888.27ms
+2026-02-10 05:12:19.568 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:20.387 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.77s
+2026-02-10 05:12:20.388 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:12:21.110 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:21.112 | INFO     | Whisper_STT: 723.00ms
+2026-02-10 05:12:21.113 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:22.687 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:12:23.887 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.69s
+2026-02-10 05:12:23.888 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:12:24.686 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:24.687 | INFO     | Whisper_STT: 798.14ms
+2026-02-10 05:12:24.687 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:34.127 | INFO     | VAD trigger | Buffer: 450560 bytes | Speech: 5.98s
+2026-02-10 05:12:34.128 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:12:35.391 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:35.393 | INFO     | Whisper_STT: 1263.65ms
+2026-02-10 05:12:35.393 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:37.976 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.77s
+2026-02-10 05:12:37.980 | INFO     | Pipeline_Start: 0.34ms
+2026-02-10 05:12:38.749 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:38.750 | INFO     | Whisper_STT: 769.60ms
+2026-02-10 05:12:38.750 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:42.000 | INFO     | VAD trigger | Buffer: 65536 bytes | Speech: 1.95s
+2026-02-10 05:12:42.001 | INFO     | Pipeline_Start: 0.26ms
+2026-02-10 05:12:42.816 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:42.816 | INFO     | Whisper_STT: 814.67ms
+2026-02-10 05:12:42.817 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:44.486 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.79s
+2026-02-10 05:12:44.487 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:12:45.228 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:45.229 | INFO     | Whisper_STT: 741.47ms
+2026-02-10 05:12:45.229 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:48.028 | INFO     | VAD trigger | Buffer: 49152 bytes | Speech: 1.58s
+2026-02-10 05:12:48.029 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:12:48.827 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:48.828 | INFO     | Whisper_STT: 798.71ms
+2026-02-10 05:12:48.828 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:12:56.050 | INFO     | VAD trigger | Buffer: 409600 bytes | Speech: 7.11s
+2026-02-10 05:12:56.051 | INFO     | Pipeline_Start: 0.30ms
+2026-02-10 05:12:57.290 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:57.291 | INFO     | Whisper_STT: 1239.36ms
+2026-02-10 05:12:57.291 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:13:05.095 | INFO     | VAD trigger | Buffer: 360448 bytes | Speech: 7.21s
+2026-02-10 05:13:05.097 | INFO     | Pipeline_Start: 0.59ms
+2026-02-10 05:13:06.608 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:06.609 | INFO     | Whisper_STT: 1512.27ms
+2026-02-10 05:13:06.610 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:13:11.341 | INFO     | VAD trigger | Buffer: 114688 bytes | Speech: 2.37s
+2026-02-10 05:13:11.342 | INFO     | Pipeline_Start: 0.34ms
+2026-02-10 05:13:12.260 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:12.261 | INFO     | Whisper_STT: 918.10ms
+2026-02-10 05:13:12.261 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:13:18.021 | INFO     | VAD trigger | Buffer: 147456 bytes | Speech: 3.82s
+2026-02-10 05:13:18.022 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:13:18.962 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:18.964 | INFO     | Whisper_STT: 940.40ms
+2026-02-10 05:13:18.964 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:13:25.582 | INFO     | VAD trigger | Buffer: 147456 bytes | Speech: 3.78s
+2026-02-10 05:13:25.583 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:13:26.519 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:26.520 | INFO     | Whisper_STT: 936.10ms
+2026-02-10 05:13:26.520 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:13:32.210 | INFO     | VAD trigger | Buffer: 155648 bytes | Speech: 3.36s
+2026-02-10 05:13:32.210 | INFO     | Pipeline_Start: 0.13ms
+2026-02-10 05:13:32.958 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:32.958 | INFO     | Whisper_STT: 747.80ms
+2026-02-10 05:13:32.959 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:13:40.667 | INFO     | VAD trigger | Buffer: 344064 bytes | Speech: 6.47s
+2026-02-10 05:13:40.668 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:13:41.751 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:41.752 | INFO     | Whisper_STT: 1083.12ms
+2026-02-10 05:13:41.752 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:14:02.189 | INFO     | VAD trigger | Buffer: 1048576 bytes | Speech: 19.96s
+2026-02-10 05:14:02.190 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:14:03.705 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:14:03.706 | INFO     | Whisper_STT: 1514.95ms
+2026-02-10 05:14:03.706 | WARNING  | Empty transcription, returning to listening
+2026-02-10 05:14:10.467 | INFO     | VAD trigger | Buffer: 344064 bytes | Speech: 6.19s
+2026-02-10 05:14:10.468 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:14:11.749 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:14:11.750 | INFO     | Whisper_STT: 1281.54ms
+2026-02-10 05:14:11.750 | WARNING  | Empty transcription, returning to listening

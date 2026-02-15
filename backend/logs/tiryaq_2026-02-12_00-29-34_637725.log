@@ -1,0 +1,15 @@
+2026-02-12 00:29:34.656 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-12 00:29:40.379 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tenant1_db.json for: Tiryaq Technology
+2026-02-12 00:29:40.738 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-12 00:29:40.738 | INFO     | Connected tenant1-user1-1770848980
+2026-02-12 00:29:48.763 | INFO     | Whisper_STT: 1401.41ms
+2026-02-12 00:29:48.766 | INFO     | User: السلام عليكم
+2026-02-12 00:29:50.583 | SUCCESS  | Interaction Complete: 3221.32ms
+2026-02-12 00:29:52.523 | INFO     | Finalized session tenant1-user1-1770848980
+2026-02-12 00:31:22.181 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tenant1_db.json for: Tiryaq Technology
+2026-02-12 00:31:22.539 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-12 00:31:22.539 | INFO     | Connected tenant1-user1-1770849082
+2026-02-12 00:31:29.037 | INFO     | Whisper_STT: 1329.17ms
+2026-02-12 00:31:29.040 | INFO     | User: سلام
+2026-02-12 00:31:30.708 | SUCCESS  | Interaction Complete: 3000.63ms
+2026-02-12 00:31:32.983 | INFO     | Finalized session tenant1-user1-1770849082

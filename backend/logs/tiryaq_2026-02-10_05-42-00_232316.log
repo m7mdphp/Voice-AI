@@ -1,0 +1,221 @@
+2026-02-10 05:42:00.234 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:42:00.498 | INFO     | 🚀 Starting Tiryaq Voice AI on Port 8001...
+2026-02-10 05:47:24.387 | INFO     | 🔌 Connected: tenant1/user1
+2026-02-10 05:47:28.145 | INFO     | Silence detected. Buffer: 1.79s
+2026-02-10 05:47:31.055 | INFO     | 🗣️ User said: شكرا
+2026-02-10 05:47:31.057 | INFO     | ⏱️ Whisper_STT: 2909.70ms
+2026-02-10 05:47:31.450 | INFO     | Groq TTFB: 391.65ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:47:31.504 | SUCCESS  | ✅ Interaction complete in 3357.98ms
+2026-02-10 05:47:39.604 | INFO     | Silence detected. Buffer: 0.51s
+2026-02-10 05:47:40.708 | INFO     | 🗣️ User said: شكرا
+2026-02-10 05:47:40.710 | INFO     | ⏱️ Whisper_STT: 1104.50ms
+2026-02-10 05:47:40.985 | INFO     | Groq TTFB: 272.96ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:47:40.987 | ERROR    | Pipeline Critical Error: 
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 349, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 620, in send
+    await self.ensure_open()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+
+websockets.exceptions.ConnectionClosedOK: received 1001 (going away); then sent 1001 (going away)
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 88, in send
+    await self._send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 50, in sender
+    await send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 365, in asgi_send
+    raise ClientDisconnected from exc
+
+uvicorn.protocols.utils.ClientDisconnected
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 296, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8001, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 270, in websocket_endpoint
+    await process_audio_buffer(websocket, process_buffer, user_context)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 185, in process_audio_buffer
+    await websocket.send_json({"type": "text", "content": event["content"]})
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 179, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 91, in send
+    raise WebSocketDisconnect(code=1006)
+
+starlette.websockets.WebSocketDisconnect
+2026-02-10 05:47:41.023 | ERROR    | WebSocket Error: Cannot call "send" once a close message has been sent.
+2026-02-10 05:47:42.228 | INFO     | 🔌 Connected: tenant1/user1
+2026-02-10 05:47:46.884 | INFO     | Silence detected. Buffer: 2.56s
+2026-02-10 05:47:48.412 | INFO     | 🗣️ User said: اشتركوا في القناة
+2026-02-10 05:47:48.413 | INFO     | ⏱️ Whisper_STT: 1528.01ms
+2026-02-10 05:47:48.640 | INFO     | Groq TTFB: 225.61ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:47:48.785 | SUCCESS  | ✅ Interaction complete in 1900.14ms
+2026-02-10 05:47:54.879 | ERROR    | WebSocket Error: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:48:46.832 | INFO     | 🔌 Connected: default/user1
+2026-02-10 05:48:51.034 | INFO     | Silence detected. Buffer: 2.05s
+2026-02-10 05:48:52.881 | INFO     | 🗣️ User said: شكرا لكم
+2026-02-10 05:48:52.882 | INFO     | ⏱️ Whisper_STT: 1847.16ms
+2026-02-10 05:48:53.106 | INFO     | Groq TTFB: 222.49ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:48:53.185 | SUCCESS  | ✅ Interaction complete in 2150.71ms
+2026-02-10 05:49:01.294 | INFO     | Silence detected. Buffer: 1.28s
+2026-02-10 05:49:03.080 | INFO     | 🗣️ User said: اشتركوا في القناة
+2026-02-10 05:49:03.081 | INFO     | ⏱️ Whisper_STT: 1785.87ms
+2026-02-10 05:49:03.350 | INFO     | Groq TTFB: 267.96ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:49:03.361 | ERROR    | Pipeline Critical Error: 
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 349, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 620, in send
+    await self.ensure_open()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+
+websockets.exceptions.ConnectionClosedOK: received 1005 (no status received [internal]); then sent 1005 (no status received [internal])
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 88, in send
+    await self._send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 50, in sender
+    await send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 365, in asgi_send
+    raise ClientDisconnected from exc
+
+uvicorn.protocols.utils.ClientDisconnected
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 296, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8001, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 270, in websocket_endpoint
+    await process_audio_buffer(websocket, process_buffer, user_context)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 185, in process_audio_buffer
+    await websocket.send_json({"type": "text", "content": event["content"]})
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 179, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 91, in send
+    raise WebSocketDisconnect(code=1006)
+
+starlette.websockets.WebSocketDisconnect
+2026-02-10 05:49:03.385 | ERROR    | WebSocket Error: Cannot call "send" once a close message has been sent.

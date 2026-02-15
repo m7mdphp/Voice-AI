@@ -1,0 +1,18 @@
+2026-02-10 06:31:08.028 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:31:08.305 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-10 06:31:18.581 | INFO     | Connected tenant1-user1-1770697878
+2026-02-10 06:31:29.130 | INFO     | Finalized session tenant1-user1-1770697878
+2026-02-10 06:31:30.676 | INFO     | Connected tenant1-user1-1770697890
+2026-02-10 06:31:37.864 | INFO     | Whisper_STT: 2644.04ms
+2026-02-10 06:31:37.865 | INFO     | User said: اشتركوا في القناة
+2026-02-10 06:31:38.293 | INFO     | Groq TTFB: 427.01ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:31:39.517 | SUCCESS  | Interaction complete in 4296.77ms
+2026-02-10 06:31:42.428 | INFO     | Whisper_STT: 1647.66ms
+2026-02-10 06:31:42.429 | INFO     | User said: اشتركوا في القناة
+2026-02-10 06:31:42.556 | INFO     | Groq TTFB: 126.46ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:31:45.503 | SUCCESS  | Interaction complete in 4722.87ms
+2026-02-10 06:31:52.433 | INFO     | Whisper_STT: 1442.28ms
+2026-02-10 06:31:52.434 | INFO     | User said: شكرا
+2026-02-10 06:31:52.659 | INFO     | Groq TTFB: 224.79ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:31:53.798 | INFO     | Finalized session tenant1-user1-1770697890
+2026-02-10 06:31:54.072 | SUCCESS  | Interaction complete in 3081.74ms

@@ -1,0 +1,7 @@
+2026-02-10 06:38:27.364 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:38:27.627 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-10 06:38:36.049 | INFO     | Connected tenant1-user1-1770698316
+2026-02-10 06:38:42.724 | INFO     | Whisper_STT: 2034.55ms
+2026-02-10 06:38:43.040 | INFO     | Groq TTFB: 314.75ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:38:44.202 | SUCCESS  | Backend processing complete in 3512.68ms
+2026-02-10 06:38:48.306 | INFO     | Finalized session tenant1-user1-1770698316

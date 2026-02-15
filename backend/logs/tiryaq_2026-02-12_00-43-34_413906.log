@@ -1,0 +1,8 @@
+2026-02-12 00:43:34.442 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-12 00:43:42.057 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_db.json for: Tiryaq Technology Company
+2026-02-12 00:43:42.476 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-12 00:43:42.477 | INFO     | Connected tiryaq_technology-user1-1770849822
+2026-02-12 00:43:50.101 | INFO     | Whisper_STT: 2090.42ms
+2026-02-12 00:43:50.104 | INFO     | User: اشتركوا في القناة
+2026-02-12 00:43:53.176 | SUCCESS  | Interaction Complete: 5165.32ms
+2026-02-12 00:43:53.667 | INFO     | Finalized session tiryaq_technology-user1-1770849822

@@ -1,0 +1,14 @@
+2026-02-10 06:10:11.952 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:10:12.248 | INFO     | Starting Tiryaq Voice AI on port 8001
+2026-02-10 06:10:19.105 | INFO     | Connected default-user1-1770696619
+2026-02-10 06:10:23.392 | INFO     | Disconnected and Cleaned Up default-user1-1770696619
+2026-02-10 06:10:24.983 | INFO     | Connected default-user1-1770696624
+2026-02-10 06:10:32.627 | INFO     | Whisper_STT: 2263.17ms
+2026-02-10 06:10:32.629 | INFO     | User said: كيف الحال؟ كيف أقدر أخدمك؟
+2026-02-10 06:10:32.942 | INFO     | Groq TTFB: 307.22ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:10:33.215 | SUCCESS  | Interaction complete in 2851.46ms
+2026-02-10 06:10:50.919 | INFO     | Disconnected and Cleaned Up default-user1-1770696624
+2026-02-10 06:10:51.243 | INFO     | Whisper_STT: 1679.72ms
+2026-02-10 06:10:51.245 | INFO     | User said: اشتركوا في القناة
+2026-02-10 06:10:51.473 | INFO     | Groq TTFB: 226.51ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:10:51.623 | SUCCESS  | Interaction complete in 2059.31ms

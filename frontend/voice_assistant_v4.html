@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ترياق V4 - Najm AI Standard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+
+        .status-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            background: #334155;
+            transition: 0.3s;
+        }
+
+        .listening {
+            background: #059669;
+            box-shadow: 0 0 20px #10b981;
+        }
+
+        .thinking {
+            background: #d97706;
+            animation: pulse 1s infinite;
+        }
+
+        .speaking {
+            background: #dc2626;
+            box-shadow: 0 0 20px #ef4444;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .chat-box {
+            height: 200px;
+            overflow-y: auto;
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .msg {
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            text-align: right;
+        }
+
+        .user {
+            background: #334155;
+            align-self: flex-start;
+        }
+
+        .ai {
+            background: #0284c7;
+            align-self: flex-end;
+        }
+
+        .btn {
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>🩺 ترياق V4 - Najm Standard</h2>
+        <div id="circle" class="status-circle">💤</div>
+        <div id="statusText">جاهز</div>
+        <div class="chat-box" id="chat"></div>
+        <button id="btn" class="btn" onclick="toggle()">ابدأ المحادثة</button>
+        <div style="margin-top:10px;"><input id="url"
+                style="width:100%;background:none;border:1px solid #334155;color:#64748b;padding:5px;text-align:center;"
+                value="ws://localhost:8000/ws/session/tiryaq_technology/user1"></div>
+    </div>
+
+    <script>
+        let ws, audioCtx, stream, proc, isPlaying = false, queue = [];
+        const SAMPLE_RATE = 16000;
+
+        function setUI(s) {
+            const c = document.getElementById('circle');
+            c.className = 'status-circle ' + s;
+            document.getElementById('statusText').textContent = s;
+        }
+
+        function addMsg(text, isAI) {
+            const chat = document.getElementById('chat');
+            let last = chat.lastElementChild;
+            if (isAI && last && last.classList.contains('ai') && last.dataset.finished === "false") {
+                last.textContent += text;
+            } else {
+                const d = document.createElement('div');
+                d.className = 'msg ' + (isAI ? 'ai' : 'user');
+                d.textContent = text;
+                if (isAI) d.dataset.finished = "false";
+                chat.appendChild(d);
+            }
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        // --- STABLE MP3 PLAYER ---
+        async function play() {
+            if (queue.length === 0 || isPlaying) return;
+            isPlaying = true;
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            try {
+                const arrayBuffer = queue.shift();
+                const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+
+                const source = audioCtx.createBufferSource();
+                source.buffer = audioBuffer;
+                source.connect(audioCtx.destination);
+                source.onended = () => {
+                    isPlaying = false;
+                    play();
+                };
+                source.start(0);
+            } catch (e) {
+                console.error("Playback error:", e);
+                isPlaying = false;
+                play();
+            }
+        }
+
+        async function startMic() {
+            try {
+                if (!stream) stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const src = audioCtx.createMediaStreamSource(stream);
+                proc = audioCtx.createScriptProcessor(4096, 1, 1);
+                src.connect(proc);
+                proc.connect(audioCtx.destination);
+                proc.onaudioprocess = (e) => {
+                    if (ws && ws.readyState === 1 && document.getElementById('circle').classList.contains('listening')) {
+                        const input = e.inputBuffer.getChannelData(0);
+                        const pcm = new Int16Array(input.length);
+                        for (let i = 0; i < input.length; i++) {
+                            // Boost gain slightly + Clipping protection
+                            let s = input[i] * 1.5;
+                            pcm[i] = Math.max(-32768, Math.min(32767, s * 32768));
+                        }
+                        ws.send(pcm.buffer);
+                    }
+                };
+                setUI('listening');
+            } catch (e) { alert("الميكروفون مطلوب"); }
+        }
+
+        function toggle() {
+            if (!ws || ws.readyState !== 1) {
+                ws = new WebSocket(document.getElementById('url').value);
+                ws.onopen = startMic;
+                ws.onmessage = async (e) => {
+                    if (typeof e.data === 'string') {
+                        const m = JSON.parse(e.data);
+                        if (m.type === 'state') setUI(m.state);
+                        else if (m.type === 'user_text') addMsg(m.content, false);
+                        else if (m.type === 'text') addMsg(m.content, true);
+                        else if (m.type === 'audio_start') setUI('speaking');
+                        else if (m.type === 'audio_end') {
+                            const chat = document.getElementById('chat');
+                            if (chat.lastElementChild) chat.lastElementChild.dataset.finished = "true";
+                            const check = setInterval(() => {
+                                if (queue.length === 0 && !isPlaying) {
+                                    clearInterval(check);
+                                    ws.send(JSON.stringify({ type: 'playback_done' }));
+                                    setUI('listening');
+                                }
+                            }, 100);
+                        }
+                    } else {
+                        queue.push(await e.data.arrayBuffer());
+                        play();
+                    }
+                };
+                document.getElementById('btn').textContent = "إنهاء";
+            } else { ws.close(); location.reload(); }
+        }
+    </script>
+</body>
+
+</html>

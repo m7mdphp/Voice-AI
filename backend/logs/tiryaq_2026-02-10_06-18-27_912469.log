@@ -1,0 +1,14 @@
+2026-02-10 06:18:27.915 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:18:28.198 | INFO     | Starting Tiryaq Voice AI on port 8001
+2026-02-10 06:18:37.683 | INFO     | Connected default-user1-1770697117
+2026-02-10 06:18:44.186 | INFO     | Finalized session default-user1-1770697117
+2026-02-10 06:18:45.728 | INFO     | Connected default-user1-1770697125
+2026-02-10 06:18:46.316 | INFO     | Whisper_STT: 2315.77ms
+2026-02-10 06:18:46.317 | INFO     | User said: السلام عليكم ورحمة الله
+2026-02-10 06:18:46.648 | INFO     | Groq TTFB: 329.21ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:18:46.688 | SUCCESS  | Interaction complete in 2688.21ms
+2026-02-10 06:18:52.811 | INFO     | Whisper_STT: 1640.51ms
+2026-02-10 06:18:52.812 | INFO     | User said: السلام عليكم ورحمة الله وبركاته
+2026-02-10 06:18:53.096 | INFO     | Groq TTFB: 282.36ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:18:53.162 | SUCCESS  | Interaction complete in 1991.23ms
+2026-02-10 06:18:57.483 | INFO     | Finalized session default-user1-1770697125

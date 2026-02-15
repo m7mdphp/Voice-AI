@@ -1,0 +1,59 @@
+2026-02-10 05:16:39.384 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:16:39.688 | INFO     | Starting Tiryaq Voice AI Server...
+2026-02-10 05:17:09.571 | INFO     | Session started: tenant1/user1
+2026-02-10 05:17:13.395 | INFO     | VAD trigger | Buffer: 40960 bytes | Speech: 0.94s
+2026-02-10 05:17:13.398 | INFO     | Pipeline_Start: 0.39ms
+2026-02-10 05:17:15.648 | INFO     | Transcription: اشتركوا في القناة
+2026-02-10 05:17:15.649 | INFO     | Whisper_STT: 2249.89ms
+2026-02-10 05:17:15.978 | ERROR    | Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:16.022 | ERROR    | Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:16.024 | INFO     | E2E_Latency: 2626.42ms
+2026-02-10 05:17:23.576 | INFO     | VAD trigger | Buffer: 106496 bytes | Speech: 1.79s
+2026-02-10 05:17:23.577 | INFO     | Pipeline_Start: 0.32ms
+2026-02-10 05:17:26.754 | INFO     | Transcription: اشتركوا في القناة
+2026-02-10 05:17:26.755 | INFO     | Whisper_STT: 3177.10ms
+2026-02-10 05:17:26.942 | ERROR    | Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:26.943 | ERROR    | Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:26.943 | INFO     | E2E_Latency: 3366.25ms
+2026-02-10 05:17:29.815 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:17:31.435 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:17:33.395 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.68s
+2026-02-10 05:17:33.396 | INFO     | Pipeline_Start: 0.25ms
+2026-02-10 05:17:34.742 | INFO     | Transcription: اشتركوا في القناة
+2026-02-10 05:17:34.743 | INFO     | Whisper_STT: 1345.72ms
+2026-02-10 05:17:34.916 | ERROR    | Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:34.917 | ERROR    | Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:34.918 | INFO     | E2E_Latency: 1521.72ms
+2026-02-10 05:17:37.834 | INFO     | VAD trigger | Buffer: 98304 bytes | Speech: 2.65s
+2026-02-10 05:17:37.835 | INFO     | Pipeline_Start: 0.12ms
+2026-02-10 05:17:38.897 | INFO     | Transcription: اشتركوا في القناة
+2026-02-10 05:17:38.898 | INFO     | Whisper_STT: 1062.68ms
+2026-02-10 05:17:38.970 | ERROR    | Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:38.971 | ERROR    | Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:38.972 | INFO     | E2E_Latency: 1137.50ms
+2026-02-10 05:17:53.978 | INFO     | VAD trigger | Buffer: 24576 bytes | Speech: 0.94s
+2026-02-10 05:17:53.978 | INFO     | Pipeline_Start: 0.23ms
+2026-02-10 05:17:55.548 | INFO     | Transcription: اشتركوا في القناة
+2026-02-10 05:17:55.549 | INFO     | Whisper_STT: 1570.20ms
+2026-02-10 05:17:55.729 | ERROR    | Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:55.729 | ERROR    | Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:55.730 | INFO     | E2E_Latency: 1752.16ms
+2026-02-10 05:18:02.712 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:18:06.156 | INFO     | VAD trigger | Buffer: 65536 bytes | Speech: 1.64s
+2026-02-10 05:18:06.158 | INFO     | Pipeline_Start: 0.24ms
+2026-02-10 05:18:07.986 | INFO     | Transcription: اشتركوا في القناة
+2026-02-10 05:18:07.986 | INFO     | Whisper_STT: 1828.30ms
+2026-02-10 05:18:08.165 | ERROR    | Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:08.165 | ERROR    | Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:08.166 | INFO     | E2E_Latency: 2008.84ms
+2026-02-10 05:18:26.552 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:18:50.420 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:18:52.107 | INFO     | VAD trigger | Buffer: 16384 bytes | Speech: 0.79s
+2026-02-10 05:18:52.107 | INFO     | Pipeline_Start: 0.13ms
+2026-02-10 05:18:53.416 | INFO     | Transcription: اشتركوا في القناة
+2026-02-10 05:18:53.416 | INFO     | Whisper_STT: 1308.71ms
+2026-02-10 05:18:53.595 | ERROR    | Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:53.595 | ERROR    | Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:53.596 | INFO     | E2E_Latency: 1488.50ms
+2026-02-10 05:19:01.098 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.64s
+2026-02-10 05:19:04.635 | INFO     | VAD trigger | Buffer: 8192 bytes | Speech: 0.65s

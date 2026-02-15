@@ -1,0 +1,14 @@
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+google-cloud-firestore==2.14.0
+google-genai
+websockets>=13.0
+python-multipart==0.0.9
+python-dotenv==1.0.1
+loguru==0.7.2
+firebase-admin==6.4.0
+pydantic-settings
+groq
+openai
+requests
+protobuf==3.20.3  # Fix for Python 3.10+ custom tp_new error

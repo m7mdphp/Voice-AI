@@ -1,0 +1,17 @@
+2026-02-12 00:24:42.539 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-12 00:26:17.936 | WARNING  | DB for tenant1 not found, using default.
+2026-02-12 00:26:17.937 | ERROR    | Critical Error: Failed to load tenant database: [Errno 2] No such file or directory: 'backend\\data\\tenant1_db.json'
+2026-02-12 00:26:18.337 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-12 00:26:18.339 | INFO     | Connected tenant1-user1-1770848777
+2026-02-12 00:27:55.427 | INFO     | Finalized session tenant1-user1-1770848777
+2026-02-12 00:27:59.757 | WARNING  | DB for tenant1 not found, using default.
+2026-02-12 00:27:59.762 | ERROR    | Critical Error: Failed to load tenant database: [Errno 2] No such file or directory: 'backend\\data\\tenant1_db.json'
+2026-02-12 00:28:00.088 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-12 00:28:00.089 | INFO     | Connected tenant1-user1-1770848879
+2026-02-12 00:28:07.390 | INFO     | Whisper_STT: 3255.96ms
+2026-02-12 00:28:07.391 | INFO     | User: السلام عليكم
+2026-02-12 00:28:08.613 | SUCCESS  | Interaction Complete: 4479.29ms
+2026-02-12 00:28:15.743 | INFO     | Whisper_STT: 1607.46ms
+2026-02-12 00:28:15.747 | INFO     | User: انت ميت
+2026-02-12 00:28:17.449 | SUCCESS  | Interaction Complete: 3313.80ms
+2026-02-12 00:28:21.754 | INFO     | Finalized session tenant1-user1-1770848879

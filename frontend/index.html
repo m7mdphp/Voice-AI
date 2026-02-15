@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>ترياق - المساعد الصحي الذكي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Tahoma, Arial;
+      background: #111827;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #1f2933;
+      padding: 30px;
+      border-radius: 20px;
+      width: 360px;
+      text-align: center;
+    }
+    .circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .idle { background: #374151 }
+    .listening { background: #10b981 }
+    .thinking { background: #f59e0b }
+    .speaking { background: #ef4444 }
+    button {
+      margin-top: 20px;
+      padding: 14px 30px;
+      border-radius: 20px;
+      border: none;
+      background: #6366f1;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .log {
+      background: #020617;
+      margin-top: 20px;
+      padding: 10px;
+      height: 120px;
+      overflow-y: auto;
+      text-align: right;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="box">
+  <h2>🩺 ترياق</h2>
+
+  <div id="circle" class="circle idle">💤</div>
+  <div id="status">اضغط للبدء</div>
+
+  <button onclick="toggle()">ابدأ</button>
+
+  <div class="log" id="log"></div>
+</div>
+
+<script>
+let ws;
+let state = "idle";
+
+let micCtx;
+let micStream;
+let processor;
+
+let audioCtx;
+let audioQueue = [];
+let playing = false;
+
+const icons = {
+  idle: "💤",
+  listening: "🎙️",
+  thinking: "⚙️",
+  speaking: "🔊"
+};
+
+function setState(s) {
+  state = s;
+  const c = document.getElementById("circle");
+  c.className = "circle " + s;
+  c.textContent = icons[s];
+  document.getElementById("status").textContent =
+    s === "idle" ? "اضغط للبدء" :
+    s === "listening" ? "أستمع إليك" :
+    s === "thinking" ? "أفكر" : "أتحدث";
+}
+
+function log(msg) {
+  const l = document.getElementById("log");
+  l.innerHTML += msg + "<br>";
+  l.scrollTop = l.scrollHeight;
+}
+
+async function startMic() {
+  micCtx = new AudioContext({ sampleRate: 16000 });
+  micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  const src = micCtx.createMediaStreamSource(micStream);
+  processor = micCtx.createScriptProcessor(4096, 1, 1);
+
+  src.connect(processor);
+  processor.connect(micCtx.destination);
+
+  processor.onaudioprocess = e => {
+    if (state !== "listening") return;
+    const input = e.inputBuffer.getChannelData(0);
+    const pcm = new Int16Array(input.length);
+    for (let i = 0; i < input.length; i++) {
+      pcm[i] = Math.max(-32768, Math.min(32767, input[i] * 32768));
+    }
+    ws.send(pcm.buffer);
+  };
+
+  setState("listening");
+}
+
+function stopMic() {
+  if (processor) processor.disconnect();
+  if (micStream) micStream.getTracks().forEach(t => t.stop());
+  if (micCtx) micCtx.close();
+}
+
+function hexToPCM(hex) {
+  const buffer = new ArrayBuffer(hex.length / 2);
+  const view = new DataView(buffer);
+  for (let i = 0; i < hex.length; i += 2) {
+    view.setInt8(i / 2, parseInt(hex.substr(i, 2), 16));
+  }
+  return new Int16Array(buffer);
+}
+
+function playQueue() {
+  if (playing || audioQueue.length === 0) return;
+  playing = true;
+
+  const pcm = audioQueue.shift();
+  if (!audioCtx) audioCtx = new AudioContext({ sampleRate: 16000 });
+
+  const buf = audioCtx.createBuffer(1, pcm.length, 16000);
+  const ch = buf.getChannelData(0);
+  for (let i = 0; i < pcm.length; i++) {
+    ch[i] = pcm[i] / 32768;
+  }
+
+  const src = audioCtx.createBufferSource();
+  src.buffer = buf;
+  src.connect(audioCtx.destination);
+  src.start();
+
+  src.onended = () => {
+    playing = false;
+    playQueue();
+  };
+}
+
+function connect() {
+  ws = new WebSocket("ws://localhost:8001/ws/session/default/user1");
+
+  ws.onopen = async () => {
+    await startMic();
+    log("متصل بالسيرفر");
+  };
+
+  ws.onmessage = e => {
+    const msg = JSON.parse(e.data);
+
+    if (msg.type === "state") {
+      setState(msg.state);
+    }
+
+    if (msg.type === "text") {
+      log("🤖 " + msg.content);
+    }
+
+    if (msg.type === "audio_start") {
+      audioQueue = [];
+      setState("speaking");
+    }
+
+    if (msg.type === "audio_chunk") {
+      audioQueue.push(hexToPCM(msg.audio));
+      playQueue();
+    }
+
+    if (msg.type === "audio_end") {
+      const t = setInterval(() => {
+        if (!playing && audioQueue.length === 0) {
+          clearInterval(t);
+          setState("listening");
+        }
+      }, 50);
+    }
+  };
+
+  ws.onclose = () => {
+    stopMic();
+    setState("idle");
+    log("تم قطع الاتصال");
+  };
+}
+
+function toggle() {
+  if (!ws || ws.readyState !== 1) {
+    connect();
+  } else {
+    ws.close();
+  }
+}
+</script>
+</body>
+</html>

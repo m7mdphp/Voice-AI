@@ -1,0 +1,22 @@
+2026-02-10 06:02:31.830 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:02:32.113 | INFO     | Starting Tiryaq Voice AI on port 8001
+2026-02-10 06:02:43.718 | INFO     | Connected default-user1-1770696163
+2026-02-10 06:02:52.425 | INFO     | Whisper_STT: 3121.48ms
+2026-02-10 06:02:52.428 | INFO     | User said: السلام عليكم
+2026-02-10 06:02:52.819 | INFO     | Groq TTFB: 389.48ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:02:52.854 | SUCCESS  | Interaction complete in 3551.01ms
+2026-02-10 06:03:03.010 | INFO     | Disconnected default-user1-1770696163
+2026-02-10 06:03:05.548 | INFO     | Connected default-user1-1770696185
+2026-02-10 06:03:15.251 | INFO     | Disconnected default-user1-1770696185
+2026-02-10 06:03:20.620 | INFO     | Connected default-user1-1770696200
+2026-02-10 06:03:33.399 | INFO     | Whisper_STT: 1784.63ms
+2026-02-10 06:03:33.402 | INFO     | User said: كيف الحال؟ أنت مين؟
+2026-02-10 06:03:33.631 | INFO     | Groq TTFB: 227.09ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:03:33.739 | SUCCESS  | Interaction complete in 2125.09ms
+2026-02-10 06:03:45.926 | INFO     | Disconnected default-user1-1770696200
+2026-02-10 06:03:48.650 | INFO     | Connected default-user1-1770696228
+2026-02-10 06:03:56.321 | INFO     | Whisper_STT: 1826.29ms
+2026-02-10 06:03:56.323 | INFO     | User said: هو تلية ذبطائي
+2026-02-10 06:03:56.599 | INFO     | Groq TTFB: 276.07ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:03:56.755 | SUCCESS  | Interaction complete in 2260.40ms
+2026-02-10 06:04:00.155 | INFO     | Disconnected default-user1-1770696228

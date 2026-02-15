@@ -1,0 +1,21 @@
+2026-02-10 06:42:06.831 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-10 06:42:13.414 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 06:42:13.714 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 06:42:13.716 | INFO     | Connected tenant1-user1-1770698533
+2026-02-10 06:42:21.861 | INFO     | Whisper_STT: 2930.98ms
+2026-02-10 06:42:21.862 | INFO     | User [tenant1]: اشتركوا في القناة
+2026-02-10 06:42:22.286 | INFO     | Groq TTFB: 423.77ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:42:23.982 | SUCCESS  | Backend processing complete in 5052.07ms
+2026-02-10 06:42:30.406 | INFO     | Whisper_STT: 1286.84ms
+2026-02-10 06:42:30.407 | INFO     | User [tenant1]: شكرا
+2026-02-10 06:42:30.642 | INFO     | Groq TTFB: 234.03ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:42:32.006 | SUCCESS  | Backend processing complete in 2886.78ms
+2026-02-10 06:42:39.741 | INFO     | Whisper_STT: 2232.01ms
+2026-02-10 06:42:39.743 | INFO     | User [tenant1]: اشتركوا في القناة
+2026-02-10 06:42:39.974 | INFO     | Groq TTFB: 230.47ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:42:41.601 | SUCCESS  | Backend processing complete in 4091.86ms
+2026-02-10 06:42:45.442 | INFO     | Finalized session tenant1-user1-1770698533
+2026-02-10 06:42:45.667 | INFO     | Whisper_STT: 1477.23ms
+2026-02-10 06:42:45.668 | INFO     | User [tenant1]: شكرا
+2026-02-10 06:42:45.797 | INFO     | Groq TTFB: 128.28ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:42:46.688 | SUCCESS  | Backend processing complete in 2498.02ms

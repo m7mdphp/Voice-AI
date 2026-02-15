@@ -1,0 +1,13 @@
+2026-02-10 06:48:11.297 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-10 06:48:19.888 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 06:48:20.251 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 06:48:20.252 | INFO     | Connected tenant1-user1-1770698899
+2026-02-10 06:48:27.629 | INFO     | Whisper_STT: 2089.73ms
+2026-02-10 06:48:27.631 | INFO     | User [tenant1]: اشتركوا في القناة
+2026-02-10 06:48:28.003 | INFO     | Groq TTFB: 370.85ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:48:29.470 | SUCCESS  | Backend processing complete in 3930.86ms
+2026-02-10 06:48:38.486 | INFO     | Whisper_STT: 1907.13ms
+2026-02-10 06:48:38.487 | INFO     | User [tenant1]: اشتركوا في القناة
+2026-02-10 06:48:38.720 | INFO     | Groq TTFB: 232.82ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:48:40.857 | SUCCESS  | Backend processing complete in 4278.33ms
+2026-02-10 06:48:42.481 | INFO     | Finalized session tenant1-user1-1770698899

@@ -1,0 +1,12 @@
+2026-02-10 06:37:08.140 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:37:08.432 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-10 06:37:13.301 | INFO     | Connected tenant1-user1-1770698233
+2026-02-10 06:37:20.336 | INFO     | Whisper_STT: 2126.96ms
+2026-02-10 06:37:20.720 | INFO     | Groq TTFB: 383.47ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:37:21.748 | ERROR    | Error in process_audio_buffer: cannot access local variable 'first_audio' where it is not associated with a value
+2026-02-10 06:37:32.106 | INFO     | Finalized session tenant1-user1-1770698233
+2026-02-10 06:37:33.287 | INFO     | Connected tenant1-user1-1770698253
+2026-02-10 06:37:40.172 | INFO     | Whisper_STT: 2093.04ms
+2026-02-10 06:37:40.462 | INFO     | Groq TTFB: 289.14ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:37:41.377 | ERROR    | Error in process_audio_buffer: cannot access local variable 'first_audio' where it is not associated with a value
+2026-02-10 06:37:56.179 | INFO     | Finalized session tenant1-user1-1770698253

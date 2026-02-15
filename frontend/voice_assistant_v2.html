@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ترياق - المساعد الصحي الذكي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .status-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .status-circle.idle {
+            background: #e0e7ff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .status-circle.listening {
+            background: #10b981;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .status-circle.thinking {
+            background: #f59e0b;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.5);
+            animation: spin 2s linear infinite;
+        }
+
+        .status-circle.speaking {
+            background: #ef4444;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .status-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .messages {
+            background: #f9fafb;
+            border-radius: 15px;
+            padding: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .message.ai {
+            background: #dbeafe;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .settings {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .settings input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .error {
+            color: #ef4444;
+            background: #fee2e2;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🩺 ترياق</h1>
+        <p class="subtitle">مساعدك الصحي الذكي</p>
+
+        <div id="statusCircle" class="status-circle idle" onclick="toggleSession()">
+            <span id="statusIcon">💤</span>
+        </div>
+
+        <div id="statusText" class="status-text">اضغط للبدء</div>
+
+        <div class="messages" id="messages"></div>
+
+        <button id="startBtn" class="btn" onclick="toggleSession()">ابدأ المحادثة</button>
+
+        <div class="settings">
+            <input type="text" id="serverUrl" placeholder="عنوان السيرفر"
+                value="ws://localhost:8000/ws/session/tenant1/user1">
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+    </div>
+
+    <script>
+        // State Management
+        let state = 'idle'; // idle, listening, thinking, speaking
+        let ws = null;
+        let audioContext = null;
+        let mediaStream = null;
+        let processor = null;
+        let audioQueue = [];
+        let isPlaying = false;
+
+        const icons = {
+            idle: '💤',
+            listening: '🎙️',
+            thinking: '⚙️',
+            speaking: '🔊'
+        };
+
+        const statusTexts = {
+            idle: 'اضغط للبدء',
+            listening: 'أستمع إليك...',
+            thinking: 'أفكر...',
+            speaking: 'أتحدث إليك...'
+        };
+
+        function setState(newState) {
+            state = newState;
+            const circle = document.getElementById('statusCircle');
+            const icon = document.getElementById('statusIcon');
+            const text = document.getElementById('statusText');
+
+            circle.className = `status-circle ${newState}`;
+            icon.textContent = icons[newState];
+            text.textContent = statusTexts[newState];
+        }
+
+        function addMessage(text, isAI = false) {
+            const messagesDiv = document.getElementById('messages');
+            const msg = document.createElement('div');
+            msg.className = `message ${isAI ? 'ai' : 'user'}`;
+            msg.textContent = `${isAI ? '🤖' : '👤'} ${text}`;
+            messagesDiv.appendChild(msg);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => errorDiv.style.display = 'none', 5000);
+        }
+
+        async function startMicrophone() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                mediaStream = await navigator.mediaDevices.getUserMedia({
+                    audio: {
+                        channelCount: 1,
+                        sampleRate: 16000
+                    }
+                });
+
+                const source = audioContext.createMediaStreamSource(mediaStream);
+                processor = audioContext.createScriptProcessor(4096, 1, 1);
+
+                source.connect(processor);
+                processor.connect(audioContext.destination);
+
+                processor.onaudioprocess = (e) => {
+                    // CRITICAL: Walkie-Talkie Logic
+                    if (state !== 'listening') return;
+
+                    if (ws && ws.readyState === WebSocket.OPEN) {
+                        const inputData = e.inputBuffer.getChannelData(0);
+                        // Convert Float32 to Int16
+                        const int16Data = new Int16Array(inputData.length);
+                        for (let i = 0; i < inputData.length; i++) {
+                            int16Data[i] = Math.max(-32768, Math.min(32767, inputData[i] * 32768));
+                        }
+                        ws.send(int16Data.buffer);
+                    }
+                };
+
+                setState('listening');
+                return true;
+            } catch (err) {
+                showError('فشل الوصول للمايك: ' + err.message);
+                return false;
+            }
+        }
+
+        function stopMicrophone() {
+            if (processor) processor.disconnect();
+            if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
+            if (audioContext) audioContext.close();
+            processor = null;
+            mediaStream = null;
+            audioContext = null;
+        }
+
+        async function playAudioQueue() {
+            if (audioQueue.length === 0 || isPlaying) return;
+
+            isPlaying = true;
+            const chunk = audioQueue.shift();
+
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            try {
+                const buffer = await audioContext.decodeAudioData(chunk);
+                const source = audioContext.createBufferSource();
+                source.buffer = buffer;
+                source.connect(audioContext.destination);
+                source.onended = () => {
+                    isPlaying = false;
+                    playAudioQueue(); // Play next
+                };
+                source.start(0);
+            } catch (err) {
+                console.error('Audio decode error:', err);
+                isPlaying = false;
+                playAudioQueue();
+            }
+        }
+
+        function connectWebSocket() {
+            const url = document.getElementById('serverUrl').value;
+            ws = new WebSocket(url);
+
+            ws.onopen = () => {
+                console.log('Connected to Tiryaq backend');
+                startMicrophone();
+            };
+
+            ws.onmessage = async (event) => {
+                if (typeof event.data === 'string') {
+                    const msg = JSON.parse(event.data);
+
+                    if (msg.type === 'state') {
+                        setState(msg.state);
+                    } else if (msg.type === 'user_text') {
+                        addMessage(msg.content, false); // Display user's question
+                    } else if (msg.type === 'text') {
+                        addMessage(msg.content, true); // Display AI response
+                    } else if (msg.type === 'audio_start') {
+                        setState('speaking');
+                    } else if (msg.type === 'audio_end') {
+                        // Wait for queue to finish, then return to listening
+                        const checkQueue = setInterval(() => {
+                            if (audioQueue.length === 0 && !isPlaying) {
+                                clearInterval(checkQueue);
+                                // Inform backend that we are ready to listen again
+                                if (ws && ws.readyState === WebSocket.OPEN) {
+                                    ws.send(JSON.stringify({ type: 'playback_done' }));
+                                }
+                                setState('listening');
+                            }
+                        }, 100);
+                    }
+                } else {
+                    // Binary audio data
+                    const arrayBuffer = await event.data.arrayBuffer();
+                    audioQueue.push(arrayBuffer);
+                    if (!isPlaying) playAudioQueue();
+                }
+            };
+
+            ws.onerror = (err) => {
+                showError('خطأ في الاتصال بالسيرفر');
+                console.error('WebSocket error:', err);
+            };
+
+            ws.onclose = () => {
+                console.log('Disconnected');
+                stopMicrophone();
+                setState('idle');
+                document.getElementById('startBtn').textContent = 'ابدأ المحادثة';
+            };
+        }
+
+        function toggleSession() {
+            const btn = document.getElementById('startBtn');
+
+            if (state === 'idle') {
+                connectWebSocket();
+                btn.textContent = 'إنهاء المحادثة';
+            } else {
+                if (ws) ws.close();
+                stopMicrophone();
+                setState('idle');
+                btn.textContent = 'ابدأ المحادثة';
+            }
+        }
+    </script>
+</body>
+
+</html>

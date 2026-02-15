@@ -1,0 +1,8 @@
+2026-02-10 06:16:14.646 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:16:14.884 | INFO     | Starting Tiryaq Voice AI on port 8001
+2026-02-10 06:16:35.953 | INFO     | Connected default-user1-1770696995
+2026-02-10 06:16:43.726 | INFO     | Whisper_STT: 2334.67ms
+2026-02-10 06:16:43.728 | INFO     | User said: قلت أنني أريد أن أسفل المنزل
+2026-02-10 06:16:44.204 | INFO     | Groq TTFB: 474.52ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:16:44.354 | SUCCESS  | Interaction complete in 2962.59ms
+2026-02-10 06:16:44.774 | INFO     | Disconnected and Cleaned Up default-user1-1770696995

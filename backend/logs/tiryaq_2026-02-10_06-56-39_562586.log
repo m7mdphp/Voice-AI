@@ -1,0 +1,93 @@
+2026-02-10 06:56:39.586 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-10 06:56:44.859 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 06:56:45.292 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 06:56:45.293 | INFO     | Connected tenant1-user1-1770699404
+2026-02-10 06:56:52.571 | INFO     | Whisper_STT: 2102.40ms
+2026-02-10 06:56:52.572 | INFO     | User [tenant1]: السلام عليكم ورحمة الله وبركاته
+2026-02-10 06:56:52.918 | INFO     | Groq TTFB: 345.32ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:56:54.316 | SUCCESS  | Backend processing complete in 3847.23ms
+2026-02-10 06:57:01.042 | INFO     | Whisper_STT: 1082.87ms
+2026-02-10 06:57:01.043 | INFO     | User [tenant1]: في الحل
+2026-02-10 06:57:01.336 | INFO     | Groq TTFB: 292.02ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:57:02.896 | SUCCESS  | Backend processing complete in 2936.84ms
+2026-02-10 06:57:11.325 | INFO     | Whisper_STT: 1615.62ms
+2026-02-10 06:57:11.326 | INFO     | User [tenant1]: مفيش إنتمي
+2026-02-10 06:57:11.602 | INFO     | Groq TTFB: 275.45ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:57:13.805 | SUCCESS  | Backend processing complete in 4096.42ms
+2026-02-10 06:57:22.120 | INFO     | Whisper_STT: 1639.94ms
+2026-02-10 06:57:22.120 | INFO     | User [tenant1]: عايز أعرف أنت مين
+2026-02-10 06:57:22.396 | INFO     | Groq TTFB: 274.65ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:57:23.833 | SUCCESS  | Backend processing complete in 3353.64ms
+2026-02-10 06:57:27.525 | INFO     | Finalized session tenant1-user1-1770699404
+2026-02-10 06:57:54.691 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 06:57:55.060 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 06:57:55.061 | INFO     | Connected tenant1-user1-1770699474
+2026-02-10 06:58:01.620 | INFO     | Whisper_STT: 1951.55ms
+2026-02-10 06:58:01.621 | INFO     | User [tenant1]: قل انت من كده تاني
+2026-02-10 06:58:01.917 | INFO     | Groq TTFB: 295.81ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:58:03.272 | SUCCESS  | Backend processing complete in 3603.60ms
+2026-02-10 06:58:11.185 | INFO     | Whisper_STT: 2526.66ms
+2026-02-10 06:58:11.186 | INFO     | User [tenant1]: أيوة تعرف تساعدني بإيه يعني
+2026-02-10 06:58:11.426 | INFO     | Groq TTFB: 239.26ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:58:13.734 | SUCCESS  | Backend processing complete in 5075.75ms
+2026-02-10 06:58:25.774 | INFO     | Whisper_STT: 1455.45ms
+2026-02-10 06:58:25.775 | INFO     | User [tenant1]: طب انا عندك رقم تواصل مثلا او حاجة
+2026-02-10 06:58:26.014 | INFO     | Groq TTFB: 239.03ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:58:27.435 | SUCCESS  | Backend processing complete in 3116.65ms
+2026-02-10 06:58:29.436 | INFO     | Finalized session tenant1-user1-1770699474
+2026-02-10 06:59:56.070 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 06:59:56.349 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 06:59:56.350 | INFO     | Connected tenant1-user1-1770699596
+2026-02-10 07:00:03.994 | INFO     | Whisper_STT: 1455.33ms
+2026-02-10 07:00:03.995 | INFO     | User [tenant1]: اشتركوا في القناة
+2026-02-10 07:00:04.283 | INFO     | Groq TTFB: 287.46ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:00:05.780 | SUCCESS  | Backend processing complete in 3241.46ms
+2026-02-10 07:00:12.555 | INFO     | Whisper_STT: 1576.25ms
+2026-02-10 07:00:12.557 | INFO     | User [tenant1]: السلام عليكم ورحمة الله وبركاته
+2026-02-10 07:00:12.834 | INFO     | Groq TTFB: 275.91ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:00:14.407 | SUCCESS  | Backend processing complete in 3428.22ms
+2026-02-10 07:00:17.799 | INFO     | Finalized session tenant1-user1-1770699596
+2026-02-10 07:03:22.193 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 07:03:22.466 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 07:03:22.467 | INFO     | Connected tenant1-user1-1770699802
+2026-02-10 07:03:25.308 | INFO     | Finalized session tenant1-user1-1770699802
+2026-02-10 07:03:26.859 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 07:03:27.164 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 07:03:27.165 | INFO     | Connected tenant1-user1-1770699806
+2026-02-10 07:03:31.579 | INFO     | Whisper_STT: 1320.06ms
+2026-02-10 07:03:31.580 | INFO     | User [tenant1]: السلام عليكم ورحمة الله وبركاته
+2026-02-10 07:03:31.856 | INFO     | Groq TTFB: 275.51ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:03:33.402 | SUCCESS  | Backend processing complete in 3142.57ms
+2026-02-10 07:03:40.509 | INFO     | Whisper_STT: 1280.24ms
+2026-02-10 07:03:40.510 | INFO     | User [tenant1]: كيف الحال؟
+2026-02-10 07:03:40.740 | INFO     | Groq TTFB: 229.02ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:03:42.795 | SUCCESS  | Backend processing complete in 3566.25ms
+2026-02-10 07:03:49.118 | INFO     | Whisper_STT: 1430.50ms
+2026-02-10 07:03:49.119 | INFO     | User [tenant1]: انت اسمك ايه انت مين
+2026-02-10 07:03:49.366 | INFO     | Groq TTFB: 246.49ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:03:51.880 | SUCCESS  | Backend processing complete in 4192.71ms
+2026-02-10 07:03:54.620 | INFO     | Finalized session tenant1-user1-1770699806
+2026-02-10 07:03:58.081 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 07:03:58.532 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 07:03:58.533 | INFO     | Connected tenant1-user1-1770699838
+2026-02-10 07:03:58.721 | INFO     | Finalized session tenant1-user1-1770699838
+2026-02-10 07:04:02.159 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 07:04:02.670 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 07:04:02.671 | INFO     | Connected tenant1-user1-1770699842
+2026-02-10 07:04:03.841 | INFO     | Finalized session tenant1-user1-1770699842
+2026-02-10 07:36:01.574 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-10 07:36:02.018 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-10 07:36:02.019 | INFO     | Connected tenant1-user1-1770701761
+2026-02-10 07:36:09.531 | INFO     | Whisper_STT: 1842.17ms
+2026-02-10 07:36:09.532 | INFO     | User [tenant1]: السلام عليكم ورحمة الله وبركاته
+2026-02-10 07:36:09.841 | INFO     | Groq TTFB: 308.54ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:36:12.387 | SUCCESS  | Backend processing complete in 4698.60ms
+2026-02-10 07:36:20.355 | INFO     | Whisper_STT: 1146.11ms
+2026-02-10 07:36:20.356 | INFO     | User [tenant1]: انت مين
+2026-02-10 07:36:20.638 | INFO     | Groq TTFB: 281.99ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:36:22.258 | SUCCESS  | Backend processing complete in 3049.37ms
+2026-02-10 07:36:29.891 | INFO     | Whisper_STT: 1203.02ms
+2026-02-10 07:36:29.892 | INFO     | User [tenant1]: تردد فيديو بإيجابي
+2026-02-10 07:36:30.135 | INFO     | Groq TTFB: 242.02ms | Model: llama-3.3-70b-versatile
+2026-02-10 07:36:31.053 | SUCCESS  | Backend processing complete in 2365.08ms
+2026-02-10 07:36:34.064 | INFO     | Finalized session tenant1-user1-1770701761

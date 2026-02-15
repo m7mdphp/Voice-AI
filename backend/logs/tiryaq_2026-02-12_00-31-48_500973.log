@@ -1,0 +1,12 @@
+2026-02-12 00:31:48.525 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-12 00:32:09.925 | WARNING  | DB for tiryaq_technology not found at C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_technology_db.json, using default.
+2026-02-12 00:32:09.927 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_db.json for: Tiryaq Technology Company
+2026-02-12 00:32:10.267 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-12 00:32:10.268 | INFO     | Connected tiryaq_technology-user1-1770849129
+2026-02-12 00:32:17.375 | INFO     | Whisper_STT: 2291.87ms
+2026-02-12 00:32:17.375 | INFO     | User: اشتركوا في القناة
+2026-02-12 00:32:20.721 | SUCCESS  | Interaction Complete: 5637.65ms
+2026-02-12 00:32:31.211 | INFO     | Whisper_STT: 1497.88ms
+2026-02-12 00:32:31.212 | INFO     | User: اشتركوا في القناة
+2026-02-12 00:32:32.900 | SUCCESS  | Interaction Complete: 3187.24ms
+2026-02-12 00:32:33.887 | INFO     | Finalized session tiryaq_technology-user1-1770849129

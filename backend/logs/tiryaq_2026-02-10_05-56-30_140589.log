@@ -1,0 +1,8 @@
+2026-02-10 05:56:30.142 | INFO     | Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:56:30.402 | INFO     | Starting Tiryaq Voice AI on port 8001
+2026-02-10 05:56:40.015 | INFO     | Connected default-user1-1770695800
+2026-02-10 05:56:48.615 | INFO     | Whisper_STT: 2600.72ms
+2026-02-10 05:56:48.617 | INFO     | User said: شكرا
+2026-02-10 05:56:49.182 | INFO     | Groq TTFB: 563.71ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:56:49.290 | SUCCESS  | Interaction complete in 3276.09ms
+2026-02-10 05:56:58.052 | INFO     | Disconnected default-user1-1770695800

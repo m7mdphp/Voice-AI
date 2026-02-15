@@ -1,0 +1,44 @@
+2026-02-15 08:17:59.148 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-15 08:18:32.882 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_db.json for: Tiryaq Technology Company
+2026-02-15 08:18:33.487 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-15 08:18:33.489 | INFO     | Connected tiryaq_technology-user1-1771136312
+2026-02-15 08:18:41.870 | INFO     | Whisper_STT: 3359.45ms
+2026-02-15 08:18:41.873 | INFO     | User: اشتركوا في القناة
+2026-02-15 08:18:47.146 | SUCCESS  | Interaction Complete: 8635.63ms
+2026-02-15 08:18:58.619 | INFO     | Whisper_STT: 1977.97ms
+2026-02-15 08:18:58.621 | INFO     | User: اشترك في القناة
+2026-02-15 08:19:01.174 | SUCCESS  | Interaction Complete: 4532.79ms
+2026-02-15 08:19:48.851 | INFO     | Whisper_STT: 2407.52ms
+2026-02-15 08:19:48.853 | INFO     | User: اشتركوا في القناة
+2026-02-15 08:19:51.264 | SUCCESS  | Interaction Complete: 4821.16ms
+2026-02-15 08:20:01.469 | INFO     | Finalized session tiryaq_technology-user1-1771136312
+2026-02-15 08:20:43.953 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_db.json for: Tiryaq Technology Company
+2026-02-15 08:20:44.334 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-15 08:20:44.334 | INFO     | Connected tiryaq_technology-user1-1771136443
+2026-02-15 08:20:53.617 | INFO     | Whisper_STT: 3388.71ms
+2026-02-15 08:20:53.618 | INFO     | User: السلام عليكم ورحمة الله وبركاته
+2026-02-15 08:20:55.389 | INFO     | Finalized session tiryaq_technology-user1-1771136443
+2026-02-15 08:20:55.843 | SUCCESS  | Interaction Complete: 5615.11ms
+2026-02-15 08:21:11.340 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_db.json for: Tiryaq Technology Company
+2026-02-15 08:21:11.724 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-15 08:21:11.725 | INFO     | Connected tiryaq_technology-user1-1771136471
+2026-02-15 08:21:21.565 | INFO     | Whisper_STT: 1799.76ms
+2026-02-15 08:21:21.567 | INFO     | User: السلام عليكم ورحمة الله وبركاته
+2026-02-15 08:21:23.581 | SUCCESS  | Interaction Complete: 3816.08ms
+2026-02-15 08:21:32.624 | INFO     | Whisper_STT: 1578.68ms
+2026-02-15 08:21:32.625 | INFO     | User: لو سمحت مين حضرتك
+2026-02-15 08:21:34.781 | SUCCESS  | Interaction Complete: 3735.36ms
+2026-02-15 08:21:44.132 | INFO     | Whisper_STT: 2335.20ms
+2026-02-15 08:21:44.135 | INFO     | User: طيب تدك تسايدني زي
+2026-02-15 08:21:46.265 | SUCCESS  | Interaction Complete: 4468.47ms
+2026-02-15 08:21:56.390 | INFO     | Whisper_STT: 1513.69ms
+2026-02-15 08:21:56.392 | INFO     | User: شكرا
+2026-02-15 08:21:57.931 | SUCCESS  | Interaction Complete: 3055.05ms
+2026-02-15 08:21:59.281 | INFO     | Finalized session tiryaq_technology-user1-1771136471
+2026-02-15 08:22:26.187 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_db.json for: Tiryaq Technology Company
+2026-02-15 08:22:26.538 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-15 08:22:26.539 | INFO     | Connected tiryaq_technology-user1-1771136546
+2026-02-15 08:22:26.624 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\data\tiryaq_db.json for: Tiryaq Technology Company
+2026-02-15 08:22:26.907 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-15 08:22:26.907 | INFO     | Connected tiryaq_technology-user1-1771136546
+2026-02-15 08:22:27.913 | INFO     | Finalized session tiryaq_technology-user1-1771136546

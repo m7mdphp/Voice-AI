@@ -1,0 +1,53 @@
+2026-02-11 20:36:51.013 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-11 20:37:01.403 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-11 20:37:01.941 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-11 20:37:01.941 | INFO     | Connected tenant1-user1-1770835021
+2026-02-11 20:37:09.042 | INFO     | Whisper_STT: 2823.02ms
+2026-02-11 20:37:09.043 | INFO     | User [tenant1]: السلام عليكم
+2026-02-11 20:37:09.460 | INFO     | Groq TTFB: 414.04ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:37:12.146 | SUCCESS  | Backend processing complete in 5926.57ms
+2026-02-11 20:37:18.017 | INFO     | Whisper_STT: 1047.80ms
+2026-02-11 20:37:18.018 | INFO     | User [tenant1]: انت مين
+2026-02-11 20:37:18.301 | INFO     | Groq TTFB: 283.35ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:37:19.743 | SUCCESS  | Backend processing complete in 2773.91ms
+2026-02-11 20:37:27.072 | INFO     | Whisper_STT: 1382.52ms
+2026-02-11 20:37:27.074 | INFO     | User [tenant1]: تعرف تساعدني ازاي يعني
+2026-02-11 20:37:27.373 | INFO     | Groq TTFB: 298.52ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:37:30.234 | SUCCESS  | Backend processing complete in 4544.05ms
+2026-02-11 20:37:38.883 | INFO     | Finalized session tenant1-user1-1770835021
+2026-02-11 20:41:53.193 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-11 20:41:53.480 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-11 20:41:53.480 | INFO     | Connected tenant1-user1-1770835313
+2026-02-11 20:42:00.346 | INFO     | Whisper_STT: 3274.57ms
+2026-02-11 20:42:00.347 | INFO     | User [tenant1]: انا بطني بتوجعني ممكن اخدي علاج
+2026-02-11 20:42:00.649 | INFO     | Groq TTFB: 300.58ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:42:04.683 | SUCCESS  | Backend processing complete in 7612.21ms
+2026-02-11 20:42:13.143 | INFO     | Finalized session tenant1-user1-1770835313
+2026-02-11 20:43:05.760 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-11 20:43:05.983 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-11 20:43:05.984 | INFO     | Connected tenant1-user1-1770835385
+2026-02-11 20:43:10.429 | INFO     | Whisper_STT: 1368.56ms
+2026-02-11 20:43:10.430 | INFO     | User [tenant1]: بابا اسمه ايه
+2026-02-11 20:43:10.674 | INFO     | Groq TTFB: 243.35ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:43:12.780 | SUCCESS  | Backend processing complete in 3719.49ms
+2026-02-11 20:43:16.414 | INFO     | Finalized session tenant1-user1-1770835385
+2026-02-11 20:43:21.718 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-11 20:43:22.006 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-11 20:43:22.007 | INFO     | Connected tenant1-user1-1770835401
+2026-02-11 20:43:22.467 | INFO     | Finalized session tenant1-user1-1770835401
+2026-02-11 20:43:34.664 | INFO     | Loaded persona: Tiryaq - Medical AI Assistant for tenant: tenant1
+2026-02-11 20:43:35.193 | INFO     | Initialized dynamic engine for tenant: tenant1
+2026-02-11 20:43:35.194 | INFO     | Connected tenant1-user1-1770835414
+2026-02-11 20:43:43.974 | INFO     | Whisper_STT: 3654.08ms
+2026-02-11 20:43:43.977 | INFO     | User [tenant1]: يعني لو عندي مشكلة في الحمام مثلا ما بعمل حمام اعمل ايه
+2026-02-11 20:43:44.263 | INFO     | Groq TTFB: 283.63ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:43:46.975 | SUCCESS  | Backend processing complete in 6655.25ms
+2026-02-11 20:43:57.292 | INFO     | Whisper_STT: 1091.88ms
+2026-02-11 20:43:57.296 | INFO     | User [tenant1]: طيب تمام شكرًا شكرًا
+2026-02-11 20:43:57.592 | INFO     | Groq TTFB: 293.12ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:43:58.998 | SUCCESS  | Backend processing complete in 2798.18ms
+2026-02-11 20:44:06.767 | INFO     | Whisper_STT: 1608.20ms
+2026-02-11 20:44:06.769 | INFO     | User [tenant1]: طيب السلام عليكم ورحمة الله وبركاته
+2026-02-11 20:44:07.065 | INFO     | Groq TTFB: 295.20ms | Model: llama-3.3-70b-versatile
+2026-02-11 20:44:08.526 | SUCCESS  | Backend processing complete in 3367.65ms
+2026-02-11 20:44:11.255 | INFO     | Finalized session tenant1-user1-1770835414

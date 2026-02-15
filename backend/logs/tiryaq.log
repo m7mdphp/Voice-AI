@@ -1,0 +1,1140 @@
+2026-02-10 03:21:17.104 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:21:18.063 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:21:18.410 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:23:22.488 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:23:23.398 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:23:23.650 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:26:32.986 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:26:33.907 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:26:34.179 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:32:19.095 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:32:20.125 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:32:20.409 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:42:08.178 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:42:08.528 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:44:18.230 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:44:19.811 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 03:44:20.172 | INFO     | services.agent_engine:_load_persona:34 - Loaded Persona: Tiryaq
+2026-02-10 04:43:02.909 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 04:43:03.159 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 04:45:04.053 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 04:45:04.328 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 04:45:45.096 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 04:45:45.327 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:01:44.400 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:01:44.629 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:01:56.022 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:01:56.290 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:03:42.976 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:03:43.225 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:04:52.214 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:04:52.481 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:05:05.733 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:05:11.256 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 98304 bytes | Speech: 1.71s
+2026-02-10 05:05:11.257 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.30ms
+2026-02-10 05:05:13.046 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:05:13.047 | INFO     | __main__:__exit__:76 - Whisper_STT: 1789.63ms
+2026-02-10 05:05:13.047 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:05:17.915 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 114688 bytes | Speech: 1.79s
+2026-02-10 05:05:17.916 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:05:18.670 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:05:18.670 | INFO     | __main__:__exit__:76 - Whisper_STT: 753.19ms
+2026-02-10 05:05:18.671 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:05:25.009 | ERROR    | __main__:websocket_endpoint:208 - Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:05:27.802 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:05:33.936 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 106496 bytes | Speech: 1.71s
+2026-02-10 05:05:33.938 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.22ms
+2026-02-10 05:05:34.891 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:05:34.893 | INFO     | __main__:__exit__:76 - Whisper_STT: 954.49ms
+2026-02-10 05:05:34.893 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:06:00.811 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 57344 bytes | Speech: 1.47s
+2026-02-10 05:06:00.812 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.34ms
+2026-02-10 05:06:01.498 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:06:01.499 | INFO     | __main__:__exit__:76 - Whisper_STT: 686.32ms
+2026-02-10 05:06:01.499 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:06:19.284 | ERROR    | __main__:websocket_endpoint:208 - Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:06:20.574 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:06:29.205 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 73728 bytes | Speech: 1.71s
+2026-02-10 05:06:29.206 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:06:30.222 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:06:30.223 | INFO     | __main__:__exit__:76 - Whisper_STT: 1016.04ms
+2026-02-10 05:06:30.224 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:06:52.033 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.64s
+2026-02-10 05:07:03.878 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 49152 bytes | Speech: 2.98s
+2026-02-10 05:07:03.879 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:07:04.662 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:04.662 | INFO     | __main__:__exit__:76 - Whisper_STT: 782.77ms
+2026-02-10 05:07:04.663 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:07:23.730 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.78s
+2026-02-10 05:07:23.731 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:07:24.349 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:24.350 | INFO     | __main__:__exit__:76 - Whisper_STT: 618.20ms
+2026-02-10 05:07:24.351 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:07:25.844 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 24576 bytes | Speech: 1.44s
+2026-02-10 05:07:25.846 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.32ms
+2026-02-10 05:07:26.593 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:26.594 | INFO     | __main__:__exit__:76 - Whisper_STT: 747.66ms
+2026-02-10 05:07:26.594 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:07:43.149 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:07:43.677 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:07:49.457 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 73728 bytes | Speech: 1.94s
+2026-02-10 05:07:49.459 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.28ms
+2026-02-10 05:07:50.456 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:50.458 | INFO     | __main__:__exit__:76 - Whisper_STT: 997.86ms
+2026-02-10 05:07:50.458 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:07:56.559 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.77s
+2026-02-10 05:07:56.560 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.22ms
+2026-02-10 05:07:57.063 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:07:57.064 | INFO     | __main__:__exit__:76 - Whisper_STT: 503.02ms
+2026-02-10 05:07:57.064 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:07:59.096 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:08:06.645 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.78s
+2026-02-10 05:08:06.647 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.28ms
+2026-02-10 05:08:07.363 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:07.364 | INFO     | __main__:__exit__:76 - Whisper_STT: 716.67ms
+2026-02-10 05:08:07.366 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:08:27.137 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 40960 bytes | Speech: 1.17s
+2026-02-10 05:08:27.138 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:08:28.378 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:28.379 | INFO     | __main__:__exit__:76 - Whisper_STT: 1239.73ms
+2026-02-10 05:08:28.380 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:08:31.930 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 24576 bytes | Speech: 1.07s
+2026-02-10 05:08:31.931 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.45ms
+2026-02-10 05:08:32.662 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:32.662 | INFO     | __main__:__exit__:76 - Whisper_STT: 730.59ms
+2026-02-10 05:08:32.662 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:08:41.468 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 81920 bytes | Speech: 1.85s
+2026-02-10 05:08:41.469 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:08:42.140 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:42.140 | INFO     | __main__:__exit__:76 - Whisper_STT: 670.92ms
+2026-02-10 05:08:42.141 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:08:45.426 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 122880 bytes | Speech: 3.17s
+2026-02-10 05:08:45.428 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.30ms
+2026-02-10 05:08:46.349 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:08:46.350 | INFO     | __main__:__exit__:76 - Whisper_STT: 921.55ms
+2026-02-10 05:08:46.350 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:09:04.423 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 40960 bytes | Speech: 1.18s
+2026-02-10 05:09:04.424 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:09:05.212 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:05.214 | INFO     | __main__:__exit__:76 - Whisper_STT: 789.73ms
+2026-02-10 05:09:05.214 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:09:14.023 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 24576 bytes | Speech: 1.20s
+2026-02-10 05:09:14.024 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.27ms
+2026-02-10 05:09:14.776 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:14.777 | INFO     | __main__:__exit__:76 - Whisper_STT: 752.24ms
+2026-02-10 05:09:14.777 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:09:16.902 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.64s
+2026-02-10 05:09:21.796 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 139264 bytes | Speech: 4.35s
+2026-02-10 05:09:21.797 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:09:22.719 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:22.720 | INFO     | __main__:__exit__:76 - Whisper_STT: 921.90ms
+2026-02-10 05:09:22.720 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:09:24.293 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 32768 bytes | Speech: 1.05s
+2026-02-10 05:09:24.294 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.28ms
+2026-02-10 05:09:25.020 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:25.021 | INFO     | __main__:__exit__:76 - Whisper_STT: 726.40ms
+2026-02-10 05:09:25.021 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:09:28.054 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 65536 bytes | Speech: 1.55s
+2026-02-10 05:09:28.055 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.15ms
+2026-02-10 05:09:28.677 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:28.677 | INFO     | __main__:__exit__:76 - Whisper_STT: 622.46ms
+2026-02-10 05:09:28.678 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:09:38.382 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 32768 bytes | Speech: 1.44s
+2026-02-10 05:09:38.383 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.58ms
+2026-02-10 05:09:39.067 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:39.068 | INFO     | __main__:__exit__:76 - Whisper_STT: 684.33ms
+2026-02-10 05:09:39.068 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:09:56.007 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 65536 bytes | Speech: 1.93s
+2026-02-10 05:09:56.008 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:09:56.946 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:09:56.947 | INFO     | __main__:__exit__:76 - Whisper_STT: 938.33ms
+2026-02-10 05:09:56.947 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:10:00.047 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.90s
+2026-02-10 05:10:00.048 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:10:00.586 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:00.586 | INFO     | __main__:__exit__:76 - Whisper_STT: 538.30ms
+2026-02-10 05:10:00.587 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:10:04.117 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 114688 bytes | Speech: 2.62s
+2026-02-10 05:10:04.118 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.27ms
+2026-02-10 05:10:05.025 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:05.026 | INFO     | __main__:__exit__:76 - Whisper_STT: 907.16ms
+2026-02-10 05:10:05.026 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:10:09.384 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 73728 bytes | Speech: 2.78s
+2026-02-10 05:10:09.385 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.29ms
+2026-02-10 05:10:10.217 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:10.218 | INFO     | __main__:__exit__:76 - Whisper_STT: 831.91ms
+2026-02-10 05:10:10.218 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:10:11.090 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:10:32.075 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 90112 bytes | Speech: 2.50s
+2026-02-10 05:10:32.076 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:10:32.967 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:32.967 | INFO     | __main__:__exit__:76 - Whisper_STT: 890.95ms
+2026-02-10 05:10:32.968 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:10:34.187 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:10:41.469 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 90112 bytes | Speech: 1.98s
+2026-02-10 05:10:41.470 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.36ms
+2026-02-10 05:10:42.182 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:42.183 | INFO     | __main__:__exit__:76 - Whisper_STT: 712.14ms
+2026-02-10 05:10:42.183 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:10:43.795 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:10:48.479 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 32768 bytes | Speech: 1.17s
+2026-02-10 05:10:48.480 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:10:49.232 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:49.232 | INFO     | __main__:__exit__:76 - Whisper_STT: 752.08ms
+2026-02-10 05:10:49.233 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:10:58.705 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 40960 bytes | Speech: 1.15s
+2026-02-10 05:10:58.706 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.21ms
+2026-02-10 05:10:59.584 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:10:59.585 | INFO     | __main__:__exit__:76 - Whisper_STT: 878.83ms
+2026-02-10 05:10:59.585 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:11:02.559 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:11:15.387 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:11:18.547 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.59s
+2026-02-10 05:11:26.836 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:11:31.106 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 139264 bytes | Speech: 2.05s
+2026-02-10 05:11:31.107 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:11:31.974 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:31.974 | INFO     | __main__:__exit__:76 - Whisper_STT: 867.27ms
+2026-02-10 05:11:31.975 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:11:39.907 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 81920 bytes | Speech: 1.37s
+2026-02-10 05:11:39.908 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.53ms
+2026-02-10 05:11:40.634 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:40.635 | INFO     | __main__:__exit__:76 - Whisper_STT: 725.96ms
+2026-02-10 05:11:40.635 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:11:42.728 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 49152 bytes | Speech: 1.53s
+2026-02-10 05:11:42.730 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.26ms
+2026-02-10 05:11:43.482 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:43.482 | INFO     | __main__:__exit__:76 - Whisper_STT: 751.81ms
+2026-02-10 05:11:43.483 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:11:44.696 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 57344 bytes | Speech: 1.20s
+2026-02-10 05:11:44.698 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.38ms
+2026-02-10 05:11:45.432 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:45.433 | INFO     | __main__:__exit__:76 - Whisper_STT: 734.55ms
+2026-02-10 05:11:45.434 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:11:53.742 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 73728 bytes | Speech: 1.61s
+2026-02-10 05:11:53.743 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:11:54.405 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:54.407 | INFO     | __main__:__exit__:76 - Whisper_STT: 662.80ms
+2026-02-10 05:11:54.407 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:11:57.846 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 24576 bytes | Speech: 1.11s
+2026-02-10 05:11:57.847 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:11:58.612 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:11:58.612 | INFO     | __main__:__exit__:76 - Whisper_STT: 765.21ms
+2026-02-10 05:11:58.613 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:11:59.292 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:12:02.833 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.90s
+2026-02-10 05:12:02.834 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.51ms
+2026-02-10 05:12:03.929 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:03.930 | INFO     | __main__:__exit__:76 - Whisper_STT: 1095.73ms
+2026-02-10 05:12:03.931 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:05.330 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.79s
+2026-02-10 05:12:05.331 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.20ms
+2026-02-10 05:12:06.297 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:06.297 | INFO     | __main__:__exit__:76 - Whisper_STT: 965.93ms
+2026-02-10 05:12:06.298 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:13.127 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.69s
+2026-02-10 05:12:13.128 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:12:13.795 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:13.796 | INFO     | __main__:__exit__:76 - Whisper_STT: 667.18ms
+2026-02-10 05:12:13.796 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:15.769 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 49152 bytes | Speech: 1.02s
+2026-02-10 05:12:15.772 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.83ms
+2026-02-10 05:12:16.591 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:16.591 | INFO     | __main__:__exit__:76 - Whisper_STT: 816.87ms
+2026-02-10 05:12:16.592 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:18.677 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 24576 bytes | Speech: 0.77s
+2026-02-10 05:12:18.679 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.41ms
+2026-02-10 05:12:19.568 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:19.568 | INFO     | __main__:__exit__:76 - Whisper_STT: 888.27ms
+2026-02-10 05:12:19.568 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:20.387 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.77s
+2026-02-10 05:12:20.388 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:12:21.110 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:21.112 | INFO     | __main__:__exit__:76 - Whisper_STT: 723.00ms
+2026-02-10 05:12:21.113 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:22.687 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:12:23.887 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.69s
+2026-02-10 05:12:23.888 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:12:24.686 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:24.687 | INFO     | __main__:__exit__:76 - Whisper_STT: 798.14ms
+2026-02-10 05:12:24.687 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:34.127 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 450560 bytes | Speech: 5.98s
+2026-02-10 05:12:34.128 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:12:35.391 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:35.393 | INFO     | __main__:__exit__:76 - Whisper_STT: 1263.65ms
+2026-02-10 05:12:35.393 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:37.976 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.77s
+2026-02-10 05:12:37.980 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.34ms
+2026-02-10 05:12:38.749 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:38.750 | INFO     | __main__:__exit__:76 - Whisper_STT: 769.60ms
+2026-02-10 05:12:38.750 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:42.000 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 65536 bytes | Speech: 1.95s
+2026-02-10 05:12:42.001 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.26ms
+2026-02-10 05:12:42.816 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:42.816 | INFO     | __main__:__exit__:76 - Whisper_STT: 814.67ms
+2026-02-10 05:12:42.817 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:44.486 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.79s
+2026-02-10 05:12:44.487 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:12:45.228 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:45.229 | INFO     | __main__:__exit__:76 - Whisper_STT: 741.47ms
+2026-02-10 05:12:45.229 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:48.028 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 49152 bytes | Speech: 1.58s
+2026-02-10 05:12:48.029 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:12:48.827 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:48.828 | INFO     | __main__:__exit__:76 - Whisper_STT: 798.71ms
+2026-02-10 05:12:48.828 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:12:56.050 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 409600 bytes | Speech: 7.11s
+2026-02-10 05:12:56.051 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.30ms
+2026-02-10 05:12:57.290 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:12:57.291 | INFO     | __main__:__exit__:76 - Whisper_STT: 1239.36ms
+2026-02-10 05:12:57.291 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:13:05.095 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 360448 bytes | Speech: 7.21s
+2026-02-10 05:13:05.097 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.59ms
+2026-02-10 05:13:06.608 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:06.609 | INFO     | __main__:__exit__:76 - Whisper_STT: 1512.27ms
+2026-02-10 05:13:06.610 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:13:11.341 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 114688 bytes | Speech: 2.37s
+2026-02-10 05:13:11.342 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.34ms
+2026-02-10 05:13:12.260 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:12.261 | INFO     | __main__:__exit__:76 - Whisper_STT: 918.10ms
+2026-02-10 05:13:12.261 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:13:18.021 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 147456 bytes | Speech: 3.82s
+2026-02-10 05:13:18.022 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:13:18.962 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:18.964 | INFO     | __main__:__exit__:76 - Whisper_STT: 940.40ms
+2026-02-10 05:13:18.964 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:13:25.582 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 147456 bytes | Speech: 3.78s
+2026-02-10 05:13:25.583 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:13:26.519 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:26.520 | INFO     | __main__:__exit__:76 - Whisper_STT: 936.10ms
+2026-02-10 05:13:26.520 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:13:32.210 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 155648 bytes | Speech: 3.36s
+2026-02-10 05:13:32.210 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.13ms
+2026-02-10 05:13:32.958 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:32.958 | INFO     | __main__:__exit__:76 - Whisper_STT: 747.80ms
+2026-02-10 05:13:32.959 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:13:40.667 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 344064 bytes | Speech: 6.47s
+2026-02-10 05:13:40.668 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:13:41.751 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:13:41.752 | INFO     | __main__:__exit__:76 - Whisper_STT: 1083.12ms
+2026-02-10 05:13:41.752 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:14:02.189 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 1048576 bytes | Speech: 19.96s
+2026-02-10 05:14:02.190 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:14:03.705 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:14:03.706 | INFO     | __main__:__exit__:76 - Whisper_STT: 1514.95ms
+2026-02-10 05:14:03.706 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:14:10.467 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 344064 bytes | Speech: 6.19s
+2026-02-10 05:14:10.468 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:14:11.749 | ERROR    | __main__:transcribe_audio:257 - Whisper error: Error code: 401 - {'error': {'message': "You didn't provide an API key. You need to provide your API key in an Authorization header using Bearer auth (i.e. Authorization: Bearer YOUR_KEY), or as the password field (with blank username) if you're accessing the API from your browser and are prompted for a username and password. You can obtain an API key from https://platform.openai.com/account/api-keys.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2026-02-10 05:14:11.750 | INFO     | __main__:__exit__:76 - Whisper_STT: 1281.54ms
+2026-02-10 05:14:11.750 | WARNING  | __main__:process_audio_buffer:282 - Empty transcription, returning to listening
+2026-02-10 05:15:11.773 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:15:12.054 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:15:31.421 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:15:31.712 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:16:39.384 | INFO     | services.agent_engine:_load_persona:80 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:16:39.688 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:17:09.571 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:17:13.395 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 40960 bytes | Speech: 0.94s
+2026-02-10 05:17:13.398 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.39ms
+2026-02-10 05:17:15.648 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:17:15.649 | INFO     | __main__:__exit__:76 - Whisper_STT: 2249.89ms
+2026-02-10 05:17:15.978 | ERROR    | services.agent_engine:_groq_request_with_retry:139 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:16.022 | ERROR    | services.agent_engine:process_request:194 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:16.024 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 2626.42ms
+2026-02-10 05:17:23.576 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 106496 bytes | Speech: 1.79s
+2026-02-10 05:17:23.577 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.32ms
+2026-02-10 05:17:26.754 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:17:26.755 | INFO     | __main__:__exit__:76 - Whisper_STT: 3177.10ms
+2026-02-10 05:17:26.942 | ERROR    | services.agent_engine:_groq_request_with_retry:139 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:26.943 | ERROR    | services.agent_engine:process_request:194 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:26.943 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 3366.25ms
+2026-02-10 05:17:29.815 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:17:31.435 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:17:33.395 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.68s
+2026-02-10 05:17:33.396 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.25ms
+2026-02-10 05:17:34.742 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:17:34.743 | INFO     | __main__:__exit__:76 - Whisper_STT: 1345.72ms
+2026-02-10 05:17:34.916 | ERROR    | services.agent_engine:_groq_request_with_retry:139 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:34.917 | ERROR    | services.agent_engine:process_request:194 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:34.918 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 1521.72ms
+2026-02-10 05:17:37.834 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 98304 bytes | Speech: 2.65s
+2026-02-10 05:17:37.835 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.12ms
+2026-02-10 05:17:38.897 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:17:38.898 | INFO     | __main__:__exit__:76 - Whisper_STT: 1062.68ms
+2026-02-10 05:17:38.970 | ERROR    | services.agent_engine:_groq_request_with_retry:139 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:38.971 | ERROR    | services.agent_engine:process_request:194 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:38.972 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 1137.50ms
+2026-02-10 05:17:53.978 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 24576 bytes | Speech: 0.94s
+2026-02-10 05:17:53.978 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.23ms
+2026-02-10 05:17:55.548 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:17:55.549 | INFO     | __main__:__exit__:76 - Whisper_STT: 1570.20ms
+2026-02-10 05:17:55.729 | ERROR    | services.agent_engine:_groq_request_with_retry:139 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:55.729 | ERROR    | services.agent_engine:process_request:194 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:17:55.730 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 1752.16ms
+2026-02-10 05:18:02.712 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:18:06.156 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 65536 bytes | Speech: 1.64s
+2026-02-10 05:18:06.158 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.24ms
+2026-02-10 05:18:07.986 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:18:07.986 | INFO     | __main__:__exit__:76 - Whisper_STT: 1828.30ms
+2026-02-10 05:18:08.165 | ERROR    | services.agent_engine:_groq_request_with_retry:139 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:08.165 | ERROR    | services.agent_engine:process_request:194 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:08.166 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 2008.84ms
+2026-02-10 05:18:26.552 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:18:50.420 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.67s
+2026-02-10 05:18:51.712 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:18:51.958 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:18:52.107 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 16384 bytes | Speech: 0.79s
+2026-02-10 05:18:52.107 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.13ms
+2026-02-10 05:18:53.416 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:18:53.416 | INFO     | __main__:__exit__:76 - Whisper_STT: 1308.71ms
+2026-02-10 05:18:53.595 | ERROR    | services.agent_engine:_groq_request_with_retry:139 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:53.595 | ERROR    | services.agent_engine:process_request:194 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:18:53.596 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 1488.50ms
+2026-02-10 05:19:01.098 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.64s
+2026-02-10 05:19:04.635 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.65s
+2026-02-10 05:19:20.901 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:19:21.167 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:19:30.981 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:19:35.264 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 106496 bytes | Speech: 1.79s
+2026-02-10 05:19:35.266 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.30ms
+2026-02-10 05:19:37.220 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:19:37.221 | INFO     | __main__:__exit__:76 - Whisper_STT: 1953.92ms
+2026-02-10 05:19:37.472 | ERROR    | services.agent_engine:_groq_request_with_retry:140 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:19:37.478 | ERROR    | services.agent_engine:process_request:195 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:19:37.480 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 2214.27ms
+2026-02-10 05:19:40.137 | ERROR    | __main__:websocket_endpoint:208 - Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:19:41.939 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:19:46.116 | ERROR    | __main__:websocket_endpoint:208 - Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:19:49.682 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:19:52.528 | ERROR    | __main__:websocket_endpoint:208 - Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:22:00.391 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:22:00.659 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:22:08.828 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:22:14.175 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 122880 bytes | Speech: 2.30s
+2026-02-10 05:22:14.176 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.21ms
+2026-02-10 05:22:16.614 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:22:16.615 | INFO     | __main__:__exit__:76 - Whisper_STT: 2438.68ms
+2026-02-10 05:22:16.909 | ERROR    | services.agent_engine:_groq_request_with_retry:140 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:22:16.911 | ERROR    | services.agent_engine:process_request:195 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:22:16.913 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 2736.97ms
+2026-02-10 05:22:19.744 | ERROR    | __main__:websocket_endpoint:208 - Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:29:01.636 | INFO     | __main__:websocket_endpoint:118 - Session started: tenant1/user1
+2026-02-10 05:29:06.724 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 40960 bytes | Speech: 0.94s
+2026-02-10 05:29:06.725 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.18ms
+2026-02-10 05:29:08.484 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:29:08.485 | INFO     | __main__:__exit__:76 - Whisper_STT: 1760.02ms
+2026-02-10 05:29:08.723 | ERROR    | services.agent_engine:_groq_request_with_retry:140 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:29:08.724 | ERROR    | services.agent_engine:process_request:195 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:29:08.725 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 2000.16ms
+2026-02-10 05:29:11.424 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:29:12.445 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 8192 bytes | Speech: 0.60s
+2026-02-10 05:29:14.236 | INFO     | __main__:websocket_endpoint:174 - VAD trigger | Buffer: 49152 bytes | Speech: 1.28s
+2026-02-10 05:29:14.237 | INFO     | __main__:__exit__:76 - Pipeline_Start: 0.22ms
+2026-02-10 05:29:15.453 | INFO     | __main__:transcribe_audio:253 - Transcription: اشتركوا في القناة
+2026-02-10 05:29:15.453 | INFO     | __main__:__exit__:76 - Whisper_STT: 1216.29ms
+2026-02-10 05:29:15.644 | ERROR    | services.agent_engine:_groq_request_with_retry:140 - Groq API error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:29:15.645 | ERROR    | services.agent_engine:process_request:195 - Groq pipeline error: Error code: 400 - {'error': {'message': 'The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-02-10 05:29:15.645 | INFO     | __main__:process_audio_buffer:311 - E2E_Latency: 1408.90ms
+2026-02-10 05:29:17.971 | ERROR    | __main__:websocket_endpoint:208 - Unexpected error: Cannot call "receive" once a disconnect message has been received.
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 336, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 140, in websocket_endpoint
+    data = await websocket.receive()
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 58, in receive
+    raise RuntimeError(
+
+RuntimeError: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:30:05.398 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:30:05.664 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:39:27.386 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:39:27.648 | INFO     | __main__:<module>:335 - Starting Tiryaq Voice AI Server...
+2026-02-10 05:42:00.234 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:42:00.498 | INFO     | __main__:<module>:295 - 🚀 Starting Tiryaq Voice AI on Port 8001...
+2026-02-10 05:47:24.387 | INFO     | __main__:websocket_endpoint:207 - 🔌 Connected: tenant1/user1
+2026-02-10 05:47:28.145 | INFO     | __main__:websocket_endpoint:260 - Silence detected. Buffer: 1.79s
+2026-02-10 05:47:31.055 | INFO     | __main__:transcribe_audio:143 - 🗣️ User said: شكرا
+2026-02-10 05:47:31.057 | INFO     | __main__:__exit__:78 - ⏱️ Whisper_STT: 2909.70ms
+2026-02-10 05:47:31.450 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 391.65ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:47:31.504 | SUCCESS  | __main__:process_audio_buffer:192 - ✅ Interaction complete in 3357.98ms
+2026-02-10 05:47:39.604 | INFO     | __main__:websocket_endpoint:260 - Silence detected. Buffer: 0.51s
+2026-02-10 05:47:40.708 | INFO     | __main__:transcribe_audio:143 - 🗣️ User said: شكرا
+2026-02-10 05:47:40.710 | INFO     | __main__:__exit__:78 - ⏱️ Whisper_STT: 1104.50ms
+2026-02-10 05:47:40.985 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 272.96ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:47:40.987 | ERROR    | __main__:process_audio_buffer:195 - Pipeline Critical Error: 
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 349, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 620, in send
+    await self.ensure_open()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+
+websockets.exceptions.ConnectionClosedOK: received 1001 (going away); then sent 1001 (going away)
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 88, in send
+    await self._send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 50, in sender
+    await send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 365, in asgi_send
+    raise ClientDisconnected from exc
+
+uvicorn.protocols.utils.ClientDisconnected
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 296, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8001, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 270, in websocket_endpoint
+    await process_audio_buffer(websocket, process_buffer, user_context)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 185, in process_audio_buffer
+    await websocket.send_json({"type": "text", "content": event["content"]})
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 179, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 91, in send
+    raise WebSocketDisconnect(code=1006)
+
+starlette.websockets.WebSocketDisconnect
+2026-02-10 05:47:41.023 | ERROR    | __main__:websocket_endpoint:286 - WebSocket Error: Cannot call "send" once a close message has been sent.
+2026-02-10 05:47:42.228 | INFO     | __main__:websocket_endpoint:207 - 🔌 Connected: tenant1/user1
+2026-02-10 05:47:46.884 | INFO     | __main__:websocket_endpoint:260 - Silence detected. Buffer: 2.56s
+2026-02-10 05:47:48.412 | INFO     | __main__:transcribe_audio:143 - 🗣️ User said: اشتركوا في القناة
+2026-02-10 05:47:48.413 | INFO     | __main__:__exit__:78 - ⏱️ Whisper_STT: 1528.01ms
+2026-02-10 05:47:48.640 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 225.61ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:47:48.785 | SUCCESS  | __main__:process_audio_buffer:192 - ✅ Interaction complete in 1900.14ms
+2026-02-10 05:47:54.879 | ERROR    | __main__:websocket_endpoint:286 - WebSocket Error: Cannot call "receive" once a disconnect message has been received.
+2026-02-10 05:48:46.832 | INFO     | __main__:websocket_endpoint:207 - 🔌 Connected: default/user1
+2026-02-10 05:48:51.034 | INFO     | __main__:websocket_endpoint:260 - Silence detected. Buffer: 2.05s
+2026-02-10 05:48:52.881 | INFO     | __main__:transcribe_audio:143 - 🗣️ User said: شكرا لكم
+2026-02-10 05:48:52.882 | INFO     | __main__:__exit__:78 - ⏱️ Whisper_STT: 1847.16ms
+2026-02-10 05:48:53.106 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 222.49ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:48:53.185 | SUCCESS  | __main__:process_audio_buffer:192 - ✅ Interaction complete in 2150.71ms
+2026-02-10 05:49:01.294 | INFO     | __main__:websocket_endpoint:260 - Silence detected. Buffer: 1.28s
+2026-02-10 05:49:03.080 | INFO     | __main__:transcribe_audio:143 - 🗣️ User said: اشتركوا في القناة
+2026-02-10 05:49:03.081 | INFO     | __main__:__exit__:78 - ⏱️ Whisper_STT: 1785.87ms
+2026-02-10 05:49:03.350 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 267.96ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:49:03.361 | ERROR    | __main__:process_audio_buffer:195 - Pipeline Critical Error: 
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 349, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 620, in send
+    await self.ensure_open()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\websockets\legacy\protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+
+websockets.exceptions.ConnectionClosedOK: received 1005 (no status received [internal]); then sent 1005 (no status received [internal])
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 88, in send
+    await self._send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 50, in sender
+    await send(message)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 365, in asgi_send
+    raise ClientDisconnected from exc
+
+uvicorn.protocols.utils.ClientDisconnected
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 296, in <module>
+    uvicorn.run(app, host="0.0.0.0", port=8001, log_level="info")
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\base_events.py", line 2046, in _run_once
+    handle._run()
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 255, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\cors.py", line 75, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 375, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 98, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 96, in app
+    await func(session)
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 360, in app
+    await dependant.call(**values)
+
+  File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 270, in websocket_endpoint
+    await process_audio_buffer(websocket, process_buffer, user_context)
+
+> File "C:\Users\mrphp\OneDrive\Desktop\anti\voice agent\backend\main.py", line 185, in process_audio_buffer
+    await websocket.send_json({"type": "text", "content": event["content"]})
+
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 179, in send_json
+    await self.send({"type": "websocket.send", "text": text})
+  File "C:\Users\mrphp\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\websockets.py", line 91, in send
+    raise WebSocketDisconnect(code=1006)
+
+starlette.websockets.WebSocketDisconnect
+2026-02-10 05:49:03.385 | ERROR    | __main__:websocket_endpoint:286 - WebSocket Error: Cannot call "send" once a close message has been sent.
+2026-02-10 05:53:29.030 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:53:29.313 | INFO     | __main__:<module>:253 - 🚀 Starting Tiryaq Voice AI on Port 8001
+2026-02-10 05:53:40.842 | INFO     | __main__:websocket_endpoint:199 - 🔌 Connected default-user1-1770695620
+2026-02-10 05:53:46.911 | INFO     | __main__:transcribe_audio:157 - 🗣️ User said: شكرا لكم
+2026-02-10 05:53:46.912 | INFO     | __main__:__exit__:69 - ⏱️ Whisper_STT: 1827.97ms
+2026-02-10 05:53:47.300 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 384.43ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:53:47.367 | SUCCESS  | __main__:process_audio_buffer:191 - ✅ Interaction complete in 2282.51ms
+2026-02-10 05:53:53.637 | INFO     | __main__:transcribe_audio:157 - 🗣️ User said: اشتركوا في القناة
+2026-02-10 05:53:53.638 | INFO     | __main__:__exit__:69 - ⏱️ Whisper_STT: 1964.48ms
+2026-02-10 05:53:53.874 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 235.56ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:53:54.035 | SUCCESS  | __main__:process_audio_buffer:191 - ✅ Interaction complete in 2360.93ms
+2026-02-10 05:56:30.142 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:56:30.402 | INFO     | __main__:<module>:275 - Starting Tiryaq Voice AI on port 8001
+2026-02-10 05:56:40.015 | INFO     | __main__:websocket_endpoint:195 - Connected default-user1-1770695800
+2026-02-10 05:56:48.615 | INFO     | __main__:__exit__:83 - Whisper_STT: 2600.72ms
+2026-02-10 05:56:48.617 | INFO     | __main__:process_audio_buffer:162 - User said: شكرا
+2026-02-10 05:56:49.182 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 563.71ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:56:49.290 | SUCCESS  | __main__:process_audio_buffer:184 - Interaction complete in 3276.09ms
+2026-02-10 05:56:58.052 | INFO     | __main__:websocket_endpoint:259 - Disconnected default-user1-1770695800
+2026-02-10 05:59:30.791 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 05:59:31.053 | INFO     | __main__:<module>:287 - Starting Tiryaq Voice AI on port 8001
+2026-02-10 05:59:43.065 | INFO     | __main__:websocket_endpoint:212 - Connected default-user1-1770695983
+2026-02-10 05:59:49.450 | INFO     | __main__:__exit__:89 - Whisper_STT: 2156.02ms
+2026-02-10 05:59:49.453 | INFO     | __main__:process_audio_buffer:168 - User said: اشتركوا في القناة
+2026-02-10 05:59:49.876 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 422.14ms | Model: llama-3.3-70b-versatile
+2026-02-10 05:59:50.042 | SUCCESS  | __main__:process_audio_buffer:198 - Interaction complete in 2747.59ms
+2026-02-10 05:59:52.197 | INFO     | __main__:websocket_endpoint:271 - Disconnected default-user1-1770695983
+2026-02-10 06:02:31.830 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:02:32.113 | INFO     | __main__:<module>:287 - Starting Tiryaq Voice AI on port 8001
+2026-02-10 06:02:43.718 | INFO     | __main__:websocket_endpoint:212 - Connected default-user1-1770696163
+2026-02-10 06:02:52.425 | INFO     | __main__:__exit__:89 - Whisper_STT: 3121.48ms
+2026-02-10 06:02:52.428 | INFO     | __main__:process_audio_buffer:168 - User said: السلام عليكم
+2026-02-10 06:02:52.819 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 389.48ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:02:52.854 | SUCCESS  | __main__:process_audio_buffer:198 - Interaction complete in 3551.01ms
+2026-02-10 06:03:03.010 | INFO     | __main__:websocket_endpoint:271 - Disconnected default-user1-1770696163
+2026-02-10 06:03:05.548 | INFO     | __main__:websocket_endpoint:212 - Connected default-user1-1770696185
+2026-02-10 06:03:15.251 | INFO     | __main__:websocket_endpoint:271 - Disconnected default-user1-1770696185
+2026-02-10 06:03:20.620 | INFO     | __main__:websocket_endpoint:212 - Connected default-user1-1770696200
+2026-02-10 06:03:33.399 | INFO     | __main__:__exit__:89 - Whisper_STT: 1784.63ms
+2026-02-10 06:03:33.402 | INFO     | __main__:process_audio_buffer:168 - User said: كيف الحال؟ أنت مين؟
+2026-02-10 06:03:33.631 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 227.09ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:03:33.739 | SUCCESS  | __main__:process_audio_buffer:198 - Interaction complete in 2125.09ms
+2026-02-10 06:03:45.926 | INFO     | __main__:websocket_endpoint:271 - Disconnected default-user1-1770696200
+2026-02-10 06:03:48.650 | INFO     | __main__:websocket_endpoint:212 - Connected default-user1-1770696228
+2026-02-10 06:03:56.321 | INFO     | __main__:__exit__:89 - Whisper_STT: 1826.29ms
+2026-02-10 06:03:56.323 | INFO     | __main__:process_audio_buffer:168 - User said: هو تلية ذبطائي
+2026-02-10 06:03:56.599 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 276.07ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:03:56.755 | SUCCESS  | __main__:process_audio_buffer:198 - Interaction complete in 2260.40ms
+2026-02-10 06:04:00.155 | INFO     | __main__:websocket_endpoint:271 - Disconnected default-user1-1770696228
+2026-02-10 06:10:11.952 | INFO     | services.agent_engine:_load_persona:81 - Loaded persona: Tiryaq Default Assistant for tenant: default
+2026-02-10 06:10:12.248 | INFO     | __main__:<module>:296 - Starting Tiryaq Voice AI on port 8001
+2026-02-10 06:10:19.105 | INFO     | __main__:websocket_endpoint:213 - Connected default-user1-1770696619
+2026-02-10 06:10:23.392 | INFO     | __main__:websocket_endpoint:280 - Disconnected and Cleaned Up default-user1-1770696619
+2026-02-10 06:10:24.983 | INFO     | __main__:websocket_endpoint:213 - Connected default-user1-1770696624
+2026-02-10 06:10:32.627 | INFO     | __main__:__exit__:90 - Whisper_STT: 2263.17ms
+2026-02-10 06:10:32.629 | INFO     | __main__:process_audio_buffer:169 - User said: كيف الحال؟ كيف أقدر أخدمك؟
+2026-02-10 06:10:32.942 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 307.22ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:10:33.215 | SUCCESS  | __main__:process_audio_buffer:199 - Interaction complete in 2851.46ms
+2026-02-10 06:10:50.919 | INFO     | __main__:websocket_endpoint:280 - Disconnected and Cleaned Up default-user1-1770696624
+2026-02-10 06:10:51.243 | INFO     | __main__:__exit__:90 - Whisper_STT: 1679.72ms
+2026-02-10 06:10:51.245 | INFO     | __main__:process_audio_buffer:169 - User said: اشتركوا في القناة
+2026-02-10 06:10:51.473 | INFO     | services.agent_engine:process_request:174 - Groq TTFB: 226.51ms | Model: llama-3.3-70b-versatile
+2026-02-10 06:10:51.623 | SUCCESS  | __main__:process_audio_buffer:199 - Interaction complete in 2059.31ms
