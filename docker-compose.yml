@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    env_file:
+      - ./backend/.env
+    # environment:
+    #   - GOOGLE_APPLICATION_CREDENTIALS=/app/serviceAccountKey.json
+    # Mount the serviceAccountKey if it exists locally, otherwise it warns but runs
+    # volumes:
+    #   - ./serviceAccountKey.json:/app/serviceAccountKey.json
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
