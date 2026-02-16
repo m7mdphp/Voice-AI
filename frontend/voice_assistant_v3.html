@@ -322,13 +322,18 @@
         let ws, audioCtx, micNode, processorNode, stream, analyser;
         let queue = [], isPlaying = false, leftover = null;
 
-        /** V6.4 TITANIUM CONNECTIVITY GUARD **/
+        function updateLED(id, state) {
+            const el = document.getElementById(id);
+            if (el) el.className = 'led ' + state;
+        }
+
+        /** OMNI EDITION V6.5 - RESILIENT URL RESOLUTION **/
         function getWsUrl() {
             const h = window.location.hostname;
             const isLocal = h === 'localhost' || h === '127.0.0.1';
             const protocol = isLocal ? (window.location.protocol === 'https:' ? 'wss:' : 'ws:') : 'wss:';
-            // Use current host unless explicit override
-            const host = window.location.host;
+            // Use current host or fallback to production
+            const host = window.location.host || 'voice.dev.rgeeb.com';
             return `${protocol}//${host}/ws/session/tiryaq_technology/user_${Math.floor(Math.random() * 1000)}`;
         }
 
