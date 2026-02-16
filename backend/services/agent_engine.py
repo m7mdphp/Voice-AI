@@ -33,7 +33,7 @@ class GroqEngine:
         
         # Extracted from DB
         persona = self.db.get("persona", {})
-        self.voice_id = persona.get("voice_id", "pNInz6obpgnuMvkhbuZ5")
+        self.voice_id = persona.get("voice_id", "EXAVITQu4vr4xnSDxMaL")
         self.model = "llama-3.3-70b-versatile"
         self.max_tokens = 150
         self.temperature = 0.5 # Lower temperature for better grounding
@@ -128,7 +128,7 @@ Arabic (Saudi White Dialect) ONLY. No English words.
                 model=self.model,
                 messages=messages,
                 max_tokens=self.max_tokens,
-                temperature=0.6, # Elite Calibration: Grounded Professionalism
+                temperature=0.7, # Slightly higher for more natural flow
                 stream=True
             )
             
@@ -163,11 +163,12 @@ Arabic (Saudi White Dialect) ONLY. No English words.
 
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{self.voice_id}/stream"
         params = {
-            "output_format": "pcm_16000",
-            "optimize_streaming_latency": 3 
+            "output_format": "mp3_44100_128",
+            "optimize_streaming_latency": 2 
         }
         
         headers = {
+            "Accept": "audio/mpeg",
             "Content-Type": "application/json",
             "xi-api-key": self.elevenlabs_api_key
         }
@@ -186,11 +187,10 @@ Arabic (Saudi White Dialect) ONLY. No English words.
             )
             
             if response.status_code == 200:
-                logger.debug(f"ElevenLabs Stream Started: {response.headers.get('Content-Type')}")
-                for chunk in response.iter_content(chunk_size=8192): # Aligned buffer
+                for chunk in response.iter_content(chunk_size=16384): # High-res buffering
                     if chunk:
                         yield chunk
             else:
-                logger.error(f"TTS Error {response.status_code}: {response.text}")
+                logger.error(f"TTS Error: {response.text}")
         except Exception as e:
             logger.error(f"TTS Connection Failed: {e}")
