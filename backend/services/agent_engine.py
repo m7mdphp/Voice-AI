@@ -163,12 +163,11 @@ Arabic (Saudi White Dialect) ONLY. No English words.
 
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{self.voice_id}/stream"
         params = {
-            "output_format": "mp3_44100_128",
-            "optimize_streaming_latency": 2 
+            "output_format": "pcm_16000",
+            "optimize_streaming_latency": 3 
         }
         
         headers = {
-            "Accept": "audio/mpeg",
             "Content-Type": "application/json",
             "xi-api-key": self.elevenlabs_api_key
         }

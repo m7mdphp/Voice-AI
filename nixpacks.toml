@@ -15,7 +15,7 @@ cmds = [
 ]
 
 [start]
-cmd = "cd backend && python main.py"
+cmd = "cd backend && uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips '*'"
 
 [variables]
 PORT = "8000"
@@ -23,7 +23,7 @@ PYTHONPATH = "/app/backend"
 PYTHONUNBUFFERED = "1"
 
 [deploy]
-startCommand = "cd backend && python main.py"
+startCommand = "cd backend && uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips '*'"
 healthcheckPath = "/health"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"

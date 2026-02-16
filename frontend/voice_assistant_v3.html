@@ -430,14 +430,36 @@
             if (window.pingInterval) clearInterval(window.pingInterval);
         }
 
-        function connect() {
+        function connect(isFallback = false) {
+            // V8.4 Diagnostic: Check HTTP Health before WS
+            fetch(window.location.origin + '/health').then(r => {
+                console.log("HTTP Health Check:", r.status);
+            }).catch(e => console.warn("HTTP Health unreachable - possibly local file testing."));
+
             initAudio().then(async () => {
-                const url = getWsUrl();
+                const url = isFallback ? getWsUrl().replace('wss:', 'ws:') : getWsUrl();
+                console.log("Elite V8.4 Connecting:", url);
                 ws = new WebSocket(url);
                 setUIState('thinking');
 
+                // Connection Guard Timeout
+                const connTimeout = setTimeout(() => {
+                    if (ws.readyState !== 1) {
+                        ws.close();
+                        if (!isFallback) {
+                            console.warn("WSS Handshake Timeout - Trying WS fallback...");
+                            connect(true);
+                        } else {
+                            const debugLink = (window.location.host ? window.location.origin : "https://voice.dev.rgeeb.com") + "/ws/debug";
+                            addBubble(`⚠️ فشل الاتصال النهائي. تأكد من عمل السيرفر بزيارة: <a href="${debugLink}" target="_blank" style="color:var(--accent)">Debug Info</a>`, true);
+                        }
+                    }
+                }, 8000);
+
                 ws.onopen = async () => {
+                    clearTimeout(connTimeout);
                     updateLED('led-ws', 'on');
+                    console.success ? console.success("WS Connected!") : console.log("WS Connected!");
                     if (!stream) {
                         try {
                             stream = await navigator.mediaDevices.getUserMedia({
@@ -471,8 +493,24 @@
                     }
                 };
 
-                ws.onclose = () => stopSession();
-                ws.onerror = () => updateLED('led-ws', 'err');
+                ws.onclose = (e) => {
+                    clearTimeout(connTimeout);
+                    console.warn("WS Closed:", e.code, e.reason);
+                    if (e.code === 1006 && !isFallback) {
+                        console.info("1006 Detected - Auto Fallback to WS");
+                        connect(true);
+                    } else if (e.code !== 1000) {
+                        const debugLink = window.location.origin + "/ws/debug";
+                        addBubble(`❌ فشل الاتصال (${e.code}). تأكد من عمل السيرفر بزيارة رابط الفحص: <a href="${debugLink}" target="_blank" style="color:var(--accent)">Debug Info</a>`, true);
+                    }
+                    stopSession();
+                };
+
+                ws.onerror = (e) => {
+                    clearTimeout(connTimeout);
+                    console.error("WS Error Object:", e);
+                    updateLED('led-ws', 'err');
+                };
             });
         }
 

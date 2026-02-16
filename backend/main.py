@@ -19,6 +19,7 @@ from openai import OpenAI
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
 from services.agent_engine import GroqEngine
@@ -34,21 +35,46 @@ logger.add(
     format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {message}"
 )
 
-request_id_var: ContextVar[str] = ContextVar("request_id", default="unknown")
+# ================= App Initialization (V8.2.0) =================
+app = FastAPI(title="Tiryaq Voice Elite", version="8.2.0")
 
-# ================= App Initialization =================
-app = FastAPI(title="Tiryaq Voice AI", version="2.2.0")
+# Mounting static files for unified deployment
+current_dir = os.path.dirname(os.path.abspath(__file__))
+frontend_dir = os.path.join(current_dir, "..", "frontend")
+if os.path.exists(frontend_dir):
+    app.mount("/static", StaticFiles(directory=frontend_dir), name="static")
 
 @app.get("/")
 async def get_index():
-    # البحث عن ملف الفرونت اند في مجلد frontend أو المجلد الرئيسي
-    path = "voice_assistant_v4.html"
-    if not os.path.exists(path):
-        path = os.path.join("frontend", "voice_assistant_v4.html")
-    
-    if os.path.exists(path):
-        return FileResponse(path)
-    return {"error": "Frontend file not found. Please upload voice_assistant_v4.html"}
+    # Elite Guard: Unified Static Discovery
+    paths = [
+        os.path.join(frontend_dir, "voice_assistant_v3.html"),
+        "voice_assistant_v3.html",
+        "frontend/voice_assistant_v3.html",
+        "/app/frontend/voice_assistant_v3.html"
+    ]
+    for p in paths:
+        if os.path.exists(p):
+            return FileResponse(p)
+    return {"message": "Tiryaq Elite V8.3 is running", "status": "active"}
+
+@app.get("/ws/debug")
+async def ws_debug():
+    """Diagnostic endpoint to check headers and environment."""
+    return {
+        "env_port": os.getenv("PORT"),
+        "settings_port": settings.PORT,
+        "app_name": settings.APP_NAME,
+        "mode": "Elite V8.4",
+        "status": "online"
+    }
+
+@app.websocket("/ws/echo")
+async def websocket_echo(ws: WebSocket):
+    """Simple echo endpoint to verify WS protocol upgrades."""
+    await ws.accept()
+    await ws.send_text("HANDSHAKE_SUCCESS")
+    await ws.close()
 
 app.add_middleware(
     CORSMiddleware,
@@ -61,14 +87,15 @@ app.add_middleware(
 # Note: We don't initialize a global engine here anymore to support multiple tenants dynamically.
 # Each tenant will have its own engine instance during the session for proper persona isolation.
 memory_manager = MemoryManager()
+request_id_var: ContextVar[str] = ContextVar("request_id", default="unknown")
 
-# ================= Audio / VAD Constants =================
+# ================= Audio / VAD Constants (Elite V8.2 Calibrated) =================
 SAMPLE_RATE = 16000
-VOICE_THRESHOLD = 800  
-SILENCE_THRESHOLD = 400
-SILENCE_DURATION_LIMIT = 1.2  # Najm Standard: Increased to 1.2s for human patience
-MIN_SPEECH_DURATION = 0.7     # Ignore sounds shorter than 700ms (filtering noise)
-MIN_BUFFER_SIZE = 16000        # Minimum 500ms of audio buffer
+VOICE_THRESHOLD = 300   # Elite Sensitivity: Lowered for quiet voices
+SILENCE_THRESHOLD = 150
+SILENCE_DURATION_LIMIT = 1.5 
+MIN_SPEECH_DURATION = 0.5    
+MIN_BUFFER_SIZE = 8000   # Minimum 250ms of audio buffer
 
 
 # ================= Session State Management =================
@@ -80,8 +107,7 @@ class SessionState:
 
 # ================= Utilities =================
 def calculate_rms(chunk: bytes) -> int:
-    if not chunk:
-        return 0
+    if not chunk: return 0
     count = len(chunk) // 2
     try:
         shorts = struct.unpack("<" + "h" * count, chunk)
@@ -249,7 +275,16 @@ async def process_audio_buffer(
 # ================= WebSocket Endpoint =================
 @app.websocket("/ws/session/{tenant_id}/{user_id}")
 async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
-    await ws.accept()
+    # Enhanced Handshake Logging
+    headers = dict(ws.headers)
+    logger.info(f"WS Handshake Start | Path: {ws.url.path} | Protocol: {headers.get('x-forwarded-proto')} | Host: {headers.get('host')}")
+    
+    try:
+        await ws.accept()
+        logger.success(f"WS Accepted | {tenant_id} | {user_id}")
+    except Exception as e:
+        logger.error(f"WS Accept Failed: {e}")
+        return
 
     session_id = f"{tenant_id}-{user_id}-{int(time.time())}"
     token = request_id_var.set(session_id)
