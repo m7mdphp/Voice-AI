@@ -132,6 +132,8 @@
         // Automatic URL detection
         document.getElementById('url').value = `ws://${window.location.host}/ws/session/tiryaq_technology/user1`;
 
+        let ws, audioCtx, stream, proc, isPlaying = false, queue = []; document.getElementById('url').value = `ws://${window.location.host}/ws/session/tiryaq_technology/user1`;
+
         let ws, audioCtx, stream, proc, isPlaying = false, queue = [];
         const SAMPLE_RATE = 16000;
 
