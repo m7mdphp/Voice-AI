@@ -1,0 +1,17 @@
+# Nixpacks configuration for Voice-AI backend deployment
+[phases.setup]
+nixPkgs = ["...", "python3"]
+
+[phases.build]
+cmds = [
+  "cd backend",
+  "python -m pip install --upgrade pip",
+  "pip install -r requirements.txt"
+]
+
+[start]
+cmd = "cd backend && uvicorn main:app --host 0.0.0.0 --port 8000"
+
+[variables]
+PORT = "8000"
+PYTHONPATH = "/app/backend"
