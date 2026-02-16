@@ -33,7 +33,7 @@ class GroqEngine:
         
         # Extracted from DB
         persona = self.db.get("persona", {})
-        self.voice_id = persona.get("voice_id", "EXAVITQu4vr4xnSDxMaL")
+        self.voice_id = persona.get("voice_id", "pNInz6obpgnuMvkhbuZ5")
         self.model = "llama-3.3-70b-versatile"
         self.max_tokens = 150
         self.temperature = 0.5 # Lower temperature for better grounding
@@ -163,12 +163,12 @@ Arabic (Saudi White Dialect) ONLY. No English words.
 
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{self.voice_id}/stream"
         params = {
-            "output_format": "mp3_44100_128",
+            "output_format": "pcm_16000",
             "optimize_streaming_latency": 3 
         }
         
         headers = {
-            "Accept": "audio/mpeg",
+            "Accept": "audio/l16",
             "Content-Type": "application/json",
             "xi-api-key": self.elevenlabs_api_key
         }

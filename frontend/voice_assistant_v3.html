@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ترياق V5.2 - الجودة الفائقة</title>
+    <title>ترياق V5.3 - النسخة المستقرة</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Tajawal:wght@400;700&display=swap"
@@ -190,18 +190,6 @@
             word-wrap: break-word;
         }
 
-        @keyframes bubblePop {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
         .bubble.user {
             background: rgba(51, 65, 85, 0.8);
             align-self: flex-start;
@@ -297,7 +285,7 @@
 
     <div class="glass-container">
         <div class="header">
-            <div class="version-tag">PREMIUM SAAS V5.2 (HI-FI ARABIC)</div>
+            <div class="version-tag">PREMIUM SAAS V5.3 (STABLE PCM)</div>
             <h1>🩺 ترياق</h1>
         </div>
 
@@ -318,7 +306,8 @@
         </button>
 
         <div class="url-settings">
-            <input type="text" id="ws_url" spellcheck="false" title="Click to change endpoint">
+            <input type="text" id="ws_url" spellcheck="false">
+            <div id="error-msg" style="color:var(--error); margin-top:5px; font-size:0.9em; display:none;"></div>
         </div>
     </div>
 
@@ -341,19 +330,13 @@
             const ctx = canvas.getContext('2d');
             canvas.width = 210; canvas.height = 210;
             const dataArray = new Uint8Array(analyser ? analyser.frequencyBinCount : 0);
-
             function animate() {
                 requestAnimationFrame(animate);
                 if (!analyser) { ctx.clearRect(0, 0, 210, 210); return; }
                 analyser.getByteFrequencyData(dataArray);
                 ctx.clearRect(0, 0, 210, 210);
-
-                ctx.beginPath();
-                ctx.strokeStyle = '#38bdf8';
-                ctx.lineWidth = 3;
-                const radius = 95;
-                const cX = 105, cY = 105;
-
+                ctx.beginPath(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3;
+                const radius = 95, cX = 105, cY = 105;
                 for (let i = 0; i < dataArray.length; i++) {
                     const h = dataArray[i] / 2.2;
                     const a = (i * 2 * Math.PI) / dataArray.length;
@@ -366,20 +349,20 @@
             animate();
         }
 
-        // --- Audio Logic ---
+        // --- Audio Logic (PCM 16k) ---
         async function initAudioSystem() {
             if (audioCtx) return;
             try {
-                audioCtx = new AudioContext(); // Native sample rate for MP3 decoder
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
                 analyser = audioCtx.createAnalyser();
                 analyser.fftSize = 64;
 
-                const code = `
+                // FIX: Use Data URI to bypass "blob:null" or local resource restrictions
+                const workletCode = `
                     class P extends AudioWorkletProcessor {
                         process(inputs) {
                             const d = inputs[0][0];
                             if (!d) return true;
-                            // Normal gain for mic, avoid clipping
                             const p = new Int16Array(d.length);
                             for(let j=0; j<d.length; j++) p[j] = Math.max(-32768, Math.min(32767, d[j]*32768));
                             this.port.postMessage(p.buffer, [p.buffer]);
@@ -388,17 +371,19 @@
                     }
                     registerProcessor('p', P);
                 `;
-                const url = URL.createObjectURL(new Blob([code], { type: 'application/javascript' }));
+                const dataUri = 'data:application/javascript;base64,' + btoa(workletCode);
 
                 try {
-                    await audioCtx.audioWorklet.addModule(url);
+                    await audioCtx.audioWorklet.addModule(dataUri);
                     processorNode = new AudioWorkletNode(audioCtx, 'p');
                     processorNode.port.onmessage = (e) => {
                         if (ws && ws.readyState === 1 && document.getElementById('orb').classList.contains('listening')) {
                             ws.send(e.data);
                         }
                     };
+                    console.log("AudioWorklet loaded via Data URI");
                 } catch (e) {
+                    console.warn("Worklet failed (Data URI), using ScriptProcessor fallback:", e);
                     processorNode = audioCtx.createScriptProcessor(4096, 1, 1);
                     processorNode.onaudioprocess = (e) => {
                         const d = e.inputBuffer.getChannelData(0);
@@ -410,10 +395,11 @@
                     };
                 }
                 drawVisualizer();
-            } catch (e) { console.error(e); alert("الميكروفون مطلوب."); }
+            } catch (e) { console.error(e); alert("Audio Init Error. Please check microphone permissions."); }
         }
 
         async function toggleSession() {
+            document.getElementById('error-msg').style.display = 'none';
             if (!ws || ws.readyState !== 1) {
                 await initAudioSystem();
                 connect();
@@ -421,7 +407,8 @@
         }
 
         function connect() {
-            ws = new WebSocket(document.getElementById('ws_url').value);
+            const url = document.getElementById('ws_url').value;
+            ws = new WebSocket(url);
             document.getElementById('conn-text').textContent = "CONNECTING...";
             ws.onopen = async () => {
                 document.getElementById('led-conn').classList.add('active');
@@ -443,17 +430,30 @@
                     else if (m.type === 'audio_start') setUIState('speaking');
                     else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
                 } else {
-                    // MP3 Chunk received
+                    // PCM 16k Chunk received
                     queue.push(await e.data.arrayBuffer());
-                    playStreamChunk();
+                    playPCMStream();
                 }
             };
-            ws.onclose = () => {
+            ws.onclose = (e) => {
                 document.getElementById('led-conn').className = 'led';
                 document.getElementById('conn-text').textContent = "DISCONNECTED";
+                if (!e.wasClean) {
+                    showError("حدث خطأ في الاتصال (502 أو جدار حماية). يرجى التأكد من تشغيل السيرفر.");
+                }
                 if (micNode) micNode.disconnect();
                 setUIState('idle'); stopHeartbeat();
             };
+            ws.onerror = (e) => {
+                console.error("WS Error:", e);
+                showError("تعذر الاتصال بالسيرفر. تأكد من عنوان الـ WebSocket.");
+            };
+        }
+
+        function showError(msg) {
+            const err = document.getElementById('error-msg');
+            err.textContent = msg;
+            err.style.display = 'block';
         }
 
         function addChatBubble(text, isAI) {
@@ -485,25 +485,24 @@
             else { lbl.textContent = 'جاهز للبدء'; btnT.textContent = 'ابدأ المحادثة'; btn.classList.remove('active'); }
         }
 
-        // --- Robust MP3 Decoding ---
-        async function playStreamChunk() {
+        // --- PCM 16k Playback Logic (Stable) ---
+        async function playPCMStream() {
             if (queue.length === 0 || isPlaying) return;
             isPlaying = true;
             try {
-                const chunk = queue.shift();
-                // MP3 chunks must be decoded as complete buffers for best reliability
-                audioCtx.decodeAudioData(chunk, (buffer) => {
-                    const src = audioCtx.createBufferSource();
-                    src.buffer = buffer;
-                    src.connect(audioCtx.destination);
-                    src.onended = () => { isPlaying = false; playStreamChunk(); };
-                    src.start(0);
-                }, (err) => {
-                    console.warn("Decode error (skipping chunk):", err);
-                    isPlaying = false;
-                    playStreamChunk();
-                });
-            } catch (e) { isPlaying = false; playStreamChunk(); }
+                const raw = queue.shift();
+                const int16 = new Int16Array(raw);
+                const float32 = new Float32Array(int16.length);
+                for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768.0;
+
+                const buffer = audioCtx.createBuffer(1, float32.length, 16000);
+                buffer.getChannelData(0).set(float32);
+                const src = audioCtx.createBufferSource();
+                src.buffer = buffer;
+                src.connect(audioCtx.destination);
+                src.onended = () => { isPlaying = false; playPCMStream(); };
+                src.start(0);
+            } catch (e) { console.error("PCM Playback Error:", e); isPlaying = false; playPCMStream(); }
         }
 
         function startHeartbeat() {

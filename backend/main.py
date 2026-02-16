@@ -12,6 +12,7 @@ import wave
 import tempfile
 import os
 import functools
+import sys
 from typing import Dict
 from contextvars import ContextVar
 
@@ -26,14 +27,10 @@ from services.firestore_memory import MemoryManager
 from config import settings
 
 # ================= Logging =================
-# Ensure logs directory exists to prevent crash
-if not os.path.exists("logs"):
-    os.makedirs("logs")
-
+# Log to stdout only for VPS stability (Dokploy captures these)
+logger.remove()
 logger.add(
-    "logs/tiryaq_{time}.log",
-    rotation="1 day",
-    retention="7 days",
+    sys.stdout,
     level=settings.LOG_LEVEL,
     format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {message}"
 )
