@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ترياق V5.3 - النسخة المستقرة</title>
+    <title>ترياق V5.4 - الاستقرار التام</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Tajawal:wght@400;700&display=swap"
@@ -285,7 +285,7 @@
 
     <div class="glass-container">
         <div class="header">
-            <div class="version-tag">PREMIUM SAAS V5.3 (STABLE PCM)</div>
+            <div class="version-tag">STABLE SAAS V5.4 (ALIGNED PCM)</div>
             <h1>🩺 ترياق</h1>
         </div>
 
@@ -319,6 +319,7 @@
         let ws, audioCtx, micNode, processorNode, stream, analyser;
         let queue = [], isPlaying = false, heartbeatId = null;
         let activeAiMessage = null;
+        let leftoverBuffer = null; // FIX: Handle byte alignment for split 16-bit samples
 
         window.addEventListener('load', () => {
             document.getElementById('ws_url').value = DEFAULT_URL;
@@ -357,7 +358,6 @@
                 analyser = audioCtx.createAnalyser();
                 analyser.fftSize = 64;
 
-                // FIX: Use Data URI to bypass "blob:null" or local resource restrictions
                 const workletCode = `
                     class P extends AudioWorkletProcessor {
                         process(inputs) {
@@ -381,9 +381,7 @@
                             ws.send(e.data);
                         }
                     };
-                    console.log("AudioWorklet loaded via Data URI");
                 } catch (e) {
-                    console.warn("Worklet failed (Data URI), using ScriptProcessor fallback:", e);
                     processorNode = audioCtx.createScriptProcessor(4096, 1, 1);
                     processorNode.onaudioprocess = (e) => {
                         const d = e.inputBuffer.getChannelData(0);
@@ -395,7 +393,7 @@
                     };
                 }
                 drawVisualizer();
-            } catch (e) { console.error(e); alert("Audio Init Error. Please check microphone permissions."); }
+            } catch (e) { console.error(e); }
         }
 
         async function toggleSession() {
@@ -438,22 +436,16 @@
             ws.onclose = (e) => {
                 document.getElementById('led-conn').className = 'led';
                 document.getElementById('conn-text').textContent = "DISCONNECTED";
-                if (!e.wasClean) {
-                    showError("حدث خطأ في الاتصال (502 أو جدار حماية). يرجى التأكد من تشغيل السيرفر.");
-                }
+                if (!e.wasClean) showError("نأسف، تعذر الاتصال بالسيرفر. يرجى التأكد من تشغيل الخدمة.");
                 if (micNode) micNode.disconnect();
                 setUIState('idle'); stopHeartbeat();
             };
-            ws.onerror = (e) => {
-                console.error("WS Error:", e);
-                showError("تعذر الاتصال بالسيرفر. تأكد من عنوان الـ WebSocket.");
-            };
+            ws.onerror = () => showError("خطأ في قناة الاتصال. يرجى مراجعة حالة السيرفر.");
         }
 
         function showError(msg) {
             const err = document.getElementById('error-msg');
-            err.textContent = msg;
-            err.style.display = 'block';
+            err.textContent = msg; err.style.display = 'block';
         }
 
         function addChatBubble(text, isAI) {
@@ -474,23 +466,40 @@
 
         function setUIState(s) {
             const orb = document.getElementById('orb');
-            const lbl = document.getElementById('status-label');
-            const btn = document.getElementById('main-btn');
-            const btnT = document.getElementById('btn-text');
             orb.className = 'orb ' + (s || 'idle');
             orb.textContent = ICONS[s] || ICONS.idle;
-            if (s === 'listening') { lbl.textContent = 'أسمعك الآن.. تفضل'; btnT.textContent = 'إنهاء'; btn.classList.add('active'); }
+            const lbl = document.getElementById('status-label');
+            const btnt = document.getElementById('btn-text');
+            if (s === 'listening') { lbl.textContent = 'أسمعك الآن...'; btnt.textContent = 'إنهاء'; }
             else if (s === 'thinking') lbl.textContent = 'تحليل...';
             else if (s === 'speaking') lbl.textContent = 'يتحدث ترياق...';
-            else { lbl.textContent = 'جاهز للبدء'; btnT.textContent = 'ابدأ المحادثة'; btn.classList.remove('active'); }
+            else { lbl.textContent = 'جاهز للبدء'; btnt.textContent = 'ابدأ المحادثة'; }
         }
 
-        // --- PCM 16k Playback Logic (Stable) ---
+        // --- Robust PCM 16k Playback (Aligned) ---
         async function playPCMStream() {
             if (queue.length === 0 || isPlaying) return;
             isPlaying = true;
             try {
-                const raw = queue.shift();
+                let raw = queue.shift();
+
+                // Concatenate with leftover if exists
+                if (leftoverBuffer) {
+                    let combined = new Uint8Array(leftoverBuffer.length + raw.byteLength);
+                    combined.set(leftoverBuffer, 0);
+                    combined.set(new Uint8Array(raw), leftoverBuffer.length);
+                    raw = combined.buffer;
+                    leftoverBuffer = null;
+                }
+
+                // If length is odd, keep last byte for next alignment
+                if (raw.byteLength % 2 !== 0) {
+                    leftoverBuffer = new Uint8Array(raw.slice(-1));
+                    raw = raw.slice(0, -1);
+                }
+
+                if (raw.byteLength === 0) { isPlaying = false; playPCMStream(); return; }
+
                 const int16 = new Int16Array(raw);
                 const float32 = new Float32Array(int16.length);
                 for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768.0;
@@ -502,7 +511,7 @@
                 src.connect(audioCtx.destination);
                 src.onended = () => { isPlaying = false; playPCMStream(); };
                 src.start(0);
-            } catch (e) { console.error("PCM Playback Error:", e); isPlaying = false; playPCMStream(); }
+            } catch (e) { console.warn("PCM Alignment Log:", e); isPlaying = false; playPCMStream(); }
         }
 
         function startHeartbeat() {
