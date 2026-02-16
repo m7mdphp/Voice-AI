@@ -65,7 +65,19 @@ async def get_voice_assistant():
     if os.path.exists(path):
         return FileResponse(path, media_type="text/html")
     else:
-        return {"error": "Voice assistant file not found"}, 404
+        return {"error": "Voice assistant v4 file not found"}, 404
+
+@app.get("/voice_assistant_v3.html")
+async def get_voice_assistant_v3():
+    # Serve the voice assistant v3 HTML file
+    path = "voice_assistant_v3.html"
+    if not os.path.exists(path):
+        path = os.path.join("frontend", "voice_assistant_v3.html")
+    
+    if os.path.exists(path):
+        return FileResponse(path, media_type="text/html")
+    else:
+        return {"error": "Voice assistant v3 file not found"}, 404
 
 app.add_middleware(
     CORSMiddleware,
