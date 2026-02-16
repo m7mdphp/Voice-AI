@@ -38,7 +38,7 @@ logger.add(
 request_id_var: ContextVar[str] = ContextVar("request_id", default="unknown")
 
 # ================= App Initialization =================
-app = FastAPI(title="Tiryaq Voice AI", version="2.2.0")
+app = FastAPI(title="Tiryaq Voice AI", version="3.0.0")
 
 @app.get("/")
 async def get_index():
@@ -50,7 +50,7 @@ async def get_index():
     if os.path.exists(path):
         return FileResponse(path)
     else:
-        return {"message": "Tiryaq Voice AI Backend is running", "status": "active", "version": "2.2.0"}
+        return {"message": "Tiryaq Voice AI Backend is running", "status": "active", "version": "3.0.0"}
 
 @app.get("/health")
 async def health_check():
@@ -58,7 +58,7 @@ async def health_check():
     return {
         "status": "healthy",
         "service": "Tiryaq Voice AI",
-        "version": "2.3.0",
+        "version": "3.0.0",
         "env": settings.ENV,
         "logs": os.path.exists("logs")
     }

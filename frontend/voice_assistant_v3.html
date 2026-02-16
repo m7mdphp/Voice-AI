@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ترياق V5.5 - الجودة القصوى</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ترياق V6.0 - الإصدار الذهبي</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Tajawal:wght@400;700&display=swap"
@@ -26,6 +26,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -38,11 +39,13 @@
             justify-content: center;
             overflow: hidden;
             padding: 20px;
+            touch-action: manipulation;
         }
 
         .glass-container {
             background: var(--glass);
             backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             border-radius: 32px;
             padding: 40px;
@@ -76,6 +79,7 @@
             color: var(--primary);
             letter-spacing: 3px;
             font-weight: 700;
+            opacity: 0.8;
         }
 
         h1 {
@@ -105,12 +109,13 @@
             border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, #334155, #0f172a);
             border: 4px solid var(--glass-border);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4.5em;
             z-index: 2;
+            cursor: pointer;
         }
 
         canvas {
@@ -126,6 +131,7 @@
         .orb.listening {
             border-color: var(--success);
             box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+            transform: scale(1.05);
         }
 
         .orb.thinking {
@@ -136,6 +142,7 @@
         .orb.speaking {
             border-color: var(--primary);
             box-shadow: 0 0 40px var(--primary-glow);
+            transform: scale(1.1);
         }
 
         @keyframes pulse-glow {
@@ -156,6 +163,8 @@
             font-size: 1.1em;
             color: var(--text-dim);
             margin-bottom: 20px;
+            font-weight: 500;
+            height: 1.2em;
         }
 
         .chat-view {
@@ -170,7 +179,8 @@
             gap: 15px;
             border: 1px solid var(--glass-border);
             text-align: right;
-            scrollbar-width: none;
+            scrollbar-width: thin;
+            scrollbar-color: var(--glass-border) transparent;
         }
 
         .bubble {
@@ -179,18 +189,19 @@
             max-width: 85%;
             font-size: 1.05em;
             line-height: 1.6;
-            animation: bubblePop 0.3s ease;
+            animation: bubblePop 0.3s ease-out;
+            word-wrap: break-word;
         }
 
         @keyframes bubblePop {
             from {
                 opacity: 0;
-                transform: scale(0.9);
+                transform: translateY(10px) scale(0.95);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: translateY(0) scale(1);
             }
         }
 
@@ -204,6 +215,7 @@
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             align-self: flex-end;
             border-bottom-left-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .btn-premium {
@@ -221,25 +233,52 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.5);
         }
 
         .btn-premium.active {
             background: var(--error);
             color: #fff;
+            box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.4);
         }
 
-        .url-settings {
-            margin-top: 15px;
-            font-size: 0.75em;
-        }
-
-        #ws_url {
-            background: transparent;
-            border: none;
-            color: var(--primary);
-            text-align: center;
-            width: 100%;
+        .diag-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            font-family: 'Outfit';
+            font-size: 0.7em;
             opacity: 0.6;
+        }
+
+        .diag-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .led {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #475569;
+        }
+
+        .led.on {
+            background: var(--success);
+            box-shadow: 0 0 5px var(--success);
+        }
+
+        .led.err {
+            background: var(--error);
+            box-shadow: 0 0 5px var(--error);
         }
     </style>
 </head>
@@ -247,89 +286,103 @@
 <body>
     <div class="glass-container">
         <div class="header">
-            <div class="version-tag">PREMIUM V5.5 (PRECISION AUDIO)</div>
+            <div class="version-tag">GOLD EDITION V6.0</div>
             <h1>🩺 ترياق</h1>
         </div>
 
-        <div class="orb-wrapper">
+        <div class="orb-wrapper" onclick="toggleSession()">
             <canvas id="visualizer"></canvas>
             <div id="orb" class="orb">💤</div>
         </div>
 
         <div id="status-label">جاهز لبدء المحادثة..</div>
+
         <div class="chat-view" id="chat">
-            <div class="bubble ai">أهلاً بك في "ترياق". كيف يمكنني خدمتك اليوم؟</div>
+            <div class="bubble ai">أهلاً بك في "ترياق". أنا مستشارك الطبي الذكي، كيف أقدر أخدمك اليوم؟</div>
         </div>
 
         <button id="main-btn" class="btn-premium" onclick="toggleSession()">
+            <span id="btn-icon">🎤</span>
             <span id="btn-text">ابدأ المحادثة</span>
         </button>
 
-        <div class="url-settings">
-            <input type="text" id="ws_url" spellcheck="false">
-            <div id="error-msg" style="color:var(--error); margin-top:5px; display:none;"></div>
+        <div class="diag-row">
+            <div class="diag-item">
+                <div id="led-ws" class="led"></div> <span>WS</span>
+            </div>
+            <div class="diag-item">
+                <div id="led-mic" class="led"></div> <span>MIC</span>
+            </div>
+            <div id="reconnect-hint" style="display:none; color:var(--primary)">جاري إعادة الاتصال...</div>
         </div>
+
+        <input type="hidden" id="ws_url">
     </div>
 
     <script>
         const DOMAIN = 'voice.dev.rgeeb.com';
-        const DEFAULT_URL = `wss://${DOMAIN}/ws/session/tiryaq_technology/user1`;
+        const WS_PATH = `/ws/session/tiryaq_technology/user_${Math.floor(Math.random() * 1000)}`;
         const ICONS = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
 
         let ws, audioCtx, micNode, processorNode, stream, analyser;
-        let queue = [], isPlaying = false;
-        let activeAiMessage = null;
-        let leftoverBuffer = null;
+        let queue = [], isPlaying = false, reconnectTimer = null;
+        let activeAiMsg = null, leftover = null;
 
-        window.addEventListener('load', () => { document.getElementById('ws_url').value = DEFAULT_URL; });
+        document.getElementById('ws_url').value = `wss://${DOMAIN}${WS_PATH}`;
+
+        function updateLED(id, state) {
+            const el = document.getElementById(id);
+            el.className = 'led ' + state;
+        }
 
         function drawVisualizer() {
             const canvas = document.getElementById('visualizer');
             const ctx = canvas.getContext('2d');
             canvas.width = 210; canvas.height = 210;
-            const dataArray = new Uint8Array(analyser ? analyser.frequencyBinCount : 0);
-            function animate() {
-                requestAnimationFrame(animate);
+            const data = new Uint8Array(analyser ? analyser.frequencyBinCount : 0);
+            function render() {
+                requestAnimationFrame(render);
                 if (!analyser) { ctx.clearRect(0, 0, 210, 210); return; }
-                analyser.getByteFrequencyData(dataArray);
+                analyser.getByteFrequencyData(data);
                 ctx.clearRect(0, 0, 210, 210);
                 ctx.beginPath(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3;
                 const radius = 95, cX = 105, cY = 105;
-                for (let i = 0; i < dataArray.length; i++) {
-                    const h = dataArray[i] / 2.2;
-                    const a = (i * 2 * Math.PI) / dataArray.length;
+                for (let i = 0; i < data.length; i++) {
+                    const h = data[i] / 2.2;
+                    const a = (i * 2 * Math.PI) / data.length;
                     const x = cX + Math.cos(a) * (radius + h);
                     const y = cY + Math.sin(a) * (radius + h);
                     if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
                 }
                 ctx.closePath(); ctx.stroke();
             }
-            animate();
+            render();
         }
 
-        async function initAudioSystem() {
+        async function initAudio() {
             if (audioCtx) return;
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
                 analyser = audioCtx.createAnalyser(); analyser.fftSize = 64;
 
-                const code = `
+                const worklet = `
                     class P extends AudioWorkletProcessor {
                         process(inputs) {
-                            const d = inputs[0][0]; if (!d) return true;
+                            const d = inputs[0][0]; if(!d) return true;
                             const p = new Int16Array(d.length);
                             for(let j=0; j<d.length; j++) p[j] = Math.max(-32768, Math.min(32767, d[j]*32768));
                             this.port.postMessage(p.buffer, [p.buffer]); return true;
                         }
-                    }
-                    registerProcessor('p', P);
+                    } registerProcessor('p', P);
                 `;
-                const dataUri = 'data:application/javascript;base64,' + btoa(code);
+                const blob = new Blob([worklet], { type: 'application/javascript' });
+                const url = URL.createObjectURL(blob);
+
                 try {
-                    await audioCtx.audioWorklet.addModule(dataUri);
+                    await audioCtx.audioWorklet.addModule(url);
                     processorNode = new AudioWorkletNode(audioCtx, 'p');
                     processorNode.port.onmessage = (e) => {
-                        if (ws && ws.readyState === 1 && document.getElementById('orb').classList.contains('listening')) ws.send(e.data);
+                        if (ws?.readyState === 1 && document.getElementById('orb').classList.contains('listening')) ws.send(e.data);
                     };
                 } catch (e) {
                     processorNode = audioCtx.createScriptProcessor(4096, 1, 1);
@@ -337,54 +390,78 @@
                         const d = e.inputBuffer.getChannelData(0);
                         const p = new Int16Array(d.length);
                         for (let j = 0; j < d.length; j++) p[j] = Math.max(-32768, Math.min(32767, d[j] * 32768));
-                        if (ws && ws.readyState === 1 && document.getElementById('orb').classList.contains('listening')) ws.send(p.buffer);
+                        if (ws?.readyState === 1 && document.getElementById('orb').classList.contains('listening')) ws.send(p.buffer);
                     };
                 }
                 drawVisualizer();
-            } catch (e) { console.error(e); }
+            } catch (e) { console.error("Audio Init Failed", e); }
         }
 
-        async function toggleSession() {
-            document.getElementById('error-msg').style.display = 'none';
-            if (!ws || ws.readyState !== 1) { await initAudioSystem(); connect(); }
-            else { ws.close(); }
+        function toggleSession() {
+            if (audioCtx?.state === 'suspended') audioCtx.resume();
+            if (!ws || ws.readyState !== 1) {
+                initAudio().then(() => connect());
+            } else {
+                ws.close();
+            }
         }
 
         function connect() {
-            ws = new WebSocket(document.getElementById('ws_url').value);
+            if (ws) ws.close();
+            const url = document.getElementById('ws_url').value;
+            ws = new WebSocket(url);
+            updateLED('led-ws', 'on');
+
             ws.onopen = async () => {
-                if (!stream) stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                document.getElementById('reconnect-hint').style.display = 'none';
+                if (!stream) {
+                    try {
+                        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        updateLED('led-mic', 'on');
+                    } catch (e) { updateLED('led-mic', 'err'); }
+                }
                 micNode = audioCtx.createMediaStreamSource(stream);
                 micNode.connect(analyser); micNode.connect(processorNode);
                 if (!processorNode.port) processorNode.connect(audioCtx.destination);
                 setUIState('listening');
             };
+
             ws.onmessage = async (e) => {
                 if (typeof e.data === 'string') {
                     const m = JSON.parse(e.data);
                     if (m.type === 'state') setUIState(m.state);
-                    else if (m.type === 'user_text') { addChatBubble(m.content, false); activeAiMessage = null; }
-                    else if (m.type === 'text') { streamChatText(m.content); }
+                    else if (m.type === 'user_text') { addBubble(m.content, false); activeAiMsg = null; }
+                    else if (m.type === 'text') streamText(m.content);
                     else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
+                    else if (m.type === 'error') { addBubble(m.content, true); setUIState('idle'); }
                 } else {
                     queue.push(await e.data.arrayBuffer());
-                    playPCMStream();
+                    playPCM();
                 }
             };
-            ws.onclose = () => { setUIState('idle'); if (micNode) micNode.disconnect(); };
+
+            ws.onclose = (e) => {
+                updateLED('led-ws', '');
+                setUIState('idle');
+                if (micNode) micNode.disconnect();
+                if (!e.wasClean) {
+                    document.getElementById('reconnect-hint').style.display = 'block';
+                    reconnectTimer = setTimeout(connect, 3000);
+                }
+            };
         }
 
-        function addChatBubble(text, isAI) {
+        function addBubble(txt, ai) {
             const chat = document.getElementById('chat');
             const d = document.createElement('div');
-            d.className = 'bubble ' + (isAI ? 'ai' : 'user');
-            d.textContent = text; chat.appendChild(d);
+            d.className = 'bubble ' + (ai ? 'ai' : 'user');
+            d.textContent = txt; chat.appendChild(d);
             chat.scrollTop = chat.scrollHeight; return d;
         }
 
-        function streamChatText(txt) {
-            if (!activeAiMessage) activeAiMessage = addChatBubble('', true);
-            activeAiMessage.textContent += txt;
+        function streamText(t) {
+            if (!activeAiMsg) activeAiMsg = addBubble('', true);
+            activeAiMsg.textContent += t;
             document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
         }
 
@@ -392,53 +469,43 @@
             const orb = document.getElementById('orb');
             orb.className = 'orb ' + (s || 'idle');
             orb.textContent = ICONS[s] || ICONS.idle;
-            document.getElementById('status-label').textContent = s === 'listening' ? 'أسمعك...' : (s === 'speaking' ? 'يتحدث ترياق...' : 'جاهز');
-            document.getElementById('btn-text').textContent = s === 'listening' ? 'إنهاء' : 'ابدأ المحادثة';
+            const lbl = document.getElementById('status-label');
+            const btn = document.getElementById('btn-text');
+            if (s === 'listening') { lbl.textContent = 'أسمعك الآن...'; btn.textContent = 'إنهاء'; }
+            else if (s === 'speaking') { lbl.textContent = 'يتحدث ترياق...'; }
+            else if (s === 'thinking') { lbl.textContent = 'لحظة من فضلك...'; }
+            else { lbl.textContent = 'جاهز للبدء'; btn.textContent = 'ابدأ المحادثة'; }
         }
 
-        // --- Definitive Precision PCM Decoder (LE Focused) ---
-        async function playPCMStream() {
+        async function playPCM() {
             if (queue.length === 0 || isPlaying) return;
             isPlaying = true;
             try {
-                let data = queue.shift();
-
-                // Merge with leftover from last chunk (16-bit alignment)
-                if (leftoverBuffer) {
-                    let combined = new Uint8Array(leftoverBuffer.length + data.byteLength);
-                    combined.set(leftoverBuffer, 0);
-                    combined.set(new Uint8Array(data), leftoverBuffer.length);
-                    data = combined.buffer;
-                    leftoverBuffer = null;
+                let raw = queue.shift();
+                if (leftover) {
+                    let tmp = new Uint8Array(leftover.length + raw.byteLength);
+                    tmp.set(leftover, 0); tmp.set(new Uint8Array(raw), leftover.length);
+                    raw = tmp.buffer; leftover = null;
                 }
-
-                // If chunk is odd (illegal for 16-bit PCM), save last byte
-                if (data.byteLength % 2 !== 0) {
-                    leftoverBuffer = new Uint8Array(data.slice(-1));
-                    data = data.slice(0, -1);
+                if (raw.byteLength % 2 !== 0) {
+                    leftover = new Uint8Array(raw.slice(-1));
+                    raw = raw.slice(0, -1);
                 }
+                if (raw.byteLength === 0) { isPlaying = false; playPCM(); return; }
 
-                if (data.byteLength === 0) { isPlaying = false; playPCMStream(); return; }
+                const view = new DataView(raw);
+                const count = raw.byteLength / 2;
+                const f32 = new Float32Array(count);
+                for (let i = 0; i < count; i++) f32[i] = view.getInt16(i * 2, true) / 32768.0;
 
-                // PRECISION: Use DataView to force Little-Endian interpretation
-                const view = new DataView(data);
-                const sampleCount = data.byteLength / 2;
-                const float32 = new Float32Array(sampleCount);
-                for (let i = 0; i < sampleCount; i++) {
-                    const s = view.getInt16(i * 2, true); // true = Little Endian (ElevenLabs standard)
-                    float32[i] = s / 32768.0;
-                }
-
-                const buffer = audioCtx.createBuffer(1, float32.length, 16000);
-                buffer.getChannelData(0).set(float32);
+                const buf = audioCtx.createBuffer(1, f32.length, 16000);
+                buf.getChannelData(0).set(f32);
                 const src = audioCtx.createBufferSource();
-                src.buffer = buffer; src.connect(audioCtx.destination);
-                src.onended = () => { isPlaying = false; playPCMStream(); };
+                src.buffer = buf; src.connect(audioCtx.destination);
+                src.onended = () => { isPlaying = false; playPCM(); };
                 src.start(0);
-                if (!document.getElementById('orb').classList.contains('speaking')) {
-                    setUIState('speaking');
-                }
-            } catch (e) { isPlaying = false; playPCMStream(); }
+                if (!document.getElementById('orb').classList.contains('speaking')) setUIState('speaking');
+            } catch (e) { isPlaying = false; playPCM(); }
         }
     </script>
 </body>
