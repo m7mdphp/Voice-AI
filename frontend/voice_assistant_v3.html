@@ -320,7 +320,7 @@
     <script>
         const ICONS = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
         let ws, audioCtx, micNode, processorNode, stream, analyser;
-        let queue = [], isPlaying = false, leftover = null;
+        let queue = [], isPlaying = false, leftover = null, activeAiMsg = null;
 
         function updateLED(id, state) {
             const el = document.getElementById(id);
@@ -334,7 +334,7 @@
             const protocol = isLocal ? (window.location.protocol === 'https:' ? 'wss:' : 'ws:') : 'wss:';
             // Use current host or fallback to production
             const host = window.location.host || 'voice.dev.rgeeb.com';
-            return `${protocol}//${host}/ws/session/tiryaq_technology/user_${Math.floor(Math.random() * 1000)}`;
+            return `${protocol}//${host}/ws/session/tiryaq_technology/user_1`;
         }
 
         async function initAudio() {
@@ -379,19 +379,36 @@
             if (audioCtx?.state === 'suspended') audioCtx.resume();
             if (!ws || ws.readyState !== 1) {
                 initAudio().then(() => connect());
-            } else { ws.close(); }
+            } else {
+                addBubble("تم إنهاء الجلسة.", true);
+                ws.close();
+            }
         }
 
         function connect() {
             if (ws) ws.close();
             const url = getWsUrl();
-            console.log("Titanium Plus Connecting:", url);
+            console.log("Ultima Pro V6.7 Connecting:", url);
+            document.getElementById('status-label').textContent = 'جاري الاتصال بالسيرفر...';
             document.getElementById('conn-lbl').style.display = 'block';
-            ws = new WebSocket(url);
+
+            try {
+                ws = new WebSocket(url);
+            } catch (e) {
+                addBubble("⚠️ خطأ في تكوين البروتوكول: " + e.message, true);
+                return;
+            }
 
             ws.onopen = async () => {
                 updateLED('led-ws', 'on');
                 document.getElementById('conn-lbl').style.display = 'none';
+                activeAiMsg = null;
+
+                if (window.pingInterval) clearInterval(window.pingInterval);
+                window.pingInterval = setInterval(() => {
+                    if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'ping' }));
+                }, 30000);
+
                 if (!stream) {
                     try {
                         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -411,7 +428,7 @@
                 if (typeof e.data === 'string') {
                     const m = JSON.parse(e.data);
                     if (m.type === 'state') setUIState(m.state);
-                    else if (m.type === 'user_text') { addBubble(m.content, false); }
+                    else if (m.type === 'user_text') { addBubble(m.content, false); activeAiMsg = null; }
                     else if (m.type === 'text') streamText(m.content);
                     else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
                     else if (m.type === 'error') addBubble("❌ خطأ: " + m.content, true);
@@ -422,14 +439,24 @@
             };
 
             ws.onclose = (e) => {
-                updateLED('led-ws', ''); document.getElementById('conn-lbl').style.display = 'none';
-                setUIState('idle'); if (micNode) micNode.disconnect();
-                if (e.code === 1006) addBubble("⚠️ السيرفر لا يستجيب. تأكد من إعدادات الـ Proxy في Dokploy.", true);
+                console.log("WS Closed:", e.code, e.reason);
+                updateLED('led-ws', '');
+                document.getElementById('conn-lbl').style.display = 'none';
+                setUIState('idle');
+                if (micNode) micNode.disconnect();
+                activeAiMsg = null;
+                if (window.pingInterval) clearInterval(window.pingInterval);
+
+                if (e.code === 1006) {
+                    addBubble("⚠️ انقطع الاتصال (Handshake Failed). قد يحتاج السيرفر لإعادة تشغيل أو تأكد من إعدادات البروكسي.", true);
+                    document.getElementById('main-btn').innerHTML = '<span>🔄</span> <span>إعادة محاولة</span>';
+                }
             };
 
             ws.onerror = (e) => {
+                console.error("WS Error Encountered");
                 updateLED('led-ws', 'err');
-                addBubble("⚠️ فشل الاتصال. تأكد من استخدام HTTPS.", true);
+                addBubble("⚠️ فشل الاتصال. تأكد من أن السيرفر يعمل واستخدم HTTPS.", true);
             };
         }
 

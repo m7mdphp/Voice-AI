@@ -313,19 +313,8 @@ async def process_audio_buffer(
 # ================= WebSocket Endpoint =================
 @app.websocket("/ws/session/{tenant_id}/{user_id}")
 async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
-    logger.info(f"Incoming WS Connection: {tenant_id} | User: {user_id}")
-    logger.debug(f"Upgrade Headers: {dict(ws.headers)}")
-    
-    try:
-        # Explicit upgrade check
-        if ws.headers.get("upgrade", "").lower() != "websocket":
-            logger.warning("Invalid upgrade header")
-            
-        await ws.accept()
-        logger.success(f"Handshake Successful: {user_id}")
-    except Exception as e:
-        logger.error(f"Handshake Failed: {e}")
-        return
+    await ws.accept()
+    logger.success(f"WS Handshake Accepted | Tenant: {tenant_id} | User: {user_id}")
 
     session_id = f"{tenant_id}-{user_id}-{int(time.time())}"
     token = request_id_var.set(session_id)
