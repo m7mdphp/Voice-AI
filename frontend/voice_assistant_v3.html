@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ترياق V6.2 - الإصدار الماسي</title>
+    <title>ترياق V6.4 - بلس</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Tajawal:wght@400;700&display=swap"
@@ -38,7 +38,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: 20px;
+            padding: 10px;
             touch-action: manipulation;
         }
 
@@ -48,9 +48,9 @@
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             border-radius: 32px;
-            padding: 40px;
+            padding: 30px;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             text-align: center;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
             animation: fadeIn 0.8s ease-out;
@@ -70,12 +70,12 @@
         }
 
         .header {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .version-tag {
             font-family: 'Outfit';
-            font-size: 0.7em;
+            font-size: 0.65em;
             color: var(--primary);
             letter-spacing: 3px;
             font-weight: 700;
@@ -83,20 +83,20 @@
         }
 
         h1 {
-            font-size: 3.2em;
-            margin: 8px 0;
+            font-size: 2.8em;
+            margin: 5px 0;
             background: linear-gradient(to bottom, #fff, var(--primary));
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px var(--primary-glow));
+            filter: drop-shadow(0 0 8px var(--primary-glow));
         }
 
         .orb-wrapper {
             position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 20px auto;
+            width: 160px;
+            height: 160px;
+            margin: 15px auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -114,16 +114,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4.5em;
+            font-size: 4em;
             z-index: 2;
         }
 
         canvas {
             position: absolute;
-            top: -15px;
-            left: -15px;
-            width: 210px;
-            height: 210px;
+            top: -10px;
+            left: -10px;
+            width: 180px;
+            height: 180px;
             z-index: 1;
             pointer-events: none;
         }
@@ -160,9 +160,9 @@
         }
 
         #status-label {
-            font-size: 1.1em;
+            font-size: 1.05em;
             color: var(--text-dim);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 500;
             height: 1.25em;
         }
@@ -170,13 +170,13 @@
         .chat-view {
             background: rgba(15, 23, 42, 0.4);
             border-radius: 20px;
-            height: 250px;
+            height: 220px;
             overflow-y: auto;
-            padding: 20px;
-            margin-bottom: 25px;
+            padding: 15px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             border: 1px solid var(--glass-border);
             text-align: right;
             scrollbar-width: thin;
@@ -184,11 +184,11 @@
         }
 
         .bubble {
-            padding: 12px 18px;
+            padding: 10px 15px;
             border-radius: 18px;
             max-width: 85%;
-            font-size: 1.05em;
-            line-height: 1.6;
+            font-size: 1em;
+            line-height: 1.5;
             animation: bubblePop 0.3s ease-out;
             word-wrap: break-word;
         }
@@ -215,16 +215,16 @@
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             align-self: flex-end;
             border-bottom-left-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .btn-premium {
             background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
             color: #0f172a;
             border: none;
-            padding: 18px;
+            padding: 16px;
             border-radius: 18px;
-            font-size: 1.25em;
+            font-size: 1.2em;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
@@ -233,28 +233,28 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 8px 15px -5px rgba(56, 189, 248, 0.4);
         }
 
         .btn-premium:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 12px 25px -5px rgba(56, 189, 248, 0.5);
         }
 
         .btn-premium.active {
             background: var(--error);
             color: #fff;
-            box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.4);
+            box-shadow: 0 8px 15px -5px rgba(244, 63, 94, 0.4);
         }
 
         .diag-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
             font-family: 'Outfit';
-            font-size: 0.7em;
+            font-size: 0.65em;
             opacity: 0.6;
         }
 
@@ -265,8 +265,8 @@
         }
 
         .led {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #475569;
         }
@@ -286,7 +286,7 @@
 <body>
     <div class="glass-container">
         <div class="header">
-            <div class="version-tag">DIAMOND EDITION V6.2</div>
+            <div class="version-tag">TITANIUM PLUS V6.4</div>
             <h1>🩺 ترياق</h1>
         </div>
 
@@ -298,7 +298,7 @@
         <div id="status-label">جاهز لبدء المحادثة..</div>
 
         <div class="chat-view" id="chat">
-            <div class="bubble ai">أهلاً بك في "ترياق". كيف يمكنني خدمتك اليوم؟</div>
+            <div class="bubble ai">أهلاً بك في "ترياق". كيف أقدر أخدمك اليوم؟</div>
         </div>
 
         <button id="main-btn" class="btn-premium" onclick="toggleSession()">
@@ -308,69 +308,39 @@
 
         <div class="diag-row">
             <div class="diag-item">
-                <div id="led-ws" class="led"></div> <span>WS</span>
+                <div id="led-ws" class="led"></div> <span>PORT_WS</span>
             </div>
             <div class="diag-item">
-                <div id="led-mic" class="led"></div> <span>MIC</span>
+                <div id="led-mic" class="led"></div> <span>VOICE_IN</span>
             </div>
-            <div id="conn-hint" style="display:none; color:var(--primary)">جاري محاولة الاتصال...</div>
+            <div id="conn-lbl" style="display:none; color:var(--primary)">جاري المزامنة...</div>
         </div>
     </div>
 
     <script>
         const ICONS = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
-
         let ws, audioCtx, micNode, processorNode, stream, analyser;
-        let queue = [], isPlaying = false;
-        let activeAiMsg = null, leftover = null;
+        let queue = [], isPlaying = false, leftover = null;
 
-        /** DYNAMIC URL RESOLUTION - Gold Standard for Proxies **/
+        /** V6.4 TITANIUM CONNECTIVITY GUARD **/
         function getWsUrl() {
-            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const host = window.location.host || 'voice.dev.rgeeb.com';
-            const path = `/ws/session/tiryaq_technology/user_${Math.floor(Math.random() * 1000)}`;
-            return `${protocol}//${host}${path}`;
-        }
-
-        function updateLED(id, state) {
-            const el = document.getElementById(id);
-            if (el) el.className = 'led ' + state;
-        }
-
-        function drawVisualizer() {
-            const canvas = document.getElementById('visualizer');
-            const ctx = canvas.getContext('2d');
-            canvas.width = 210; canvas.height = 210;
-            const data = new Uint8Array(analyser ? analyser.frequencyBinCount : 0);
-            function render() {
-                requestAnimationFrame(render);
-                if (!analyser) { ctx.clearRect(0, 0, 210, 210); return; }
-                analyser.getByteFrequencyData(data);
-                ctx.clearRect(0, 0, 210, 210);
-                ctx.beginPath(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3;
-                const radius = 95, cX = 105, cY = 105;
-                for (let i = 0; i < data.length; i++) {
-                    const h = data[i] / 2.2;
-                    const a = (i * 2 * Math.PI) / data.length;
-                    const x = cX + Math.cos(a) * (radius + h);
-                    const y = cY + Math.sin(a) * (radius + h);
-                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                }
-                ctx.closePath(); ctx.stroke();
-            }
-            render();
+            const h = window.location.hostname;
+            const isLocal = h === 'localhost' || h === '127.0.0.1';
+            const protocol = isLocal ? (window.location.protocol === 'https:' ? 'wss:' : 'ws:') : 'wss:';
+            // Use current host unless explicit override
+            const host = window.location.host;
+            return `${protocol}//${host}/ws/session/tiryaq_technology/user_${Math.floor(Math.random() * 1000)}`;
         }
 
         async function initAudio() {
             if (audioCtx) return;
-            if (!window.isSecureContext && window.location.hostname !== 'localhost') {
-                addBubble("⚠️ تنبيه: المتصفح يتطلب اتصال آمن (HTTPS) لتشغيل المايكروفون.", true);
+            if (!window.isSecureContext && window.location.protocol === 'https:') {
+                addBubble("⚠️ تنبيه: المتصفح يرفض المايكروفون في البيئات غير الآمنة.", true);
             }
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
                 analyser = audioCtx.createAnalyser(); analyser.fftSize = 64;
-
-                const code = `
+                const worklet = `
                     class P extends AudioWorkletProcessor {
                         process(inputs) {
                             const d = inputs[0][0]; if(!d) return true;
@@ -380,8 +350,7 @@
                         }
                     } registerProcessor('p', P);
                 `;
-                const dataUri = 'data:application/javascript;base64,' + btoa(code);
-
+                const dataUri = 'data:application/javascript;base64,' + btoa(worklet);
                 try {
                     await audioCtx.audioWorklet.addModule(dataUri);
                     processorNode = new AudioWorkletNode(audioCtx, 'p');
@@ -405,28 +374,26 @@
             if (audioCtx?.state === 'suspended') audioCtx.resume();
             if (!ws || ws.readyState !== 1) {
                 initAudio().then(() => connect());
-            } else {
-                ws.close();
-            }
+            } else { ws.close(); }
         }
 
         function connect() {
             if (ws) ws.close();
             const url = getWsUrl();
-            console.log("Connecting to:", url);
+            console.log("Titanium Plus Connecting:", url);
+            document.getElementById('conn-lbl').style.display = 'block';
             ws = new WebSocket(url);
-            document.getElementById('conn-hint').style.display = 'block';
 
             ws.onopen = async () => {
                 updateLED('led-ws', 'on');
-                document.getElementById('conn-hint').style.display = 'none';
+                document.getElementById('conn-lbl').style.display = 'none';
                 if (!stream) {
                     try {
                         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                         updateLED('led-mic', 'on');
                     } catch (e) {
                         updateLED('led-mic', 'err');
-                        addBubble("⚠️ تعذر الوصول للميكروفون. يرجى السماح بالصلاحيات.", true);
+                        addBubble("⚠️ يرجى تفعيل المايكروفون واستخدام HTTPS.", true);
                     }
                 }
                 micNode = audioCtx.createMediaStreamSource(stream);
@@ -439,10 +406,10 @@
                 if (typeof e.data === 'string') {
                     const m = JSON.parse(e.data);
                     if (m.type === 'state') setUIState(m.state);
-                    else if (m.type === 'user_text') { addBubble(m.content, false); activeAiMsg = null; }
+                    else if (m.type === 'user_text') { addBubble(m.content, false); }
                     else if (m.type === 'text') streamText(m.content);
                     else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
-                    else if (m.type === 'error') { addBubble(m.content, true); setUIState('idle'); }
+                    else if (m.type === 'error') addBubble("❌ خطأ: " + m.content, true);
                 } else {
                     queue.push(await e.data.arrayBuffer());
                     playPCM();
@@ -450,45 +417,15 @@
             };
 
             ws.onclose = (e) => {
-                updateLED('led-ws', '');
-                document.getElementById('conn-hint').style.display = 'none';
-                setUIState('idle');
-                if (micNode) micNode.disconnect();
-                if (e.code === 4001) addBubble("⚠️ خطأ في إعدادات المنشأة (Tenant ID).", true);
-                else if (!e.wasClean) addBubble("📉 انقطع الاتصال بالسيرفر.", true);
+                updateLED('led-ws', ''); document.getElementById('conn-lbl').style.display = 'none';
+                setUIState('idle'); if (micNode) micNode.disconnect();
+                if (e.code === 1006) addBubble("⚠️ السيرفر لا يستجيب. تأكد من إعدادات الـ Proxy في Dokploy.", true);
             };
 
             ws.onerror = (e) => {
                 updateLED('led-ws', 'err');
-                console.error("WebSocket Error:", e);
-                addBubble("⚠️ فشل الاتصال بالسيرفر. تأكد من تشغيل الباك اند.", true);
+                addBubble("⚠️ فشل الاتصال. تأكد من استخدام HTTPS.", true);
             };
-        }
-
-        function addBubble(txt, ai) {
-            const chat = document.getElementById('chat');
-            const d = document.createElement('div');
-            d.className = 'bubble ' + (ai ? 'ai' : 'user');
-            d.textContent = txt; chat.appendChild(d);
-            chat.scrollTop = chat.scrollHeight; return d;
-        }
-
-        function streamText(t) {
-            if (!activeAiMsg) activeAiMsg = addBubble('', true);
-            activeAiMsg.textContent += t;
-            document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
-        }
-
-        function setUIState(s) {
-            const orb = document.getElementById('orb');
-            orb.className = 'orb ' + (s || 'idle');
-            orb.textContent = ICONS[s] || ICONS.idle;
-            const lbl = document.getElementById('status-label');
-            const btn = document.getElementById('btn-text');
-            if (s === 'listening') { lbl.textContent = 'أسمعك الآن...'; btn.textContent = 'إنهاء'; }
-            else if (s === 'speaking') { lbl.textContent = 'يتحدث ترياق...'; }
-            else if (s === 'thinking') { lbl.textContent = 'لحظة من فضلك...'; }
-            else { lbl.textContent = 'جاهز للبدء'; btn.textContent = 'ابدأ المحادثة'; }
         }
 
         async function playPCM() {
@@ -510,7 +447,11 @@
                 const view = new DataView(raw);
                 const count = raw.byteLength / 2;
                 const f32 = new Float32Array(count);
-                for (let i = 0; i < count; i++) f32[i] = view.getInt16(i * 2, true) / 32768.0;
+                // NORMALIZATION: Handle gain to prevent noise
+                for (let i = 0; i < count; i++) {
+                    const s = view.getInt16(i * 2, true);
+                    f32[i] = s / 32768.0;
+                }
 
                 const buf = audioCtx.createBuffer(1, f32.length, 16000);
                 buf.getChannelData(0).set(f32);
@@ -520,6 +461,44 @@
                 src.start(0);
                 if (!document.getElementById('orb').classList.contains('speaking')) setUIState('speaking');
             } catch (e) { isPlaying = false; playPCM(); }
+        }
+
+        function drawVisualizer() {
+            const c = document.getElementById('visualizer'), ctx = c.getContext('2d');
+            c.width = 180; c.height = 180;
+            const d = new Uint8Array(analyser ? analyser.frequencyBinCount : 0);
+            function r() {
+                requestAnimationFrame(r); if (!analyser) return; ctx.clearRect(0, 0, 180, 180);
+                analyser.getByteFrequencyData(d); ctx.beginPath(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
+                const rad = 75, cx = 90, cy = 90;
+                for (let i = 0; i < d.length; i++) {
+                    const h = d[i] / 3; const a = (i * 2 * Math.PI) / d.length;
+                    const x = cx + Math.cos(a) * (rad + h), y = cy + Math.sin(a) * (rad + h);
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.closePath(); ctx.stroke();
+            } r();
+        }
+
+        function addBubble(t, ai) {
+            const c = document.getElementById('chat'), b = document.createElement('div');
+            b.className = 'bubble ' + (ai ? 'ai' : 'user'); b.textContent = t;
+            c.appendChild(b); c.scrollTop = c.scrollHeight; return b;
+        }
+
+        function streamText(t) {
+            const chat = document.getElementById('chat');
+            if (!activeAiMsg) activeAiMsg = addBubble('', true);
+            activeAiMsg.textContent += t; chat.scrollTop = chat.scrollHeight;
+        }
+
+        function setUIState(s) {
+            const orb = document.getElementById('orb'), lbl = document.getElementById('status-label'), btn = document.getElementById('btn-text');
+            orb.className = 'orb ' + (s || 'idle'); orb.textContent = ICONS[s] || ICONS.idle;
+            if (s === 'listening') { lbl.textContent = 'أسمعك الآن...'; btn.textContent = 'إنهاء'; }
+            else if (s === 'speaking') { lbl.textContent = 'يتحدث ترياق...'; }
+            else if (s === 'thinking') { lbl.textContent = 'لحظة من فضلك...'; }
+            else { lbl.textContent = 'جاهز للبدء'; btn.textContent = 'ابدأ المحادثة'; }
         }
     </script>
 </body>

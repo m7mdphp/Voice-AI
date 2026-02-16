@@ -186,10 +186,11 @@ Arabic (Saudi White Dialect) ONLY. No English words.
             )
             
             if response.status_code == 200:
-                for chunk in response.iter_content(chunk_size=16384): # High-res buffering
+                logger.debug(f"ElevenLabs Stream Started: {response.headers.get('Content-Type')}")
+                for chunk in response.iter_content(chunk_size=8192): # Aligned buffer
                     if chunk:
                         yield chunk
             else:
-                logger.error(f"TTS Error: {response.text}")
+                logger.error(f"TTS Error {response.status_code}: {response.text}")
         except Exception as e:
             logger.error(f"TTS Connection Failed: {e}")

@@ -42,15 +42,18 @@ app = FastAPI(title="Tiryaq Voice AI", version="3.0.0")
 
 @app.get("/")
 async def get_index():
-    # البحث عن ملف الفرونت اند في مجلد frontend أو المجلد الرئيسي
-    path = "/app/voice_assistant_v4.html"
-    if not os.path.exists(path):
-        path = "/app/frontend/voice_assistant_v4.html"
-    
-    if os.path.exists(path):
-        return FileResponse(path)
-    else:
-        return {"message": "Tiryaq Voice AI Backend is running", "status": "active", "version": "3.0.0"}
+    # Priority: Serving current v3 (Gold/Titanium) or v4
+    possible_paths = [
+        "/app/frontend/voice_assistant_v3.html",
+        "/app/voice_assistant_v3.html",
+        "/app/frontend/voice_assistant_v4.html",
+        "/app/voice_assistant_v4.html"
+    ]
+    for path in possible_paths:
+        if os.path.exists(path):
+            return FileResponse(path)
+            
+    return {"message": "Tiryaq Voice AI Backend is running", "status": "active", "version": "3.1.0"}
 
 @app.get("/health")
 async def health_check():
@@ -58,7 +61,7 @@ async def health_check():
     return {
         "status": "healthy",
         "service": "Tiryaq Voice AI",
-        "version": "3.0.0",
+        "version": "3.1.0",
         "env": settings.ENV,
         "logs": os.path.exists("logs")
     }
@@ -310,12 +313,18 @@ async def process_audio_buffer(
 # ================= WebSocket Endpoint =================
 @app.websocket("/ws/session/{tenant_id}/{user_id}")
 async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
-    logger.info(f"Incoming WebSocket connection: tenant={tenant_id}, user={user_id}")
+    logger.info(f"Incoming WS Connection: {tenant_id} | User: {user_id}")
+    logger.debug(f"Upgrade Headers: {dict(ws.headers)}")
+    
     try:
+        # Explicit upgrade check
+        if ws.headers.get("upgrade", "").lower() != "websocket":
+            logger.warning("Invalid upgrade header")
+            
         await ws.accept()
-        logger.success(f"WebSocket handshake accepted for {user_id}")
+        logger.success(f"Handshake Successful: {user_id}")
     except Exception as e:
-        logger.error(f"WebSocket Handshake failed for {user_id}: {e}")
+        logger.error(f"Handshake Failed: {e}")
         return
 
     session_id = f"{tenant_id}-{user_id}-{int(time.time())}"
