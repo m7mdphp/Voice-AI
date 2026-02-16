@@ -4,7 +4,9 @@ nixPkgs = ["...", "python3", "python3Packages.pip"]
 
 [phases.build]
 cmds = [
-  "pip3 install -r backend/requirements.txt --break-system-packages"
+  "pip3 install -r backend/requirements.txt --break-system-packages",
+  "cp frontend/voice_assistant_v*.html /app/ || true",
+  "chmod 644 /app/voice_assistant_v*.html || true"
 ]
 
 [start]
@@ -17,7 +19,7 @@ PYTHONUNBUFFERED = "1"
 
 # Deploy nginx configuration for static file serving
 [deploy]
-startCommand = "cp nginx.conf /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+startCommand = "cp nginx.conf /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;' && ./test-files.sh"
 healthcheckPath = "/health"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"
