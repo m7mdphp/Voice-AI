@@ -20,6 +20,7 @@ from openai import OpenAI
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
 from services.agent_engine import GroqEngine
@@ -38,22 +39,33 @@ logger.add(
 request_id_var: ContextVar[str] = ContextVar("request_id", default="unknown")
 
 # ================= App Initialization =================
-app = FastAPI(title="Tiryaq Voice AI", version="3.2.0")
+app = FastAPI(title="Tiryaq Voice AI", version="7.0.0")
+
+# Serve the frontend directory directly via FastAPI
+frontend_dir = "/app/frontend"
+if not os.path.exists(frontend_dir):
+    # Fallback for local development or subfolder structure
+    frontend_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
+
+if os.path.exists(frontend_dir):
+    app.mount("/web", StaticFiles(directory=frontend_dir), name="web")
+    logger.info(f"Mounted frontend directory: {frontend_dir}")
 
 @app.get("/")
 async def get_index():
-    # Priority: Serving current v3 (Gold/Titanium) or v4
+    # Priority: Serving current v3 (Ultimate V7.0)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
     possible_paths = [
         "/app/frontend/voice_assistant_v3.html",
         "/app/voice_assistant_v3.html",
-        "/app/frontend/voice_assistant_v4.html",
-        "/app/voice_assistant_v4.html"
+        os.path.join(current_dir, "..", "frontend", "voice_assistant_v3.html"),
+        os.path.join(current_dir, "frontend", "voice_assistant_v3.html"),
     ]
     for path in possible_paths:
         if os.path.exists(path):
             return FileResponse(path)
             
-    return {"message": "Tiryaq Voice AI Backend is running", "status": "active", "version": "3.2.0"}
+    return {"message": "Tiryaq Voice AI (Ultimate V7.0) is running", "status": "active"}
 
 @app.get("/health")
 async def health_check():
@@ -130,7 +142,7 @@ memory_manager = MemoryManager()
 SAMPLE_RATE = 16000
 VOICE_THRESHOLD = 800  
 SILENCE_THRESHOLD = 400
-SILENCE_DURATION_LIMIT = 1.2  # Najm Standard: Increased to 1.2s for human patience
+SILENCE_DURATION_LIMIT = 1.5  # Tuned for Saudi speech patterns
 MIN_SPEECH_DURATION = 0.7     # Ignore sounds shorter than 700ms (filtering noise)
 MIN_BUFFER_SIZE = 16000        # Minimum 500ms of audio buffer
 

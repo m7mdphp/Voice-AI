@@ -23,6 +23,7 @@ PYTHONPATH = "/app/backend"
 PYTHONUNBUFFERED = "1"
 
 [deploy]
+startCommand = "cd backend && python main.py"
 healthcheckPath = "/health"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"

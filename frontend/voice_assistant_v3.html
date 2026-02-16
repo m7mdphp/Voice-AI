@@ -4,63 +4,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ترياق V6.4 - بلس</title>
+    <title>ترياق Elite V8.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Tajawal:wght@400;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Tajawal:wght@400;500;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --primary: #38bdf8;
-            --primary-glow: rgba(56, 189, 248, 0.4);
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            --glass: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg: #050505;
+            --accent: #0ea5e9;
+            --accent-glow: rgba(14, 165, 233, 0.4);
+            --glass: rgba(15, 15, 15, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
             --success: #10b981;
-            --error: #f43f5e;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
+            --error: #ef4444;
+            --warning: #f59e0b;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text-main);
-            min-height: 100vh;
+            font-family: 'Tajawal', 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(circle at 50% -20%, #1e293b 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, #0f172a 0%, transparent 40%);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            padding: 10px;
-            touch-action: manipulation;
         }
 
-        .glass-container {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: 30px;
+        /* --- Elite Layout --- */
+        .app-shell {
             width: 100%;
-            max-width: 480px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-            animation: fadeIn 0.8s ease-out;
+            max-width: 500px;
+            height: 100%;
+            max-height: 900px;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
             position: relative;
         }
 
-        @keyframes fadeIn {
+        .header {
+            text-align: center;
+            margin-bottom: 2vh;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo {
+            font-family: 'Inter';
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            opacity: 0.8;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- The Elite Orb --- */
+        .orb-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .orb-layers {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .orb-layers:hover {
+            transform: scale(1.05);
+        }
+
+        .orb-core {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #3b82f6, #1d4ed8);
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.3);
+            z-index: 10;
+        }
+
+        .orb-glow {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            filter: blur(40px);
+            opacity: 0.4;
+            animation: orbFloat 4s infinite ease-in-out;
+        }
+
+        .visualizer-svg {
+            position: absolute;
+            inset: -40px;
+            width: 300px;
+            height: 300px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        /* --- Chat View --- */
+        .chat-container {
+            height: 35vh;
+            margin-bottom: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            scrollbar-width: none;
+        }
+
+        .chat-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .bubble {
+            padding: 12px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            max-width: 85%;
+            line-height: 1.6;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .bubble.ai {
+            align-self: flex-start;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+        }
+
+        .bubble.user {
+            align-self: flex-end;
+            background: var(--accent);
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* --- Controls --- */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: 20px;
+        }
+
+        .status-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            height: 1.5rem;
+        }
+
+        .btn-elite {
+            background: var(--text-primary);
+            color: var(--bg);
+            border: none;
+            padding: 20px;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-elite:hover {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .btn-elite.active {
+            background: var(--error);
+            color: white;
+        }
+
+        .diagnostics {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.65rem;
+            font-family: 'Inter';
+            font-weight: 600;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .diag-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .led {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #333;
+        }
+
+        .led.on {
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .led.err {
+            background: var(--error);
+            box-shadow: 0 0 8px var(--error);
+        }
+
+        /* --- Animations --- */
+        @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(10px);
             }
 
             to {
@@ -69,282 +274,118 @@
             }
         }
 
-        .header {
-            margin-bottom: 15px;
-        }
-
-        .version-tag {
-            font-family: 'Outfit';
-            font-size: 0.65em;
-            color: var(--primary);
-            letter-spacing: 3px;
-            font-weight: 700;
-            opacity: 0.8;
-        }
-
-        h1 {
-            font-size: 2.8em;
-            margin: 5px 0;
-            background: linear-gradient(to bottom, #fff, var(--primary));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 8px var(--primary-glow));
-        }
-
-        .orb-wrapper {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            margin: 15px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .orb {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #334155, #0f172a);
-            border: 4px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            z-index: 2;
-        }
-
-        canvas {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: 180px;
-            height: 180px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .orb.listening {
-            border-color: var(--success);
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
-            transform: scale(1.05);
-        }
-
-        .orb.thinking {
-            border-color: #fbbf24;
-            animation: pulse-glow 1.5s infinite;
-        }
-
-        .orb.speaking {
-            border-color: var(--primary);
-            box-shadow: 0 0 40px var(--primary-glow);
-            transform: scale(1.1);
-        }
-
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
-            }
-
-            70% {
-                box-shadow: 0 0 0 20px rgba(251, 191, 36, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
-            }
-        }
-
-        #status-label {
-            font-size: 1.05em;
-            color: var(--text-dim);
-            margin-bottom: 15px;
-            font-weight: 500;
-            height: 1.25em;
-        }
-
-        .chat-view {
-            background: rgba(15, 23, 42, 0.4);
-            border-radius: 20px;
-            height: 220px;
-            overflow-y: auto;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border: 1px solid var(--glass-border);
-            text-align: right;
-            scrollbar-width: thin;
-            scrollbar-color: var(--glass-border) transparent;
-        }
-
-        .bubble {
-            padding: 10px 15px;
-            border-radius: 18px;
-            max-width: 85%;
-            font-size: 1em;
-            line-height: 1.5;
-            animation: bubblePop 0.3s ease-out;
-            word-wrap: break-word;
-        }
-
-        @keyframes bubblePop {
+        @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(10px) scale(0.95);
+                transform: translateY(-20px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
-        .bubble.user {
-            background: rgba(51, 65, 85, 0.8);
-            align-self: flex-start;
-            border-bottom-right-radius: 4px;
+        /* --- States --- */
+        .state-listening .orb-core {
+            background: radial-gradient(circle at 30% 30%, #10b981, #059669);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
         }
 
-        .bubble.ai {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            align-self: flex-end;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        .state-thinking .orb-core {
+            background: radial-gradient(circle at 30% 30%, #f59e0b, #d97706);
+            animation: pulseRotate 2s infinite linear;
         }
 
-        .btn-premium {
-            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
-            color: #0f172a;
-            border: none;
-            padding: 16px;
-            border-radius: 18px;
-            font-size: 1.2em;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 8px 15px -5px rgba(56, 189, 248, 0.4);
+        .state-speaking .orb-core {
+            background: radial-gradient(circle at 30% 30%, #3b82f6, #2563eb);
         }
 
-        .btn-premium:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px -5px rgba(56, 189, 248, 0.5);
-        }
+        @keyframes pulseRotate {
+            0% {
+                transform: scale(1);
+            }
 
-        .btn-premium.active {
-            background: var(--error);
-            color: #fff;
-            box-shadow: 0 8px 15px -5px rgba(244, 63, 94, 0.4);
-        }
+            50% {
+                transform: scale(1.05);
+            }
 
-        .diag-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-top: 15px;
-            font-family: 'Outfit';
-            font-size: 0.65em;
-            opacity: 0.6;
-        }
-
-        .diag-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .led {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #475569;
-        }
-
-        .led.on {
-            background: var(--success);
-            box-shadow: 0 0 5px var(--success);
-        }
-
-        .led.err {
-            background: var(--error);
-            box-shadow: 0 0 5px var(--error);
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="glass-container">
+    <div class="app-shell">
         <div class="header">
-            <div class="version-tag">TITANIUM PLUS V6.4</div>
-            <h1>🩺 ترياق</h1>
+            <div class="logo">Tiryaq Technology</div>
+            <h1>ترياق</h1>
         </div>
 
-        <div class="orb-wrapper" onclick="toggleSession()">
-            <canvas id="visualizer"></canvas>
-            <div id="orb" class="orb">💤</div>
+        <div class="orb-container">
+            <svg class="visualizer-svg" viewbox="0 0 300 300">
+                <circle id="visualizer-circle" cx="150" cy="150" r="110" fill="none" stroke="rgba(56, 189, 248, 0.2)"
+                    stroke-width="2" />
+                <path id="waveform" d="" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <div class="orb-layers" id="orb-trigger" onclick="toggleSession()">
+                <div class="orb-glow"></div>
+                <div class="orb-core" id="orb-core"></div>
+            </div>
         </div>
 
-        <div id="status-label">جاهز لبدء المحادثة..</div>
-
-        <div class="chat-view" id="chat">
-            <div class="bubble ai">أهلاً بك في "ترياق". كيف أقدر أخدمك اليوم؟</div>
+        <div class="chat-container" id="chat">
+            <div class="bubble ai">أهلاً بك في ترياق. كيف يمكنني مساعدتك برمجياً اليوم؟</div>
         </div>
 
-        <button id="main-btn" class="btn-premium" onclick="toggleSession()">
-            <span id="btn-icon">🎤</span>
-            <span id="btn-text">ابدأ المحادثة</span>
-        </button>
+        <div class="controls">
+            <div id="status-label" class="status-text">اضغط على الأورب لبدء الحديث</div>
+            <button id="main-btn" class="btn-elite" onclick="toggleSession()">
+                <span id="btn-text">بدء الاستشارة</span>
+            </button>
+        </div>
 
-        <div class="diag-row">
+        <div class="diagnostics">
             <div class="diag-item">
-                <div id="led-ws" class="led"></div> <span>PORT_WS</span>
+                <div id="led-ws" class="led"></div> <span>NETWORK</span>
             </div>
             <div class="diag-item">
-                <div id="led-mic" class="led"></div> <span>VOICE_IN</span>
+                <div id="led-mic" class="led"></div> <span>AUDIO_IN</span>
             </div>
-            <div id="conn-lbl" style="display:none; color:var(--primary)">جاري المزامنة...</div>
+            <div class="diag-item"><span id="version-lbl">ULTIMA V8.0</span></div>
         </div>
     </div>
 
     <script>
-        const ICONS = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
-        let ws, audioCtx, micNode, processorNode, stream, analyser;
+        let ws, audioCtx, micNode, processorNode, stream, analyser, dataArray;
         let queue = [], isPlaying = false, leftover = null, activeAiMsg = null;
+        const ORB = document.getElementById('orb-core');
+        const STATUS = document.getElementById('status-label');
+        const CHAT = document.getElementById('chat');
 
         function updateLED(id, state) {
             const el = document.getElementById(id);
             if (el) el.className = 'led ' + state;
         }
 
-        /** OMNI EDITION V6.5 - RESILIENT URL RESOLUTION **/
         function getWsUrl() {
             const h = window.location.hostname;
             const isLocal = h === 'localhost' || h === '127.0.0.1';
             const protocol = isLocal ? (window.location.protocol === 'https:' ? 'wss:' : 'ws:') : 'wss:';
-            // Use current host or fallback to production
             const host = window.location.host || 'voice.dev.rgeeb.com';
-            return `${protocol}//${host}/ws/session/tiryaq_technology/user_1`;
+            return `${protocol}//${host}/ws/session/tiryaq_technology/user_${Math.floor(Math.random() * 1000)}`;
         }
 
         async function initAudio() {
             if (audioCtx) return;
-            if (!window.isSecureContext && window.location.protocol === 'https:') {
-                addBubble("⚠️ تنبيه: المتصفح يرفض المايكروفون في البيئات غير الآمنة.", true);
-            }
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
-                analyser = audioCtx.createAnalyser(); analyser.fftSize = 64;
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 256;
+                dataArray = new Uint8Array(analyser.frequencyBinCount);
+
                 const worklet = `
                     class P extends AudioWorkletProcessor {
                         process(inputs) {
@@ -356,108 +397,90 @@
                     } registerProcessor('p', P);
                 `;
                 const dataUri = 'data:application/javascript;base64,' + btoa(worklet);
-                try {
-                    await audioCtx.audioWorklet.addModule(dataUri);
-                    processorNode = new AudioWorkletNode(audioCtx, 'p');
-                    processorNode.port.onmessage = (e) => {
-                        if (ws?.readyState === 1 && document.getElementById('orb').classList.contains('listening')) ws.send(e.data);
-                    };
-                } catch (e) {
-                    processorNode = audioCtx.createScriptProcessor(4096, 1, 1);
-                    processorNode.onaudioprocess = (e) => {
-                        const d = e.inputBuffer.getChannelData(0);
-                        const p = new Int16Array(d.length);
-                        for (let j = 0; j < d.length; j++) p[j] = Math.max(-32768, Math.min(32767, d[j] * 32768));
-                        if (ws?.readyState === 1 && document.getElementById('orb').classList.contains('listening')) ws.send(p.buffer);
-                    };
-                }
+                await audioCtx.audioWorklet.addModule(dataUri);
+                processorNode = new AudioWorkletNode(audioCtx, 'p');
+                processorNode.port.onmessage = (e) => {
+                    if (ws?.readyState === 1 && document.body.classList.contains('state-listening')) {
+                        ws.send(e.data);
+                    }
+                };
                 drawVisualizer();
-            } catch (e) { console.error("Audio Init Failed", e); }
+            } catch (e) { console.error("Audio Fail", e); }
         }
 
         function toggleSession() {
             if (audioCtx?.state === 'suspended') audioCtx.resume();
-            if (!ws || ws.readyState !== 1) {
-                initAudio().then(() => connect());
-            } else {
-                addBubble("تم إنهاء الجلسة.", true);
-                ws.close();
-            }
+            if (!ws || ws.readyState !== 1) connect(); else stopSession();
+        }
+
+        function stopSession() {
+            if (ws) ws.close();
+            setUIState('idle');
+            updateLED('led-ws', '');
+            if (window.pingInterval) clearInterval(window.pingInterval);
         }
 
         function connect() {
-            if (ws) ws.close();
-            const url = getWsUrl();
-            console.log("Ultima Pro V6.7 Connecting:", url);
-            document.getElementById('status-label').textContent = 'جاري الاتصال بالسيرفر...';
-            document.getElementById('conn-lbl').style.display = 'block';
-
-            try {
+            initAudio().then(async () => {
+                const url = getWsUrl();
                 ws = new WebSocket(url);
-            } catch (e) {
-                addBubble("⚠️ خطأ في تكوين البروتوكول: " + e.message, true);
-                return;
-            }
+                setUIState('thinking');
 
-            ws.onopen = async () => {
-                updateLED('led-ws', 'on');
-                document.getElementById('conn-lbl').style.display = 'none';
-                activeAiMsg = null;
-
-                if (window.pingInterval) clearInterval(window.pingInterval);
-                window.pingInterval = setInterval(() => {
-                    if (ws?.readyState === 1) ws.send(JSON.stringify({ type: 'ping' }));
-                }, 30000);
-
-                if (!stream) {
-                    try {
+                ws.onopen = async () => {
+                    updateLED('led-ws', 'on');
+                    if (!stream) {
                         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                         updateLED('led-mic', 'on');
-                    } catch (e) {
-                        updateLED('led-mic', 'err');
-                        addBubble("⚠️ يرجى تفعيل المايكروفون واستخدام HTTPS.", true);
                     }
-                }
-                micNode = audioCtx.createMediaStreamSource(stream);
-                micNode.connect(analyser); micNode.connect(processorNode);
-                if (!processorNode.port) processorNode.connect(audioCtx.destination);
-                setUIState('listening');
-            };
+                    micNode = audioCtx.createMediaStreamSource(stream);
+                    micNode.connect(analyser);
+                    micNode.connect(processorNode);
+                    if (!processorNode.port) processorNode.connect(audioCtx.destination);
+                    setUIState('listening');
 
-            ws.onmessage = async (e) => {
-                if (typeof e.data === 'string') {
-                    const m = JSON.parse(e.data);
-                    if (m.type === 'state') setUIState(m.state);
-                    else if (m.type === 'user_text') { addBubble(m.content, false); activeAiMsg = null; }
-                    else if (m.type === 'text') streamText(m.content);
-                    else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
-                    else if (m.type === 'error') addBubble("❌ خطأ: " + m.content, true);
-                } else {
-                    queue.push(await e.data.arrayBuffer());
-                    playPCM();
-                }
-            };
+                    window.pingInterval = setInterval(() => {
+                        if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'ping' }));
+                    }, 20000);
+                };
 
-            ws.onclose = (e) => {
-                console.log("WS Closed:", e.code, e.reason);
-                updateLED('led-ws', '');
-                document.getElementById('conn-lbl').style.display = 'none';
-                setUIState('idle');
-                if (micNode) micNode.disconnect();
-                activeAiMsg = null;
-                if (window.pingInterval) clearInterval(window.pingInterval);
+                ws.onmessage = async (e) => {
+                    if (typeof e.data === 'string') {
+                        const m = JSON.parse(e.data);
+                        if (m.type === 'state') setUIState(m.state);
+                        else if (m.type === 'user_text') { addBubble(m.content, false); activeAiMsg = null; }
+                        else if (m.type === 'text') streamText(m.content);
+                        else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
+                    } else {
+                        queue.push(await e.data.arrayBuffer());
+                        playPCM();
+                    }
+                };
 
-                if (e.code === 1006) {
-                    addBubble("⚠️ انقطع الاتصال (Handshake Failed). قد يحتاج السيرفر لإعادة تشغيل أو تأكد من إعدادات البروكسي.", true);
-                    document.getElementById('main-btn').innerHTML = '<span>🔄</span> <span>إعادة محاولة</span>';
-                }
-            };
+                ws.onclose = () => stopSession();
+                ws.onerror = () => updateLED('led-ws', 'err');
+            });
+        }
 
-            ws.onerror = (e) => {
-                console.error("WS Error Encountered");
-                updateLED('led-ws', 'err');
-                addBubble("⚠️ فشل الاتصال. تأكد من أن السيرفر يعمل واستخدم HTTPS.", true);
-            };
+        function setUIState(s) {
+            document.body.className = 'state-' + s;
+            const labels = { idle: 'ابدأ الاستشارة', listening: 'أنا أسمعك...', thinking: 'أفكر...', speaking: 'ترياق يتحدث...' };
+            STATUS.textContent = labels[s] || labels.idle;
+            document.getElementById('btn-text').textContent = s === 'idle' ? 'بدء الاستشارة' : 'إنهاء';
+        }
+
+        function addBubble(t, ai) {
+            const b = document.createElement('div');
+            b.className = 'bubble ' + (ai ? 'ai' : 'user');
+            b.textContent = t;
+            CHAT.appendChild(b);
+            CHAT.scrollTop = CHAT.scrollHeight;
+            return b;
+        }
+
+        function streamText(t) {
+            if (!activeAiMsg) activeAiMsg = addBubble('', true);
+            activeAiMsg.textContent += t;
+            CHAT.scrollTop = CHAT.scrollHeight;
         }
 
         async function playPCM() {
@@ -474,16 +497,10 @@
                     leftover = new Uint8Array(raw.slice(-1));
                     raw = raw.slice(0, -1);
                 }
-                if (raw.byteLength === 0) { isPlaying = false; playPCM(); return; }
-
                 const view = new DataView(raw);
                 const count = raw.byteLength / 2;
                 const f32 = new Float32Array(count);
-                // NORMALIZATION: Handle gain to prevent noise
-                for (let i = 0; i < count; i++) {
-                    const s = view.getInt16(i * 2, true);
-                    f32[i] = s / 32768.0;
-                }
+                for (let i = 0; i < count; i++) f32[i] = view.getInt16(i * 2, true) / 32768.0;
 
                 const buf = audioCtx.createBuffer(1, f32.length, 16000);
                 buf.getChannelData(0).set(f32);
@@ -491,46 +508,29 @@
                 src.buffer = buf; src.connect(audioCtx.destination);
                 src.onended = () => { isPlaying = false; playPCM(); };
                 src.start(0);
-                if (!document.getElementById('orb').classList.contains('speaking')) setUIState('speaking');
             } catch (e) { isPlaying = false; playPCM(); }
         }
 
         function drawVisualizer() {
-            const c = document.getElementById('visualizer'), ctx = c.getContext('2d');
-            c.width = 180; c.height = 180;
-            const d = new Uint8Array(analyser ? analyser.frequencyBinCount : 0);
-            function r() {
-                requestAnimationFrame(r); if (!analyser) return; ctx.clearRect(0, 0, 180, 180);
-                analyser.getByteFrequencyData(d); ctx.beginPath(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
-                const rad = 75, cx = 90, cy = 90;
-                for (let i = 0; i < d.length; i++) {
-                    const h = d[i] / 3; const a = (i * 2 * Math.PI) / d.length;
-                    const x = cx + Math.cos(a) * (rad + h), y = cy + Math.sin(a) * (rad + h);
-                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            const path = document.getElementById('waveform');
+            function render() {
+                requestAnimationFrame(render);
+                if (!analyser) return;
+                analyser.getByteFrequencyData(dataArray);
+                let d = "M150,150 ";
+                const points = 64;
+                for (let i = 0; i < points; i++) {
+                    const angle = (i / points) * Math.PI * 2;
+                    const value = dataArray[i] / 4;
+                    const r = 110 + value;
+                    const x = 150 + Math.cos(angle) * r;
+                    const y = 150 + Math.sin(angle) * r;
+                    d += `L${x},${y} `;
                 }
-                ctx.closePath(); ctx.stroke();
-            } r();
-        }
-
-        function addBubble(t, ai) {
-            const c = document.getElementById('chat'), b = document.createElement('div');
-            b.className = 'bubble ' + (ai ? 'ai' : 'user'); b.textContent = t;
-            c.appendChild(b); c.scrollTop = c.scrollHeight; return b;
-        }
-
-        function streamText(t) {
-            const chat = document.getElementById('chat');
-            if (!activeAiMsg) activeAiMsg = addBubble('', true);
-            activeAiMsg.textContent += t; chat.scrollTop = chat.scrollHeight;
-        }
-
-        function setUIState(s) {
-            const orb = document.getElementById('orb'), lbl = document.getElementById('status-label'), btn = document.getElementById('btn-text');
-            orb.className = 'orb ' + (s || 'idle'); orb.textContent = ICONS[s] || ICONS.idle;
-            if (s === 'listening') { lbl.textContent = 'أسمعك الآن...'; btn.textContent = 'إنهاء'; }
-            else if (s === 'speaking') { lbl.textContent = 'يتحدث ترياق...'; }
-            else if (s === 'thinking') { lbl.textContent = 'لحظة من فضلك...'; }
-            else { lbl.textContent = 'جاهز للبدء'; btn.textContent = 'ابدأ المحادثة'; }
+                d += "Z";
+                path.setAttribute('d', d);
+            }
+            render();
         }
     </script>
 </body>

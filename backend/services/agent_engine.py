@@ -128,7 +128,7 @@ Arabic (Saudi White Dialect) ONLY. No English words.
                 model=self.model,
                 messages=messages,
                 max_tokens=self.max_tokens,
-                temperature=0.7, # Slightly higher for more natural flow
+                temperature=0.6, # Elite Calibration: Grounded Professionalism
                 stream=True
             )
             
