@@ -26,6 +26,10 @@ from services.firestore_memory import MemoryManager
 from config import settings
 
 # ================= Logging =================
+# Ensure logs directory exists to prevent crash
+if not os.path.exists("logs"):
+    os.makedirs("logs")
+
 logger.add(
     "logs/tiryaq_{time}.log",
     rotation="1 day",
@@ -53,7 +57,14 @@ async def get_index():
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "service": "Tiryaq Voice AI", "version": "2.2.0"}
+    """Unified health check with metadata"""
+    return {
+        "status": "healthy",
+        "service": "Tiryaq Voice AI",
+        "version": "2.3.0",
+        "env": settings.ENV,
+        "logs": os.path.exists("logs")
+    }
 
 @app.get("/debug/files")
 async def debug_files():
@@ -392,14 +403,7 @@ async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
         logger.info(f"Finalized session {session_id}")
 
 
-# ================= Health Check =================
-@app.get("/health")
-async def health():
-    return {
-        "status": "healthy",
-        "service": "Tiryaq Voice AI",
-        "version": "2.2.0"
-    }
+# Duplicate health route removed here (consolidated at top)
 
 
 # ================= Execution =================

@@ -129,8 +129,20 @@
     </div>
 
     <script>
-        // Automatic URL detection
-        document.getElementById('url').value = `ws://${window.location.host}/ws/session/tiryaq_technology/user1`;
+        // إعداد رابط الاتصال تلقائياً
+        const serverIP = '109.199.101.134:8000';
+        let wsUrl;
+
+        if (window.location.protocol === 'https:') {
+            // إذا كنت تستخدم دومين مشفر، يجب الاتصال بنفس الدومين لضمان الأمان
+            wsUrl = `wss://${window.location.host}/ws/session/tiryaq_technology/user1`;
+        } else {
+            // إذا كنت تفتح الـ IP مباشرة، اتصل بالـ IP
+            const host = window.location.host || serverIP;
+            wsUrl = `ws://${host}/ws/session/tiryaq_technology/user1`;
+        }
+
+        document.getElementById('url').value = wsUrl;
 
         let ws, audioCtx, stream, proc, isPlaying = false, queue = [];
         const SAMPLE_RATE = 16000;
@@ -207,7 +219,9 @@
 
         function toggle() {
             if (!ws || ws.readyState !== 1) {
-                ws = new WebSocket(document.getElementById('url').value);
+                const targetUrl = document.getElementById('ws_url_input').value;
+                console.log("Connecting to:", targetUrl);
+                ws = new WebSocket(targetUrl);
                 ws.onopen = startMic;
                 ws.onmessage = async (e) => {
                     if (typeof e.data === 'string') {

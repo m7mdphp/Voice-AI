@@ -4,8 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ترياق V3.1 - المساعد الصحي الذكي</title>
+    <title>ترياق V5.2 - الجودة الفائقة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Tajawal:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.4);
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --glass: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --success: #10b981;
+            --error: #f43f5e;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,147 +29,36 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f172a;
-            color: white;
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
             padding: 20px;
         }
 
-        .container {
-            background: #1e293b;
-            border-radius: 24px;
+        .glass-container {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
             padding: 40px;
-            max-width: 550px;
             width: 100%;
+            max-width: 500px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid #334155;
-        }
-
-        .version {
-            font-size: 0.8em;
-            color: #64748b;
-            margin-bottom: 10px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        h1 {
-            color: #38bdf8;
-            margin-bottom: 8px;
-            font-size: 2.5em;
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
-        }
-
-        .status-circle {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background: #334155;
-            border: 4px solid #475569;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .status-circle.listening {
-            background: #059669;
-            border-color: #10b981;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
-        }
-
-        .status-circle.thinking {
-            background: #d97706;
-            border-color: #f59e0b;
-            animation: rotate 2s linear infinite;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .status-circle.speaking {
-            background: #dc2626;
-            border-color: #ef4444;
-            animation: bounce 1s infinite;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.08);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .chat-box {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 16px;
-            height: 300px;
-            overflow-y: auto;
-            padding: 20px;
-            margin: 20px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border: 1px solid #334155;
-            scrollbar-width: thin;
-            scrollbar-color: #475569 #0f172a;
-        }
-
-        .msg {
-            padding: 12px 18px;
-            border-radius: 18px;
-            max-width: 85%;
-            font-size: 1.05em;
-            line-height: 1.5;
-            word-wrap: break-word;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.8s ease-out;
             position: relative;
-            animation: fadeIn 0.3s ease-out;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
 
             to {
@@ -162,228 +67,451 @@
             }
         }
 
-        .msg.user {
-            background: #334155;
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .version-tag {
+            font-family: 'Outfit';
+            font-size: 0.7em;
+            color: var(--primary);
+            letter-spacing: 3px;
+            font-weight: 700;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 8px 0;
+            background: linear-gradient(to bottom, #fff, var(--primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px var(--primary-glow));
+        }
+
+        .orb-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orb {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #334155, #0f172a);
+            border: 4px solid var(--glass-border);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5em;
+            z-index: 2;
+        }
+
+        canvas {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 210px;
+            height: 210px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .orb.listening {
+            border-color: var(--success);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .orb.thinking {
+            border-color: #fbbf24;
+            animation: pulse-glow 1.5s infinite;
+        }
+
+        .orb.speaking {
+            border-color: var(--primary);
+            box-shadow: 0 0 40px var(--primary-glow);
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(251, 191, 36, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+            }
+        }
+
+        #status-label {
+            font-size: 1.1em;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .chat-view {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 20px;
+            height: 250px;
+            overflow-y: auto;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 1px solid var(--glass-border);
+            text-align: right;
+            scrollbar-width: none;
+        }
+
+        .chat-view::-webkit-scrollbar {
+            display: none;
+        }
+
+        .bubble {
+            padding: 12px 18px;
+            border-radius: 18px;
+            max-width: 85%;
+            font-size: 1.05em;
+            line-height: 1.6;
+            animation: bubblePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            word-wrap: break-word;
+        }
+
+        @keyframes bubblePop {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .bubble.user {
+            background: rgba(51, 65, 85, 0.8);
             align-self: flex-start;
-            /* Correct for RTL: User is start (right in Arabic layout) */
-            color: #f1f5f9;
             border-bottom-right-radius: 4px;
-            text-align: right;
         }
 
-        .msg.ai {
-            background: #0284c7;
+        .bubble.ai {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             align-self: flex-end;
-            /* AI is end (left in Arabic layout) */
-            color: white;
             border-bottom-left-radius: 4px;
-            text-align: right;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .msg-icon {
-            margin-left: 8px;
-            font-size: 1.2em;
-            vertical-align: middle;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+        .btn-premium {
+            background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
             color: #0f172a;
             border: none;
             padding: 18px;
-            border-radius: 12px;
-            font-size: 1.2em;
-            font-weight: 800;
+            border-radius: 18px;
+            font-size: 1.25em;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3);
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4);
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px rgba(56, 189, 248, 0.5);
         }
 
-        .btn:active {
-            transform: translateY(0);
+        .btn-premium.active {
+            background: var(--error);
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(244, 63, 10, 0.4);
         }
 
-        .url-box {
-            margin-top: 20px;
-            background: #1e293b;
-            padding: 5px;
-            border-radius: 10px;
+        .diag-pill {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: 'Outfit';
+            font-size: 0.65em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid var(--glass-border);
         }
 
-        .url-box input {
-            width: 100%;
+        .led {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #64748b;
+        }
+
+        .led.active {
+            background: var(--success);
+            box-shadow: 0 0 5px var(--success);
+        }
+
+        .url-settings {
+            margin-top: 15px;
+            font-size: 0.75em;
+        }
+
+        .url-settings input {
             background: transparent;
-            border: 1px solid #334155;
-            color: #94a3b8;
-            padding: 8px;
-            border-radius: 6px;
+            border: none;
+            color: var(--primary);
             text-align: center;
-            font-family: monospace;
-            font-size: 0.9em;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: underline;
+            opacity: 0.6;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="version">V3.1 FIX: STREAMING STABILITY</div>
-        <h1>🩺 ترياق</h1>
-        <div id="circle" class="status-circle">💤</div>
-        <div id="statusText">اضغط للبدء</div>
+    <div class="diag-pill">
+        <div id="led-conn" class="led"></div>
+        <span id="conn-text">STANDBY</span>
+    </div>
 
-        <div class="chat-box" id="chat">
-            <div class="msg ai"><span class="msg-icon">🤖</span>أهلاً بك. أنا ترياق، كيف يمكنني مساعدتك طبياً اليوم؟
-            </div>
+    <div class="glass-container">
+        <div class="header">
+            <div class="version-tag">PREMIUM SAAS V5.2 (HI-FI ARABIC)</div>
+            <h1>🩺 ترياق</h1>
         </div>
 
-        <button id="btn" class="btn" onclick="toggle()">ابدأ المحادثة الصوتية</button>
+        <div class="orb-wrapper">
+            <canvas id="visualizer"></canvas>
+            <div id="orb" class="orb">💤</div>
+        </div>
 
-        <div class="url-box">
-            <input type="text" id="url" value="ws://localhost:8000/ws/session/tiryaq_technology/user1">
+        <div id="status-label">جاهز لبدء المحادثة..</div>
+
+        <div class="chat-view" id="chat">
+            <div class="bubble ai">أهلاً بك في "ترياق". كيف يمكنني خدمتك اليوم؟</div>
+        </div>
+
+        <button id="main-btn" class="btn-premium" onclick="toggleSession()">
+            <span id="btn-icon">🎤</span>
+            <span id="btn-text">ابدأ المحادثة</span>
+        </button>
+
+        <div class="url-settings">
+            <input type="text" id="ws_url" spellcheck="false" title="Click to change endpoint">
         </div>
     </div>
 
     <script>
-        let ws, audioCtx, stream, proc, isPlaying = false, queue = [];
-        const icons = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
+        const DOMAIN = 'voice.dev.rgeeb.com';
+        const DEFAULT_URL = `wss://${DOMAIN}/ws/session/tiryaq_technology/user1`;
+        const ICONS = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
 
-        function setUI(s) {
-            const c = document.getElementById('circle');
-            c.className = 'status-circle ' + (s || 'idle');
-            c.textContent = icons[s] || icons.idle;
-            const t = document.getElementById('statusText');
-            if (s === 'listening') t.textContent = 'أستمع إليك الآن...';
-            else if (s === 'thinking') t.textContent = 'جاري تحليل طلبك...';
-            else if (s === 'speaking') t.textContent = 'يتحدث ترياق...';
-            else t.textContent = 'جاهز للبدء';
+        let ws, audioCtx, micNode, processorNode, stream, analyser;
+        let queue = [], isPlaying = false, heartbeatId = null;
+        let activeAiMessage = null;
+
+        window.addEventListener('load', () => {
+            document.getElementById('ws_url').value = DEFAULT_URL;
+        });
+
+        // --- Visualizer ---
+        function drawVisualizer() {
+            const canvas = document.getElementById('visualizer');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 210; canvas.height = 210;
+            const dataArray = new Uint8Array(analyser ? analyser.frequencyBinCount : 0);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                if (!analyser) { ctx.clearRect(0, 0, 210, 210); return; }
+                analyser.getByteFrequencyData(dataArray);
+                ctx.clearRect(0, 0, 210, 210);
+
+                ctx.beginPath();
+                ctx.strokeStyle = '#38bdf8';
+                ctx.lineWidth = 3;
+                const radius = 95;
+                const cX = 105, cY = 105;
+
+                for (let i = 0; i < dataArray.length; i++) {
+                    const h = dataArray[i] / 2.2;
+                    const a = (i * 2 * Math.PI) / dataArray.length;
+                    const x = cX + Math.cos(a) * (radius + h);
+                    const y = cY + Math.sin(a) * (radius + h);
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.closePath(); ctx.stroke();
+            }
+            animate();
         }
 
-        function addMsg(text, isAI) {
+        // --- Audio Logic ---
+        async function initAudioSystem() {
+            if (audioCtx) return;
+            try {
+                audioCtx = new AudioContext(); // Native sample rate for MP3 decoder
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 64;
+
+                const code = `
+                    class P extends AudioWorkletProcessor {
+                        process(inputs) {
+                            const d = inputs[0][0];
+                            if (!d) return true;
+                            // Normal gain for mic, avoid clipping
+                            const p = new Int16Array(d.length);
+                            for(let j=0; j<d.length; j++) p[j] = Math.max(-32768, Math.min(32767, d[j]*32768));
+                            this.port.postMessage(p.buffer, [p.buffer]);
+                            return true;
+                        }
+                    }
+                    registerProcessor('p', P);
+                `;
+                const url = URL.createObjectURL(new Blob([code], { type: 'application/javascript' }));
+
+                try {
+                    await audioCtx.audioWorklet.addModule(url);
+                    processorNode = new AudioWorkletNode(audioCtx, 'p');
+                    processorNode.port.onmessage = (e) => {
+                        if (ws && ws.readyState === 1 && document.getElementById('orb').classList.contains('listening')) {
+                            ws.send(e.data);
+                        }
+                    };
+                } catch (e) {
+                    processorNode = audioCtx.createScriptProcessor(4096, 1, 1);
+                    processorNode.onaudioprocess = (e) => {
+                        const d = e.inputBuffer.getChannelData(0);
+                        const p = new Int16Array(d.length);
+                        for (let j = 0; j < d.length; j++) p[j] = Math.max(-32768, Math.min(32767, d[j] * 32768));
+                        if (ws && ws.readyState === 1 && document.getElementById('orb').classList.contains('listening')) {
+                            ws.send(p.buffer);
+                        }
+                    };
+                }
+                drawVisualizer();
+            } catch (e) { console.error(e); alert("الميكروفون مطلوب."); }
+        }
+
+        async function toggleSession() {
+            if (!ws || ws.readyState !== 1) {
+                await initAudioSystem();
+                connect();
+            } else { ws.close(); }
+        }
+
+        function connect() {
+            ws = new WebSocket(document.getElementById('ws_url').value);
+            document.getElementById('conn-text').textContent = "CONNECTING...";
+            ws.onopen = async () => {
+                document.getElementById('led-conn').classList.add('active');
+                document.getElementById('conn-text').textContent = "CONNECTED - SECURE";
+                startHeartbeat();
+                if (!stream) stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                micNode = audioCtx.createMediaStreamSource(stream);
+                micNode.connect(analyser);
+                micNode.connect(processorNode);
+                if (!processorNode.port) processorNode.connect(audioCtx.destination);
+                setUIState('listening');
+            };
+            ws.onmessage = async (e) => {
+                if (typeof e.data === 'string') {
+                    const m = JSON.parse(e.data);
+                    if (m.type === 'state') setUIState(m.state);
+                    else if (m.type === 'user_text') { addChatBubble(m.content, false); activeAiMessage = null; }
+                    else if (m.type === 'text') { streamChatText(m.content); }
+                    else if (m.type === 'audio_start') setUIState('speaking');
+                    else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
+                } else {
+                    // MP3 Chunk received
+                    queue.push(await e.data.arrayBuffer());
+                    playStreamChunk();
+                }
+            };
+            ws.onclose = () => {
+                document.getElementById('led-conn').className = 'led';
+                document.getElementById('conn-text').textContent = "DISCONNECTED";
+                if (micNode) micNode.disconnect();
+                setUIState('idle'); stopHeartbeat();
+            };
+        }
+
+        function addChatBubble(text, isAI) {
             const chat = document.getElementById('chat');
-            let last = chat.lastElementChild;
-
-            // Fixed Logic: Check for string "false" correctly
-            if (isAI && last && last.classList.contains('ai') && last.getAttribute('data-finished') === "false") {
-                const contentSpan = last.querySelector('.text-content');
-                contentSpan.textContent += text;
-            } else {
-                const d = document.createElement('div');
-                d.className = 'msg ' + (isAI ? 'ai' : 'user');
-
-                const icon = document.createElement('span');
-                icon.className = 'msg-icon';
-                icon.textContent = isAI ? '🤖' : '👤';
-                d.appendChild(icon);
-
-                const content = document.createElement('span');
-                content.className = 'text-content';
-                content.textContent = text;
-                d.appendChild(content);
-
-                if (isAI) d.setAttribute('data-finished', "false");
-                chat.appendChild(d);
-            }
+            const d = document.createElement('div');
+            d.className = 'bubble ' + (isAI ? 'ai' : 'user');
+            d.textContent = text;
+            chat.appendChild(d);
             chat.scrollTop = chat.scrollHeight;
+            return d;
         }
 
-        function finishMsg() {
-            const chat = document.getElementById('chat');
-            const last = chat.lastElementChild;
-            if (last && last.classList.contains('ai')) {
-                last.setAttribute('data-finished', "true");
-            }
+        function streamChatText(txt) {
+            if (!activeAiMessage) activeAiMessage = addChatBubble('', true);
+            activeAiMessage.textContent += txt;
+            document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
         }
 
-        async function play() {
+        function setUIState(s) {
+            const orb = document.getElementById('orb');
+            const lbl = document.getElementById('status-label');
+            const btn = document.getElementById('main-btn');
+            const btnT = document.getElementById('btn-text');
+            orb.className = 'orb ' + (s || 'idle');
+            orb.textContent = ICONS[s] || ICONS.idle;
+            if (s === 'listening') { lbl.textContent = 'أسمعك الآن.. تفضل'; btnT.textContent = 'إنهاء'; btn.classList.add('active'); }
+            else if (s === 'thinking') lbl.textContent = 'تحليل...';
+            else if (s === 'speaking') lbl.textContent = 'يتحدث ترياق...';
+            else { lbl.textContent = 'جاهز للبدء'; btnT.textContent = 'ابدأ المحادثة'; btn.classList.remove('active'); }
+        }
+
+        // --- Robust MP3 Decoding ---
+        async function playStreamChunk() {
             if (queue.length === 0 || isPlaying) return;
             isPlaying = true;
-            if (!audioCtx) audioCtx = new AudioContext();
             try {
-                const buf = await audioCtx.decodeAudioData(queue.shift());
-                const src = audioCtx.createBufferSource();
-                src.buffer = buf;
-                src.connect(audioCtx.destination);
-                src.onended = () => { isPlaying = false; play(); };
-                src.start(0);
-            } catch (e) { isPlaying = false; play(); }
+                const chunk = queue.shift();
+                // MP3 chunks must be decoded as complete buffers for best reliability
+                audioCtx.decodeAudioData(chunk, (buffer) => {
+                    const src = audioCtx.createBufferSource();
+                    src.buffer = buffer;
+                    src.connect(audioCtx.destination);
+                    src.onended = () => { isPlaying = false; playStreamChunk(); };
+                    src.start(0);
+                }, (err) => {
+                    console.warn("Decode error (skipping chunk):", err);
+                    isPlaying = false;
+                    playStreamChunk();
+                });
+            } catch (e) { isPlaying = false; playStreamChunk(); }
         }
 
-        async function startMic() {
-            try {
-                // Only request stream if we don't have one or if it's inactive
-                if (!stream || !stream.active) {
-                    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                }
-
-                if (!audioCtx || audioCtx.state === 'closed') {
-                    audioCtx = new AudioContext({ sampleRate: 16000 });
-                }
-
-                const src = audioCtx.createMediaStreamSource(stream);
-                proc = audioCtx.createScriptProcessor(4096, 1, 1);
-                src.connect(proc);
-                proc.connect(audioCtx.destination);
-                proc.onaudioprocess = (e) => {
-                    if (ws && ws.readyState === 1 && document.getElementById('circle').classList.contains('listening')) {
-                        const input = e.inputBuffer.getChannelData(0);
-                        const pcm = new Int16Array(input.length);
-                        for (let i = 0; i < input.length; i++) pcm[i] = Math.max(-32768, Math.min(32767, input[i] * 32768));
-                        ws.send(pcm.buffer);
-                    }
-                };
-                setUI('listening');
-            } catch (e) {
-                console.error(e);
-                alert("يرجى السماح بالوصول للميكروفون لكي أتمكن من سماعك");
-                setUI('idle');
-            }
+        function startHeartbeat() {
+            heartbeatId = setInterval(() => {
+                if (ws && ws.readyState === 1) ws.send(JSON.stringify({ type: 'ping' }));
+            }, 25000);
         }
-
-        function toggle() {
-            const btn = document.getElementById('btn');
-            if (!ws || ws.readyState !== 1) {
-                ws = new WebSocket(document.getElementById('url').value);
-                ws.onopen = startMic;
-                ws.onmessage = async (e) => {
-                    if (typeof e.data === 'string') {
-                        const m = JSON.parse(e.data);
-                        if (m.type === 'state') setUI(m.state);
-                        else if (m.type === 'user_text') addMsg(m.content, false);
-                        else if (m.type === 'text') addMsg(m.content, true);
-                        else if (m.type === 'audio_start') setUI('speaking');
-                        else if (m.type === 'audio_end') {
-                            finishMsg();
-                            const check = setInterval(() => {
-                                if (queue.length === 0 && !isPlaying) {
-                                    clearInterval(check);
-                                    ws.send(JSON.stringify({ type: 'playback_done' }));
-                                    setUI('listening');
-                                }
-                            }, 100);
-                        }
-                    } else {
-                        queue.push(await e.data.arrayBuffer());
-                        play();
-                    }
-                };
-                ws.onclose = () => {
-                    if (proc) proc.disconnect();
-                    // We REMOVE the track stopping logic here to keep permission active
-                    setUI('idle');
-                    btn.textContent = 'ابدأ المحادثة الصوتية';
-                    btn.style.background = 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)';
-                };
-                btn.textContent = 'إنهاء المحادثة';
-                btn.style.background = '#ef4444';
-            } else ws.close();
-        }
+        function stopHeartbeat() { if (heartbeatId) clearInterval(heartbeatId); }
     </script>
 </body>
 
