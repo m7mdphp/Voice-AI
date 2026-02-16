@@ -42,9 +42,9 @@ app = FastAPI(title="Tiryaq Voice AI", version="2.2.0")
 @app.get("/")
 async def get_index():
     # البحث عن ملف الفرونت اند في مجلد frontend أو المجلد الرئيسي
-    path = "voice_assistant_v4.html"
+    path = "/app/voice_assistant_v4.html"
     if not os.path.exists(path):
-        path = os.path.join("frontend", "voice_assistant_v4.html")
+        path = "/app/frontend/voice_assistant_v4.html"
     
     if os.path.exists(path):
         return FileResponse(path)
@@ -58,9 +58,9 @@ async def health_check():
 @app.get("/voice_assistant_v4.html")
 async def get_voice_assistant():
     # Serve the voice assistant HTML file
-    path = "voice_assistant_v4.html"
+    path = "/app/voice_assistant_v4.html"
     if not os.path.exists(path):
-        path = os.path.join("frontend", "voice_assistant_v4.html")
+        path = "/app/frontend/voice_assistant_v4.html"
     
     if os.path.exists(path):
         return FileResponse(path, media_type="text/html")
@@ -70,9 +70,9 @@ async def get_voice_assistant():
 @app.get("/voice_assistant_v3.html")
 async def get_voice_assistant_v3():
     # Serve the voice assistant v3 HTML file
-    path = "voice_assistant_v3.html"
+    path = "/app/voice_assistant_v3.html"
     if not os.path.exists(path):
-        path = os.path.join("frontend", "voice_assistant_v3.html")
+        path = "/app/frontend/voice_assistant_v3.html"
     
     if os.path.exists(path):
         return FileResponse(path, media_type="text/html")
