@@ -168,7 +168,6 @@ Arabic (Saudi White Dialect) ONLY. No English words.
         }
         
         headers = {
-            "Accept": "audio/l16",
             "Content-Type": "application/json",
             "xi-api-key": self.elevenlabs_api_key
         }
