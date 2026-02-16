@@ -55,6 +55,30 @@ async def get_index():
 async def health_check():
     return {"status": "healthy", "service": "Tiryaq Voice AI", "version": "2.2.0"}
 
+@app.get("/debug/files")
+async def debug_files():
+    """Debug endpoint to check available files"""
+    import os
+    files = {
+        "app_root": [],
+        "frontend_dir": [],
+        "backend_dir": []
+    }
+    
+    # Check /app/ root
+    if os.path.exists("/app"):
+        files["app_root"] = os.listdir("/app")
+    
+    # Check /app/frontend/
+    if os.path.exists("/app/frontend"):
+        files["frontend_dir"] = os.listdir("/app/frontend")
+    
+    # Check /app/backend/
+    if os.path.exists("/app/backend"):
+        files["backend_dir"] = os.listdir("/app/backend")
+    
+    return files
+
 @app.get("/voice_assistant_v4.html")
 async def get_voice_assistant():
     # Serve the voice assistant HTML file
