@@ -10,8 +10,9 @@ cmds = [
 ]
 
 [start]
-cmd = "cd backend && uvicorn main:app --host 0.0.0.0 --port 8000"
+cmd = "cd backend && python main.py"
 
 [variables]
 PORT = "8000"
 PYTHONPATH = "/app/backend"
+PYTHONUNBUFFERED = "1"

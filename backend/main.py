@@ -48,7 +48,12 @@ async def get_index():
     
     if os.path.exists(path):
         return FileResponse(path)
-    return {"error": "Frontend file not found. Please upload voice_assistant_v4.html"}
+    else:
+        return {"message": "Tiryaq Voice AI Backend is running", "status": "active", "version": "2.2.0"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "Tiryaq Voice AI", "version": "2.2.0"}
 
 app.add_middleware(
     CORSMiddleware,
