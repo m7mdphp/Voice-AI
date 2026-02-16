@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ترياق V3.1 - المساعد الصحي الذكي</title>
+    <title>ترياق V3.2 - المساعد الصحي الذكي</title>
     <style>
         * {
             margin: 0;
@@ -88,12 +88,10 @@
                 transform: scale(1);
                 opacity: 1;
             }
-
             50% {
                 transform: scale(1.08);
                 opacity: 0.8;
             }
-
             100% {
                 transform: scale(1);
                 opacity: 1;
@@ -104,19 +102,15 @@
             from {
                 transform: rotate(0deg);
             }
-
             to {
                 transform: rotate(360deg);
             }
         }
 
         @keyframes bounce {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-10px);
             }
@@ -153,7 +147,6 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -163,7 +156,6 @@
         .msg.user {
             background: #334155;
             align-self: flex-start;
-            /* Correct for RTL: User is start (right in Arabic layout) */
             color: #f1f5f9;
             border-bottom-right-radius: 4px;
             text-align: right;
@@ -172,7 +164,6 @@
         .msg.ai {
             background: #0284c7;
             align-self: flex-end;
-            /* AI is end (left in Arabic layout) */
             color: white;
             border-bottom-left-radius: 4px;
             text-align: right;
@@ -226,19 +217,30 @@
             font-family: monospace;
             font-size: 0.9em;
         }
+
+        .debug-info {
+            margin-top: 15px;
+            font-size: 0.75em;
+            color: #64748b;
+            padding: 10px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 8px;
+            border-left: 3px solid #38bdf8;
+            max-height: 60px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="version">V3.1 FIX: STREAMING STABILITY</div>
+        <div class="version">V3.2 - AudioWorklet + Optimized</div>
         <h1>🩺 ترياق</h1>
         <div id="circle" class="status-circle">💤</div>
         <div id="statusText">اضغط للبدء</div>
 
         <div class="chat-box" id="chat">
-            <div class="msg ai"><span class="msg-icon">🤖</span>أهلاً بك. أنا ترياق، كيف يمكنني مساعدتك طبياً اليوم؟
-            </div>
+            <div class="msg ai"><span class="msg-icon">🤖</span>أهلاً بك. أنا ترياق، كيف يمكنني مساعدتك طبياً اليوم؟</div>
         </div>
 
         <button id="btn" class="btn" onclick="toggle()">ابدأ المحادثة الصوتية</button>
@@ -246,12 +248,26 @@
         <div class="url-box">
             <input type="text" id="url" value="wss://voice.dev.rgeeb.com/ws/session/tiryaq_technology/user_997">
         </div>
+
+        <div class="debug-info" id="debug">📊 جاهز للاتصال</div>
     </div>
 
     <script>
-        let ws, audioCtx, stream, proc, isPlaying = false, queue = [];
+        // ===================== STATE MANAGEMENT =====================
+        let ws, audioCtx, stream, workletNode, isPlaying = false, queue = [];
+        let audioWorkletReady = false, usingWorklet = false;
         const icons = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
 
+        // ===================== DEBUG HELPER =====================
+        function updateDebug(msg) {
+            const debug = document.getElementById('debug');
+            if (debug) {
+                debug.textContent = msg;
+            }
+            console.log('[DEBUG]', msg);
+        }
+
+        // ===================== UI MANAGEMENT =====================
         function setUI(s) {
             const c = document.getElementById('circle');
             c.className = 'status-circle ' + (s || 'idle');
@@ -267,7 +283,6 @@
             const chat = document.getElementById('chat');
             let last = chat.lastElementChild;
 
-            // Fixed Logic: Check for string "false" correctly
             if (isAI && last && last.classList.contains('ai') && last.getAttribute('data-finished') === "false") {
                 const contentSpan = last.querySelector('.text-content');
                 contentSpan.textContent += text;
@@ -299,6 +314,7 @@
             }
         }
 
+        // ===================== AUDIO PLAYBACK =====================
         async function play() {
             if (queue.length === 0 || isPlaying) return;
             isPlaying = true;
@@ -310,78 +326,241 @@
                 src.connect(audioCtx.destination);
                 src.onended = () => { isPlaying = false; play(); };
                 src.start(0);
-            } catch (e) { isPlaying = false; play(); }
+            } catch (e) {
+                updateDebug(`❌ خطأ في تشغيل الصوت: ${e.message}`);
+                isPlaying = false;
+                play();
+            }
         }
 
+        // ===================== AUDIO WORKLET SETUP =====================
+        async function initAudioWorklet() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new AudioContext({ sampleRate: 16000 });
+                }
+
+                if (!audioCtx.audioWorklet) {
+                    throw new Error('AudioWorklet غير مدعوم');
+                }
+
+                // محاولة تحميل الملف من عدة مسارات محتملة
+                const paths = [
+                    'audio-processor.js',
+                    './audio-processor.js',
+                    '/audio-processor.js',
+                    'frontend/audio-processor.js',
+                    '/frontend/audio-processor.js'
+                ];
+
+                let loaded = false;
+                let lastError = null;
+
+                for (const path of paths) {
+                    try {
+                        await audioCtx.audioWorklet.addModule(path);
+                        loaded = true;
+                        updateDebug(`✅ AudioWorklet loaded من: ${path}`);
+                        break;
+                    } catch (e) {
+                        lastError = e;
+                        console.log(`محاولة تحميل من ${path} فشلت`, e);
+                    }
+                }
+
+                if (!loaded) {
+                    throw new Error(`لم أستطع تحميل AudioWorklet: ${lastError?.message || 'Unknown'}`);
+                }
+
+                workletNode = new AudioWorkletNode(audioCtx, 'pcm-processor');
+
+                workletNode.port.onmessage = (event) => {
+                    if (ws && ws.readyState === 1 && document.getElementById('circle').classList.contains('listening')) {
+                        ws.send(event.data);
+                    }
+                };
+
+                workletNode.port.onerror = (error) => {
+                    updateDebug(`❌ خطأ في AudioWorklet: ${error.message}`);
+                };
+
+                audioWorkletReady = true;
+                usingWorklet = true;
+                return true;
+            } catch (error) {
+                console.warn('AudioWorklet init failed:', error);
+                updateDebug(`⚠️ AudioWorklet فشل: ${error.message}`);
+                audioWorkletReady = false;
+                usingWorklet = false;
+                return false;
+            }
+        }
+
+        // ===================== FALLBACK: ScriptProcessor =====================
+        function initScriptProcessor() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new AudioContext({ sampleRate: 16000 });
+                }
+
+                const src = audioCtx.createMediaStreamSource(stream);
+                const proc = audioCtx.createScriptProcessor(4096, 1, 1);
+
+                console.warn('⚠️ استخدام ScriptProcessor (Deprecated)');
+                updateDebug('⚠️ ScriptProcessor - قديم لكن يعمل');
+
+                src.connect(proc);
+                proc.connect(audioCtx.destination);
+                
+                proc.onaudioprocess = (e) => {
+                    if (ws && ws.readyState === 1 && document.getElementById('circle').classList.contains('listening')) {
+                        const input = e.inputBuffer.getChannelData(0);
+                        const pcm = new Int16Array(input.length);
+                        for (let i = 0; i < input.length; i++) {
+                            pcm[i] = Math.max(-32768, Math.min(32767, input[i] * 32768));
+                        }
+                        ws.send(pcm.buffer);
+                    }
+                };
+
+                usingWorklet = false;
+                return proc;
+            } catch (error) {
+                updateDebug(`❌ ScriptProcessor فشل: ${error.message}`);
+                throw error;
+            }
+        }
+
+        // ===================== MICROPHONE STARTUP =====================
         async function startMic() {
             try {
-                // Only request stream if we don't have one or if it's inactive
+                updateDebug('🎙️ طلب الميكروفون...');
+
                 if (!stream || !stream.active) {
-                    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    stream = await navigator.mediaDevices.getUserMedia({
+                        audio: {
+                            echoCancellation: true,
+                            noiseSuppression: true,
+                            autoGainControl: false
+                        }
+                    });
                 }
 
                 if (!audioCtx || audioCtx.state === 'closed') {
                     audioCtx = new AudioContext({ sampleRate: 16000 });
                 }
 
-                const src = audioCtx.createMediaStreamSource(stream);
-                proc = audioCtx.createScriptProcessor(4096, 1, 1);
-                src.connect(proc);
-                proc.connect(audioCtx.destination);
-                proc.onaudioprocess = (e) => {
-                    if (ws && ws.readyState === 1 && document.getElementById('circle').classList.contains('listening')) {
-                        const input = e.inputBuffer.getChannelData(0);
-                        const pcm = new Int16Array(input.length);
-                        for (let i = 0; i < input.length; i++) pcm[i] = Math.max(-32768, Math.min(32767, input[i] * 32768));
-                        ws.send(pcm.buffer);
+                // محاولة استخدام AudioWorklet
+                let success = false;
+                if (!audioWorkletReady) {
+                    success = await initAudioWorklet();
+                }
+
+                if (success || audioWorkletReady) {
+                    try {
+                        const src = audioCtx.createMediaStreamSource(stream);
+                        src.connect(workletNode);
+                        workletNode.connect(audioCtx.destination);
+                        updateDebug('✅ AudioWorklet فعال - Low Latency!');
+                    } catch (e) {
+                        console.warn('AudioWorklet connection failed:', e);
+                        initScriptProcessor();
                     }
-                };
+                } else {
+                    initScriptProcessor();
+                }
+
                 setUI('listening');
-            } catch (e) {
-                console.error(e);
+            } catch (error) {
+                console.error('Mic Error:', error);
+                updateDebug(`❌ خطأ: ${error.message}`);
                 alert("يرجى السماح بالوصول للميكروفون لكي أتمكن من سماعك");
                 setUI('idle');
             }
         }
 
+        // ===================== WebSocket MANAGEMENT =====================
         function toggle() {
             const btn = document.getElementById('btn');
             if (!ws || ws.readyState !== 1) {
-                ws = new WebSocket(document.getElementById('url').value);
-                ws.onopen = startMic;
+                const wsUrl = document.getElementById('url').value;
+                updateDebug(`🔗 جاري الاتصال...`);
+
+                ws = new WebSocket(wsUrl);
+
+                ws.onopen = () => {
+                    updateDebug('✅ WebSocket متصل');
+                    startMic();
+                };
+
                 ws.onmessage = async (e) => {
-                    if (typeof e.data === 'string') {
-                        const m = JSON.parse(e.data);
-                        if (m.type === 'state') setUI(m.state);
-                        else if (m.type === 'user_text') addMsg(m.content, false);
-                        else if (m.type === 'text') addMsg(m.content, true);
-                        else if (m.type === 'audio_start') setUI('speaking');
-                        else if (m.type === 'audio_end') {
-                            finishMsg();
-                            const check = setInterval(() => {
-                                if (queue.length === 0 && !isPlaying) {
-                                    clearInterval(check);
-                                    ws.send(JSON.stringify({ type: 'playback_done' }));
-                                    setUI('listening');
-                                }
-                            }, 100);
+                    try {
+                        if (typeof e.data === 'string') {
+                            const m = JSON.parse(e.data);
+                            if (m.type === 'state') {
+                                setUI(m.state);
+                            } else if (m.type === 'user_text') {
+                                addMsg(m.content, false);
+                            } else if (m.type === 'text') {
+                                addMsg(m.content, true);
+                            } else if (m.type === 'audio_start') {
+                                setUI('speaking');
+                            } else if (m.type === 'audio_end') {
+                                finishMsg();
+                                const check = setInterval(() => {
+                                    if (queue.length === 0 && !isPlaying) {
+                                        clearInterval(check);
+                                        ws.send(JSON.stringify({ type: 'playback_done' }));
+                                        setUI('listening');
+                                    }
+                                }, 100);
+                            }
+                        } else {
+                            queue.push(await e.data.arrayBuffer());
+                            play();
                         }
-                    } else {
-                        queue.push(await e.data.arrayBuffer());
-                        play();
+                    } catch (err) {
+                        console.error('Message processing error:', err);
                     }
                 };
+
+                ws.onerror = (error) => {
+                    updateDebug(`❌ خطأ: ${error.type}`);
+                };
+
                 ws.onclose = () => {
-                    if (proc) proc.disconnect();
-                    // We REMOVE the track stopping logic here to keep permission active
+                    updateDebug('❌ انقطع الاتصال');
+                    if (stream) {
+                        stream.getTracks().forEach(track => track.stop());
+                        stream = null;
+                    }
                     setUI('idle');
                     btn.textContent = 'ابدأ المحادثة الصوتية';
                     btn.style.background = 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)';
                 };
+
                 btn.textContent = 'إنهاء المحادثة';
                 btn.style.background = '#ef4444';
-            } else ws.close();
+            } else {
+                updateDebug('🔌 قطع الاتصال...');
+                ws.close();
+            }
         }
+
+        // ===================== INITIALIZATION =====================
+        window.addEventListener('load', () => {
+            updateDebug('✅ جاهز - اضغط الزر');
+        });
+
+        // ===================== CLEANUP =====================
+        window.addEventListener('beforeunload', () => {
+            if (ws && ws.readyState === 1) {
+                ws.close();
+            }
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
     </script>
 </body>
 
