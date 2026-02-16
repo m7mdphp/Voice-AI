@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ترياق V3.1 - المساعد الصحي الذكي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+        }
+
+        .version {
+            font-size: 0.8em;
+            color: #64748b;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            color: #38bdf8;
+            margin-bottom: 8px;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .status-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #334155;
+            border: 4px solid #475569;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-circle.listening {
+            background: #059669;
+            border-color: #10b981;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .status-circle.thinking {
+            background: #d97706;
+            border-color: #f59e0b;
+            animation: rotate 2s linear infinite;
+        }
+
+        .status-circle.speaking {
+            background: #dc2626;
+            border-color: #ef4444;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .chat-box {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 16px;
+            height: 300px;
+            overflow-y: auto;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid #334155;
+            scrollbar-width: thin;
+            scrollbar-color: #475569 #0f172a;
+        }
+
+        .msg {
+            padding: 12px 18px;
+            border-radius: 18px;
+            max-width: 85%;
+            font-size: 1.05em;
+            line-height: 1.5;
+            word-wrap: break-word;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .msg.user {
+            background: #334155;
+            align-self: flex-start;
+            /* Correct for RTL: User is start (right in Arabic layout) */
+            color: #f1f5f9;
+            border-bottom-right-radius: 4px;
+            text-align: right;
+        }
+
+        .msg.ai {
+            background: #0284c7;
+            align-self: flex-end;
+            /* AI is end (left in Arabic layout) */
+            color: white;
+            border-bottom-left-radius: 4px;
+            text-align: right;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .msg-icon {
+            margin-left: 8px;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+            color: #0f172a;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .url-box {
+            margin-top: 20px;
+            background: #1e293b;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .url-box input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="version">V3.1 FIX: STREAMING STABILITY</div>
+        <h1>🩺 ترياق</h1>
+        <div id="circle" class="status-circle">💤</div>
+        <div id="statusText">اضغط للبدء</div>
+
+        <div class="chat-box" id="chat">
+            <div class="msg ai"><span class="msg-icon">🤖</span>أهلاً بك. أنا ترياق، كيف يمكنني مساعدتك طبياً اليوم؟
+            </div>
+        </div>
+
+        <button id="btn" class="btn" onclick="toggle()">ابدأ المحادثة الصوتية</button>
+
+        <div class="url-box">
+            <input type="text" id="url" value="wss://voice.dev.rgeeb.com/ws/session/tiryaq_technology/user_997">
+        </div>
+    </div>
+
+    <script>
+        let ws, audioCtx, stream, proc, isPlaying = false, queue = [];
+        const icons = { idle: '💤', listening: '🎙️', thinking: '⚙️', speaking: '🔊' };
+
+        function setUI(s) {
+            const c = document.getElementById('circle');
+            c.className = 'status-circle ' + (s || 'idle');
+            c.textContent = icons[s] || icons.idle;
+            const t = document.getElementById('statusText');
+            if (s === 'listening') t.textContent = 'أستمع إليك الآن...';
+            else if (s === 'thinking') t.textContent = 'جاري تحليل طلبك...';
+            else if (s === 'speaking') t.textContent = 'يتحدث ترياق...';
+            else t.textContent = 'جاهز للبدء';
+        }
+
+        function addMsg(text, isAI) {
+            const chat = document.getElementById('chat');
+            let last = chat.lastElementChild;
+
+            // Fixed Logic: Check for string "false" correctly
+            if (isAI && last && last.classList.contains('ai') && last.getAttribute('data-finished') === "false") {
+                const contentSpan = last.querySelector('.text-content');
+                contentSpan.textContent += text;
+            } else {
+                const d = document.createElement('div');
+                d.className = 'msg ' + (isAI ? 'ai' : 'user');
+
+                const icon = document.createElement('span');
+                icon.className = 'msg-icon';
+                icon.textContent = isAI ? '🤖' : '👤';
+                d.appendChild(icon);
+
+                const content = document.createElement('span');
+                content.className = 'text-content';
+                content.textContent = text;
+                d.appendChild(content);
+
+                if (isAI) d.setAttribute('data-finished', "false");
+                chat.appendChild(d);
+            }
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function finishMsg() {
+            const chat = document.getElementById('chat');
+            const last = chat.lastElementChild;
+            if (last && last.classList.contains('ai')) {
+                last.setAttribute('data-finished', "true");
+            }
+        }
+
+        async function play() {
+            if (queue.length === 0 || isPlaying) return;
+            isPlaying = true;
+            if (!audioCtx) audioCtx = new AudioContext();
+            try {
+                const buf = await audioCtx.decodeAudioData(queue.shift());
+                const src = audioCtx.createBufferSource();
+                src.buffer = buf;
+                src.connect(audioCtx.destination);
+                src.onended = () => { isPlaying = false; play(); };
+                src.start(0);
+            } catch (e) { isPlaying = false; play(); }
+        }
+
+        async function startMic() {
+            try {
+                // Only request stream if we don't have one or if it's inactive
+                if (!stream || !stream.active) {
+                    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                }
+
+                if (!audioCtx || audioCtx.state === 'closed') {
+                    audioCtx = new AudioContext({ sampleRate: 16000 });
+                }
+
+                const src = audioCtx.createMediaStreamSource(stream);
+                proc = audioCtx.createScriptProcessor(4096, 1, 1);
+                src.connect(proc);
+                proc.connect(audioCtx.destination);
+                proc.onaudioprocess = (e) => {
+                    if (ws && ws.readyState === 1 && document.getElementById('circle').classList.contains('listening')) {
+                        const input = e.inputBuffer.getChannelData(0);
+                        const pcm = new Int16Array(input.length);
+                        for (let i = 0; i < input.length; i++) pcm[i] = Math.max(-32768, Math.min(32767, input[i] * 32768));
+                        ws.send(pcm.buffer);
+                    }
+                };
+                setUI('listening');
+            } catch (e) {
+                console.error(e);
+                alert("يرجى السماح بالوصول للميكروفون لكي أتمكن من سماعك");
+                setUI('idle');
+            }
+        }
+
+        function toggle() {
+            const btn = document.getElementById('btn');
+            if (!ws || ws.readyState !== 1) {
+                ws = new WebSocket(document.getElementById('url').value);
+                ws.onopen = startMic;
+                ws.onmessage = async (e) => {
+                    if (typeof e.data === 'string') {
+                        const m = JSON.parse(e.data);
+                        if (m.type === 'state') setUI(m.state);
+                        else if (m.type === 'user_text') addMsg(m.content, false);
+                        else if (m.type === 'text') addMsg(m.content, true);
+                        else if (m.type === 'audio_start') setUI('speaking');
+                        else if (m.type === 'audio_end') {
+                            finishMsg();
+                            const check = setInterval(() => {
+                                if (queue.length === 0 && !isPlaying) {
+                                    clearInterval(check);
+                                    ws.send(JSON.stringify({ type: 'playback_done' }));
+                                    setUI('listening');
+                                }
+                            }, 100);
+                        }
+                    } else {
+                        queue.push(await e.data.arrayBuffer());
+                        play();
+                    }
+                };
+                ws.onclose = () => {
+                    if (proc) proc.disconnect();
+                    // We REMOVE the track stopping logic here to keep permission active
+                    setUI('idle');
+                    btn.textContent = 'ابدأ المحادثة الصوتية';
+                    btn.style.background = 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)';
+                };
+                btn.textContent = 'إنهاء المحادثة';
+                btn.style.background = '#ef4444';
+            } else ws.close();
+        }
+    </script>
+</body>
+
+</html>

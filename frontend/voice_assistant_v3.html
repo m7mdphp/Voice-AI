@@ -359,7 +359,7 @@
     </div>
 
     <script>
-        let ws, audioCtx, micNode, processorNode, stream, analyser, dataArray;
+        let ws, audioCtx, micNode, gainNode, processorNode, stream, analyser, dataArray;
         let queue = [], isPlaying = false, leftover = null, activeAiMsg = null;
         const ORB = document.getElementById('orb-core');
         const STATUS = document.getElementById('status-label');
@@ -398,12 +398,22 @@
                 `;
                 const dataUri = 'data:application/javascript;base64,' + btoa(worklet);
                 await audioCtx.audioWorklet.addModule(dataUri);
+
+                gainNode = audioCtx.createGain();
+                gainNode.gain.value = 1.5; // Najm Standard: 50% boost for weak mics
+
                 processorNode = new AudioWorkletNode(audioCtx, 'p');
                 processorNode.port.onmessage = (e) => {
                     if (ws?.readyState === 1 && document.body.classList.contains('state-listening')) {
                         ws.send(e.data);
                     }
                 };
+
+                // Connect chain: Mic -> Gain -> Analyser -> Processor -> Destination
+                gainNode.connect(analyser);
+                analyser.connect(processorNode);
+                processorNode.connect(audioCtx.destination);
+
                 drawVisualizer();
             } catch (e) { console.error("Audio Fail", e); }
         }
@@ -429,13 +439,18 @@
                 ws.onopen = async () => {
                     updateLED('led-ws', 'on');
                     if (!stream) {
-                        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                        updateLED('led-mic', 'on');
+                        try {
+                            stream = await navigator.mediaDevices.getUserMedia({
+                                audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+                            });
+                            updateLED('led-mic', 'on');
+                        } catch (e) {
+                            addBubble("⚠️ يرجى تفعيل المايكروفون واستخدام HTTPS.", true);
+                            return;
+                        }
                     }
                     micNode = audioCtx.createMediaStreamSource(stream);
-                    micNode.connect(analyser);
-                    micNode.connect(processorNode);
-                    if (!processorNode.port) processorNode.connect(audioCtx.destination);
+                    micNode.connect(gainNode);
                     setUIState('listening');
 
                     window.pingInterval = setInterval(() => {

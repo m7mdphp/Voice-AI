@@ -12,7 +12,6 @@ import wave
 import tempfile
 import os
 import functools
-import sys
 from typing import Dict
 from contextvars import ContextVar
 
@@ -20,7 +19,6 @@ from openai import OpenAI
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
 from services.agent_engine import GroqEngine
@@ -28,10 +26,10 @@ from services.firestore_memory import MemoryManager
 from config import settings
 
 # ================= Logging =================
-# Log to stdout only for VPS stability (Dokploy captures these)
-logger.remove()
 logger.add(
-    sys.stdout,
+    "logs/tiryaq_{time}.log",
+    rotation="1 day",
+    retention="7 days",
     level=settings.LOG_LEVEL,
     format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {message}"
 )
@@ -39,92 +37,18 @@ logger.add(
 request_id_var: ContextVar[str] = ContextVar("request_id", default="unknown")
 
 # ================= App Initialization =================
-app = FastAPI(title="Tiryaq Voice AI", version="7.0.0")
-
-# Serve the frontend directory directly via FastAPI
-frontend_dir = "/app/frontend"
-if not os.path.exists(frontend_dir):
-    # Fallback for local development or subfolder structure
-    frontend_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
-
-if os.path.exists(frontend_dir):
-    app.mount("/web", StaticFiles(directory=frontend_dir), name="web")
-    logger.info(f"Mounted frontend directory: {frontend_dir}")
+app = FastAPI(title="Tiryaq Voice AI", version="2.2.0")
 
 @app.get("/")
 async def get_index():
-    # Priority: Serving current v3 (Ultimate V7.0)
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    possible_paths = [
-        "/app/frontend/voice_assistant_v3.html",
-        "/app/voice_assistant_v3.html",
-        os.path.join(current_dir, "..", "frontend", "voice_assistant_v3.html"),
-        os.path.join(current_dir, "frontend", "voice_assistant_v3.html"),
-    ]
-    for path in possible_paths:
-        if os.path.exists(path):
-            return FileResponse(path)
-            
-    return {"message": "Tiryaq Voice AI (Ultimate V7.0) is running", "status": "active"}
-
-@app.get("/health")
-async def health_check():
-    """Unified health check with metadata"""
-    return {
-        "status": "healthy",
-        "service": "Tiryaq Voice AI",
-        "version": "3.2.0",
-        "env": settings.ENV,
-        "logs": os.path.exists("logs")
-    }
-
-@app.get("/debug/files")
-async def debug_files():
-    """Debug endpoint to check available files"""
-    import os
-    files = {
-        "app_root": [],
-        "frontend_dir": [],
-        "backend_dir": []
-    }
-    
-    # Check /app/ root
-    if os.path.exists("/app"):
-        files["app_root"] = os.listdir("/app")
-    
-    # Check /app/frontend/
-    if os.path.exists("/app/frontend"):
-        files["frontend_dir"] = os.listdir("/app/frontend")
-    
-    # Check /app/backend/
-    if os.path.exists("/app/backend"):
-        files["backend_dir"] = os.listdir("/app/backend")
-    
-    return files
-
-@app.get("/voice_assistant_v4.html")
-async def get_voice_assistant():
-    # Serve the voice assistant HTML file
-    path = "/app/voice_assistant_v4.html"
+    # البحث عن ملف الفرونت اند في مجلد frontend أو المجلد الرئيسي
+    path = "voice_assistant_v4.html"
     if not os.path.exists(path):
-        path = "/app/frontend/voice_assistant_v4.html"
+        path = os.path.join("frontend", "voice_assistant_v4.html")
     
     if os.path.exists(path):
-        return FileResponse(path, media_type="text/html")
-    else:
-        return {"error": "Voice assistant v4 file not found"}, 404
-
-@app.get("/voice_assistant_v3.html")
-async def get_voice_assistant_v3():
-    # Serve the voice assistant v3 HTML file
-    path = "/app/voice_assistant_v3.html"
-    if not os.path.exists(path):
-        path = "/app/frontend/voice_assistant_v3.html"
-    
-    if os.path.exists(path):
-        return FileResponse(path, media_type="text/html")
-    else:
-        return {"error": "Voice assistant v3 file not found"}, 404
+        return FileResponse(path)
+    return {"error": "Frontend file not found. Please upload voice_assistant_v4.html"}
 
 app.add_middleware(
     CORSMiddleware,
@@ -142,7 +66,7 @@ memory_manager = MemoryManager()
 SAMPLE_RATE = 16000
 VOICE_THRESHOLD = 800  
 SILENCE_THRESHOLD = 400
-SILENCE_DURATION_LIMIT = 1.5  # Tuned for Saudi speech patterns
+SILENCE_DURATION_LIMIT = 1.2  # Najm Standard: Increased to 1.2s for human patience
 MIN_SPEECH_DURATION = 0.7     # Ignore sounds shorter than 700ms (filtering noise)
 MIN_BUFFER_SIZE = 16000        # Minimum 500ms of audio buffer
 
@@ -326,7 +250,6 @@ async def process_audio_buffer(
 @app.websocket("/ws/session/{tenant_id}/{user_id}")
 async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
     await ws.accept()
-    logger.success(f"WS Handshake Accepted | Tenant: {tenant_id} | User: {user_id}")
 
     session_id = f"{tenant_id}-{user_id}-{int(time.time())}"
     token = request_id_var.set(session_id)
@@ -416,7 +339,14 @@ async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
         logger.info(f"Finalized session {session_id}")
 
 
-# Duplicate health route removed here (consolidated at top)
+# ================= Health Check =================
+@app.get("/health")
+async def health():
+    return {
+        "status": "healthy",
+        "service": "Tiryaq Voice AI",
+        "version": "2.2.0"
+    }
 
 
 # ================= Execution =================
@@ -434,11 +364,5 @@ if __name__ == "__main__":
     elif os.getenv("PORT"):
         port = int(os.getenv("PORT"))
 
-    logger.info(f"Starting {settings.APP_NAME} on port {port} (Proxy Headers Enabled)")
-    uvicorn.run(
-        app, 
-        host="0.0.0.0", 
-        port=port, 
-        proxy_headers=True, 
-        forwarded_allow_ips="*"
-    )
+    logger.info(f"Starting {settings.APP_NAME} on port {port}")
+    uvicorn.run(app, host="0.0.0.0", port=port)
