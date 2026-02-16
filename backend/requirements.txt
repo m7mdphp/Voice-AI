@@ -1,4 +1,3 @@
-fastapi==0.109.2
 uvicorn[standard]==0.27.1
 google-cloud-firestore==2.14.0
 google-genai
@@ -11,4 +10,5 @@ pydantic-settings
 groq
 openai
 requests
-protobuf==3.20.3  # Fix for Python 3.10+ custom tp_new error
+tenacity
+protobuf==3.20.3

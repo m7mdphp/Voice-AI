@@ -125,10 +125,13 @@
         <button id="btn" class="btn" onclick="toggle()">ابدأ المحادثة</button>
         <div style="margin-top:10px;"><input id="url"
                 style="width:100%;background:none;border:1px solid #334155;color:#64748b;padding:5px;text-align:center;"
-                value="ws://localhost:8000/ws/session/tiryaq_technology/user1"></div>
+                value=""></div>
     </div>
 
     <script>
+        // Automatic URL detection
+        document.getElementById('url').value = `ws://${window.location.host}/ws/session/tiryaq_technology/user1`;
+
         let ws, audioCtx, stream, proc, isPlaying = false, queue = [];
         const SAMPLE_RATE = 16000;
 
