@@ -30,7 +30,7 @@ coverage.xml
 *.cover
 *.log
 
-# Node modules (exclude frontend node_modules)
+# Node modules (exclude frontend node_modules but keep frontend files)
 frontend/node_modules/
 
 # IDE

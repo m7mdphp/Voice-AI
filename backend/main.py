@@ -55,6 +55,18 @@ async def get_index():
 async def health_check():
     return {"status": "healthy", "service": "Tiryaq Voice AI", "version": "2.2.0"}
 
+@app.get("/voice_assistant_v4.html")
+async def get_voice_assistant():
+    # Serve the voice assistant HTML file
+    path = "voice_assistant_v4.html"
+    if not os.path.exists(path):
+        path = os.path.join("frontend", "voice_assistant_v4.html")
+    
+    if os.path.exists(path):
+        return FileResponse(path, media_type="text/html")
+    else:
+        return {"error": "Voice assistant file not found"}, 404
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
