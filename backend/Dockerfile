@@ -9,11 +9,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirements.txt .
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY . .
+COPY backend/ .
+# Copy frontend files so they are available at /app/frontend/
+COPY frontend/ ./frontend/
 
 # Expose port
 EXPOSE 8000
