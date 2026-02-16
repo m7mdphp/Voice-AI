@@ -361,6 +361,10 @@
 
         async function initAudio() {
             if (audioCtx) return;
+            if (!window.isSecureContext && window.location.protocol !== 'localhost:') {
+                console.warn("Insecure Context detected. Mic and AudioWorklet may fail. Provide HTTPS or use localhost.");
+                addBubble("⚠️ تنبيه: المتصفح يتطلب اتصال آمن (HTTPS) لتشغيل المايكروفون ومحرك الصوت.", true);
+            }
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
                 analyser = audioCtx.createAnalyser(); analyser.fftSize = 64;
@@ -375,11 +379,10 @@
                         }
                     } registerProcessor('p', P);
                 `;
-                const blob = new Blob([worklet], { type: 'application/javascript' });
-                const url = URL.createObjectURL(blob);
+                const dataUri = 'data:application/javascript;base64,' + btoa(worklet);
 
                 try {
-                    await audioCtx.audioWorklet.addModule(url);
+                    await audioCtx.audioWorklet.addModule(dataUri);
                     processorNode = new AudioWorkletNode(audioCtx, 'p');
                     processorNode.port.onmessage = (e) => {
                         if (ws?.readyState === 1 && document.getElementById('orb').classList.contains('listening')) ws.send(e.data);
