@@ -310,7 +310,13 @@ async def process_audio_buffer(
 # ================= WebSocket Endpoint =================
 @app.websocket("/ws/session/{tenant_id}/{user_id}")
 async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
-    await ws.accept()
+    logger.info(f"Incoming WebSocket connection: tenant={tenant_id}, user={user_id}")
+    try:
+        await ws.accept()
+        logger.success(f"WebSocket handshake accepted for {user_id}")
+    except Exception as e:
+        logger.error(f"WebSocket Handshake failed for {user_id}: {e}")
+        return
 
     session_id = f"{tenant_id}-{user_id}-{int(time.time())}"
     token = request_id_var.set(session_id)
@@ -418,5 +424,11 @@ if __name__ == "__main__":
     elif os.getenv("PORT"):
         port = int(os.getenv("PORT"))
 
-    logger.info(f"Starting {settings.APP_NAME} on port {port}")
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    logger.info(f"Starting {settings.APP_NAME} on port {port} (Proxy Headers Enabled)")
+    uvicorn.run(
+        app, 
+        host="0.0.0.0", 
+        port=port, 
+        proxy_headers=True, 
+        forwarded_allow_ips="*"
+    )
