@@ -5,8 +5,11 @@ nixPkgs = ["...", "python3", "python3Packages.pip"]
 [phases.build]
 cmds = [
   "pip3 install -r backend/requirements.txt --break-system-packages",
-  "cp frontend/voice_assistant_v*.html /app/ || true",
-  "chmod 644 /app/voice_assistant_v*.html || true"
+  "mkdir -p /app/frontend",
+  "cp -r frontend/voice_assistant_v3.html /app/frontend/voice_assistant_v3.html || true",
+  "cp -r frontend/voice_assistant_v4.html /app/frontend/voice_assistant_v4.html || true",
+  "chmod -R 644 /app/frontend/voice_assistant_v3.html || true",
+  "chmod -R 644 /app/frontend/voice_assistant_v4.html || true"
 ]
 
 [start]
