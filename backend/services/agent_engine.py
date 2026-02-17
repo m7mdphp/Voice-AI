@@ -179,9 +179,16 @@ Arabic (Saudi White Dialect) ONLY. No English words.
     async def _tts_stream(self, text: str) -> AsyncGenerator[bytes, None]:
         """Async TTS streaming using aiohttp for non-blocking operation."""
         if not self.elevenlabs_api_key or not text.strip():
+            logger.warning("Skipping TTS: No API key or empty text")
             return
+            
+        # Use a fallback voice if needed
+        voice_id = self.voice_id
+        if not voice_id or voice_id == "EXAVITQu4vr4xnSDxMaL":
+            logger.warning(f"Invalid voice ID {voice_id}, using fallback voice")
+            voice_id = "pNInz6obpgDQGcFmaJgB"  # Known working Arabic voice
 
-        url = f"https://api.elevenlabs.io/v1/text-to-speech/{self.voice_id}/stream"
+        url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/stream"
         params = {
             "output_format": "pcm_16000",
             "optimize_streaming_latency": 3 
