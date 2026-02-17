@@ -33,18 +33,18 @@ aptPkgs = [
 cmds = [
   "python3.11 -m pip install --upgrade pip setuptools wheel",
   "pip3 install -r backend/requirements.txt --break-system-packages",
-  "mkdir -p /app/frontend",
-  "mkdir -p /app/backend/logs",
-  "cp frontend/voice_assistant_v3.html /app/frontend/voice_assistant_v3.html || true",
-  "cp frontend/voice_assistant_v4.html /app/frontend/voice_assistant_v4.html || true",
-  "cp test-simple.html /app/test-simple.html || true",
-  "cp -r backend/data /app/backend/data || true",
-  "cp -r backend/personas /app/backend/personas || true",
-  "chmod -R 755 /app/backend || true"
+  "mkdir -p /app/frontend /app/backend/logs /app/backend/data /app/backend/personas",
+  "cp -f frontend/*.html /app/frontend/ 2>/dev/null || true",
+  "cp -rf backend/data/* /app/backend/data/ 2>/dev/null || true",
+  "cp -rf backend/personas/* /app/backend/personas/ 2>/dev/null || true",
+  "cp -f backend/main.py /app/backend/ 2>/dev/null || true",
+  "cp -f backend/config.py /app/backend/ 2>/dev/null || true",
+  "cp -rf backend/services /app/backend/ 2>/dev/null || true",
+  "chmod -R 755 /app 2>/dev/null || true"
 ]
 
 [start]
-cmd = "cd backend && python3.11 -m uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips '*' --workers 1"
+cmd = "cd /app/backend && python3.11 -m uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips '*' --workers 1"
 
 [variables]
 PORT = "8000"
@@ -54,7 +54,7 @@ PYTHONDONTWRITEBYTECODE = "1"
 PYTHONFAULTHANDLER = "1"
 
 [deploy]
-startCommand = "cd backend && python3.11 -m uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips '*' --workers 1"
+startCommand = "cd /app/backend && python3.11 -m uvicorn main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips '*' --workers 1"
 healthcheckPath = "/health"
 healthcheckTimeout = 120
 restartPolicyType = "on_failure"

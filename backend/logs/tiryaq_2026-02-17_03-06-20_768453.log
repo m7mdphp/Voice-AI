@@ -37,3 +37,9 @@
 2026-02-17 03:11:48.998 | INFO     | User:  السلام عليكم ورحمة الله وبركاته
 2026-02-17 03:11:50.660 | SUCCESS  | Interaction Complete: 2458.34ms
 2026-02-17 03:11:56.385 | INFO     | Finalized session tiryaq_technology-user_3970-1771290702
+2026-02-17 03:22:58.788 | INFO     | WS Handshake Start | Path: /ws/session/tiryaq_technology/user_9542 | Protocol: None | Host: localhost:8000
+2026-02-17 03:22:58.790 | SUCCESS  | WS Accepted | tiryaq_technology | user_9542
+2026-02-17 03:22:58.792 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 03:22:59.119 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-17 03:22:59.119 | INFO     | Connected tiryaq_technology-user_9542-1771291378
+2026-02-17 03:23:11.096 | INFO     | Finalized session tiryaq_technology-user_9542-1771291378
