@@ -142,6 +142,16 @@ SILENCE_DURATION_LIMIT = 2.0  # Longer silence detection for better phrase captu
 MIN_SPEECH_DURATION = 0.5    
 MIN_BUFFER_SIZE = 12000   # Minimum 750ms of audio buffer for better quality
 
+# ================= Fallback Questions (Dummy Mode) =================
+DUMMY_QUESTIONS = [
+    "كيف يمكنني الحصول على استشارة طبية؟",
+    "ما هي خدمات ترياق؟",
+    "كيف تضمنون خصوصية البيانات؟",
+    "متى يمكنني التحدث مع طبيب؟",
+    "هل تدعمون اللهجات المختلفة؟",
+    "ما هي تكلفة الخدمة؟",
+]
+
 # ================= Session State Management =================
 class SessionState:
     def __init__(self):
@@ -214,11 +224,10 @@ def _transcribe_sync(audio: bytes, api_key: str) -> str:
 
 
 async def transcribe_audio(audio: bytearray) -> str:
-    if not settings.OPENAI_API_KEY:
-        logger.warning("OpenAI API key missing or invalid - using dummy transcription")
-        # Return empty string to trigger the empty transcription handler
-        # which will respond with a friendly message
-        return ""
+    if not settings.OPENAI_API_KEY or settings.DUMMY_MODE:
+        logger.warning("Using dummy transcription - API key invalid or dummy mode enabled")
+        import random
+        return random.choice(DUMMY_QUESTIONS)
     
     with LatencyTracker("OpenAI_Whisper_STT"):
         try:
@@ -233,7 +242,8 @@ async def transcribe_audio(audio: bytearray) -> str:
             )
         except Exception as e:
             logger.error(f"Transcription error with OpenAI API: {e}")
-            return ""  # Return empty to trigger fallback
+            import random
+            return random.choice(DUMMY_QUESTIONS)
 
 
 # ================= WebSocket Outbound Queue =================
