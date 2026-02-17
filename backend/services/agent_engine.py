@@ -78,7 +78,11 @@ class GroqEngine:
         if not api_key:
             logger.warning("GROQ_API_KEY not set - using fallback mode")
             return None
-        return AsyncGroq(api_key=api_key)
+        try:
+            return AsyncGroq(api_key=api_key)
+        except Exception as e:
+            logger.error(f"Failed to initialize Groq client: {e}")
+            return None
 
     def _build_system_prompt(self) -> str:
         """

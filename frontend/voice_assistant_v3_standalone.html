@@ -278,33 +278,52 @@
             padding-bottom: 20px;
         }
 
-        .status-text {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            height: 1.5rem;
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 8px;
         }
 
         .btn-elite {
-            background: var(--text-primary);
-            color: var(--bg);
+            background: linear-gradient(135deg, var(--accent), #a78bfa);
+            color: #000;
             border: none;
-            padding: 20px;
-            border-radius: 100px;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            padding: 12px 24px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            transition: all 0.2s;
+            font-size: 1rem;
+            flex: 1;
+            max-width: 200px;
         }
 
-        .btn-elite:hover {
-            transform: scale(0.98);
-            opacity: 0.9;
+        .btn-submit {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            flex: 1;
+            max-width: 150px;
+        }
+
+        .btn-elite:hover, .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-submit:disabled {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
         }
 
         .btn-elite.active {
@@ -446,9 +465,14 @@
 
         <div class="controls">
             <div id="status-label" class="status-text">اضغط على الأورب لبدء الحديث</div>
-            <button id="main-btn" class="btn-elite" onclick="toggleSession()">
-                <span id="btn-text">بدء الاستشارة</span>
-            </button>
+            <div class="button-group">
+                <button id="main-btn" class="btn-elite" onclick="toggleSession()">
+                    <span id="btn-text">بدء الاستشارة</span>
+                </button>
+                <button id="submit-btn" class="btn-submit" onclick="submitQuery()" disabled>
+                    <span>إرسال السؤال</span>
+                </button>
+            </div>
         </div>
 
         <div class="diagnostics">
@@ -578,6 +602,14 @@
             }
         }
 
+        function submitQuery() {
+            if (ws?.readyState === 1 && document.body.classList.contains('state-listening')) {
+                // Send a special message to trigger AI response
+                ws.send(JSON.stringify({ type: 'end_of_speech' }));
+                setUIState('thinking');
+            }
+        }
+        
         function toggleSession() {
             if (audioCtx?.state === 'suspended') audioCtx.resume();
             if (!ws || ws.readyState !== 1) connect(); 
@@ -693,6 +725,12 @@
             };
             STATUS.textContent = labels[s] || labels.idle;
             document.getElementById('btn-text').textContent = s === 'idle' ? 'بدء الاستشارة' : 'إنهاء';
+            
+            // Enable submit button only during listening state
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = (s !== 'listening');
+            }
         }
 
         function addBubble(t, type) {

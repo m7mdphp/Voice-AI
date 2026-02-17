@@ -13,6 +13,7 @@ import wave
 import tempfile
 import os
 import sys
+import traceback
 import functools
 from typing import Dict, Optional
 from contextvars import ContextVar
@@ -337,10 +338,12 @@ async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
     # DYNAMIC: Create engine instance for THIS tenant and session
     # This ensures correct persona config.json is loaded!
     try:
+        logger.info(f"Creating engine for tenant: {tenant_id}, GROQ_API_KEY exists: {bool(settings.GROQ_API_KEY)}, ElevenLabs exists: {bool(settings.ELEVENLABS_API_KEY)}")
         tenant_engine = GroqEngine(tenant_id=tenant_id)
         logger.info(f"Initialized dynamic engine for tenant: {tenant_id}")
     except Exception as e:
-        logger.error(f"Failed to load engine for tenant {tenant_id}: {e}")
+        logger.error(f"Failed to load engine for tenant {tenant_id}: {str(e)}")
+        logger.error(f"Error type: {type(e).__name__}, traceback: {traceback.format_exc()}")
         await ws.close(code=4001)
         return
 
