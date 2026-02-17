@@ -1,6 +1,7 @@
 """
 Tiryaq Voice AI - Production Backend
 SaaS-grade Voice Assistant Backend (Najm AI Standard)
+Version: 9.0.0 - Dependency Hell Fix
 """
 
 import asyncio
@@ -11,14 +12,21 @@ import time
 import wave
 import tempfile
 import os
+import sys
 import functools
-from typing import Dict
+from typing import Dict, Optional
 from contextvars import ContextVar
+from pathlib import Path
+
+# Ensure backend directory is in path for imports
+BACKEND_DIR = Path(__file__).parent.resolve()
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
 
 from openai import OpenAI
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
@@ -27,36 +35,70 @@ from services.firestore_memory import MemoryManager
 from config import settings
 
 # ================= Logging =================
+# Ensure logs directory exists
+LOGS_DIR = BACKEND_DIR / "logs"
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
 logger.add(
-    "logs/tiryaq_{time}.log",
+    str(LOGS_DIR / "tiryaq_{time}.log"),
     rotation="1 day",
     retention="7 days",
     level=settings.LOG_LEVEL,
-    format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {message}"
+    format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | {message}",
+    enqueue=True  # Thread-safe logging
 )
 
-# ================= App Initialization (V8.2.0) =================
-app = FastAPI(title="Tiryaq Voice Elite", version="8.2.0")
+# ================= App Initialization =================
+app = FastAPI(
+    title="Tiryaq Voice Elite",
+    version="9.0.0",
+    description="SaaS-grade Voice Assistant - Najm AI Standard"
+)
 
 # Mounting static files for unified deployment
-current_dir = os.path.dirname(os.path.abspath(__file__))
-frontend_dir = os.path.join(current_dir, "..", "frontend")
-if os.path.exists(frontend_dir):
-    app.mount("/static", StaticFiles(directory=frontend_dir), name="static")
+# Priority: /app/frontend -> local frontend directory
+STATIC_DIRS = [
+    Path("/app/frontend"),
+    BACKEND_DIR.parent / "frontend",
+]
 
+for static_dir in STATIC_DIRS:
+    if static_dir.exists():
+        app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+        logger.info(f"Static files mounted from: {static_dir}")
+        break
+
+# ================= Routes =================
 @app.get("/")
 async def get_index():
-    # Elite Guard: Unified Static Discovery
-    paths = [
-        os.path.join(frontend_dir, "voice_assistant_v3.html"),
+    """Elite Guard: Unified Static Discovery with fallback"""
+    search_paths = [
+        "/app/frontend/voice_assistant_v3.html",
+        str(BACKEND_DIR.parent / "frontend" / "voice_assistant_v3.html"),
         "voice_assistant_v3.html",
-        "frontend/voice_assistant_v3.html",
-        "/app/frontend/voice_assistant_v3.html"
     ]
-    for p in paths:
-        if os.path.exists(p):
-            return FileResponse(p)
-    return {"message": "Tiryaq Elite V8.3 is running", "status": "active"}
+    
+    for path in search_paths:
+        if Path(path).exists():
+            return FileResponse(path, media_type="text/html")
+    
+    return JSONResponse({
+        "message": "Tiryaq Elite V9.0 is running",
+        "status": "active",
+        "docs": "/docs",
+        "health": "/health"
+    })
+
+@app.get("/health")
+async def health():
+    """Health check endpoint for deployment validation"""
+    return {
+        "status": "healthy",
+        "service": "Tiryaq Voice AI",
+        "version": "9.0.0",
+        "env": settings.ENV,
+        "python": sys.version.split()[0]
+    }
 
 @app.get("/ws/debug")
 async def ws_debug():
@@ -65,8 +107,10 @@ async def ws_debug():
         "env_port": os.getenv("PORT"),
         "settings_port": settings.PORT,
         "app_name": settings.APP_NAME,
-        "mode": "Elite V8.4",
-        "status": "online"
+        "mode": "Elite V9.0",
+        "status": "online",
+        "backend_dir": str(BACKEND_DIR),
+        "data_exists": (BACKEND_DIR / "data").exists()
     }
 
 @app.websocket("/ws/echo")
@@ -387,7 +431,6 @@ async def health():
 # ================= Execution =================
 if __name__ == "__main__":
     import uvicorn
-    import sys
     
     # Priority: Command line argument -> Environment variable -> Default settings
     port = settings.PORT

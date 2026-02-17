@@ -1,14 +1,48 @@
-uvicorn[standard]==0.27.1
-google-cloud-firestore==2.14.0
-google-genai
-websockets>=13.0
+# Tiryaq Voice AI - Production Dependencies
+# Last Updated: 2026-02-17 (Najm AI Standard - Dependency Hell Fix)
+# Compatible with Python 3.11+ and Nixpacks deployment
+
+# ========== Core Web Framework ==========
+fastapi==0.109.2
+uvicorn==0.27.1
+uvicorn-standard==0.0.1
+websockets>=12.0
 python-multipart==0.0.9
-python-dotenv==1.0.1
-loguru==0.7.2
+starlette==0.36.3
+anyio==4.2.0
+httptools==0.6.1
+
+# ========== AI & ML Services ==========
+openai==1.12.0
+groq==0.4.2
+elevenlabs==0.2.26
+
+# ========== Async HTTP (Critical for TTS) ==========
+aiohttp==3.9.3
+httpcore==1.0.2
+httpx==0.26.0
+
+# ========== Database & Storage ==========
+# Firebase with explicit gRPC handling
 firebase-admin==6.4.0
-pydantic-settings
-groq
-openai
-requests
-tenacity
-protobuf==3.20.3
+google-cloud-firestore==2.14.0
+google-api-core==2.15.0
+google-auth==2.27.0
+protobuf==4.25.2
+grpcio==1.60.0
+grpcio-status==1.60.0
+
+# ========== Configuration & Utilities ==========
+python-dotenv==1.0.1
+pydantic==2.6.1
+pydantic-settings==2.1.0
+pydantic-core==2.16.2
+loguru==0.7.2
+tenacity==8.2.3
+requests==2.31.0
+
+# ========== Audio Processing ==========
+# Note: ffmpeg is a system dependency, not pip package
+
+# ========== Type Hints ==========
+typing-extensions==4.9.0

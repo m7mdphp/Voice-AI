@@ -5,18 +5,26 @@ Features:
 - Groq/Llama 3.3 70B for fast reasoning.
 - ElevenLabs PCM_16000 raw byte streaming.
 - Dynamic persona and knowledge base loading.
+- Async TTS streaming for non-blocking operation.
 """
 
 import asyncio
 import json
 import os
+import sys
 import time
 from typing import AsyncGenerator, Dict, List
 from pathlib import Path
-import requests
+import aiohttp
 from groq import AsyncGroq
 from loguru import logger
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+
+# Add parent directory to path for config import
+PARENT_DIR = Path(__file__).parent.parent.resolve()
+if str(PARENT_DIR) not in sys.path:
+    sys.path.insert(0, str(PARENT_DIR))
+
 from config import settings
 
 class GroqEngine:
@@ -157,7 +165,7 @@ Arabic (Saudi White Dialect) ONLY. No English words.
             yield {"type": "error", "content": "حدث خطأ، لحظة وأكون معك."}
 
     async def _tts_stream(self, text: str) -> AsyncGenerator[bytes, None]:
-        """MP3 format for high-stability streaming (Resilient to network jitter)."""
+        """Async TTS streaming using aiohttp for non-blocking operation."""
         if not self.elevenlabs_api_key or not text.strip():
             return
 
@@ -178,18 +186,26 @@ Arabic (Saudi White Dialect) ONLY. No English words.
             "voice_settings": {"stability": 0.5, "similarity_boost": 0.75}
         }
         
+        timeout = aiohttp.ClientTimeout(total=10, connect=5)
+        
         try:
-            loop = asyncio.get_event_loop()
-            response = await loop.run_in_executor(
-                None, 
-                lambda: requests.post(url, json=data, headers=headers, params=params, stream=True, timeout=8)
-            )
-            
-            if response.status_code == 200:
-                for chunk in response.iter_content(chunk_size=16384): # High-res buffering
-                    if chunk:
-                        yield chunk
-            else:
-                logger.error(f"TTS Error: {response.text}")
-        except Exception as e:
+            async with aiohttp.ClientSession(timeout=timeout) as session:
+                async with session.post(
+                    url, 
+                    json=data, 
+                    headers=headers, 
+                    params=params
+                ) as response:
+                    if response.status == 200:
+                        async for chunk in response.content.iter_chunked(16384):
+                            if chunk:
+                                yield chunk
+                    else:
+                        error_text = await response.text()
+                        logger.error(f"TTS Error [{response.status}]: {error_text}")
+        except asyncio.TimeoutError:
+            logger.error("TTS Timeout - ElevenLabs API took too long")
+        except aiohttp.ClientError as e:
             logger.error(f"TTS Connection Failed: {e}")
+        except Exception as e:
+            logger.error(f"TTS Unexpected Error: {e}")
