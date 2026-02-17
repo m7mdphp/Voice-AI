@@ -176,7 +176,7 @@ class LatencyTracker:
 
 
 # ================= Speech-to-Text (STT) =================
-def _transcribe_sync(audio: bytes, groq_api_key: str) -> str:
+def _transcribe_sync(audio: bytes, api_key: str) -> str:
     path = None
     try:
         # Najm Standard: Anti-Hallucination Padding
@@ -192,18 +192,18 @@ def _transcribe_sync(audio: bytes, groq_api_key: str) -> str:
                 w.setframerate(SAMPLE_RATE)
                 w.writeframes(processed_audio)
 
-        # Use Groq Whisper API (faster and free tier available)
-        from groq import Groq
-        client = Groq(api_key=groq_api_key)
+        # Use OpenAI API for Whisper transcription
+        from openai import OpenAI
+        client = OpenAI(api_key=api_key)
         with open(path, "rb") as audio_file:
             res = client.audio.transcriptions.create(
-                model="whisper-large-v3-turbo",
+                model="whisper-1",
                 file=audio_file,
                 language="ar"
             )
         return res.text or ""
     except Exception as e:
-        logger.error(f"Groq Whisper error: {e}")
+        logger.error(f"OpenAI Whisper error: {e}")
         return ""
     finally:
         if path and os.path.exists(path):
@@ -214,14 +214,14 @@ def _transcribe_sync(audio: bytes, groq_api_key: str) -> str:
 
 
 async def transcribe_audio(audio: bytearray) -> str:
-    with LatencyTracker("Groq_Whisper_STT"):
+    with LatencyTracker("OpenAI_Whisper_STT"):
         loop = asyncio.get_running_loop()
         return await loop.run_in_executor(
             None,
             functools.partial(
                 _transcribe_sync,
                 bytes(audio),
-                settings.GROQ_API_KEY
+                settings.OPENAI_API_KEY
             )
         )
 
