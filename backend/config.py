@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     
     OPENAI_API_KEY: str = validate_api_key(
         os.getenv("OPENAI_API_KEY", ""), 
-        r"^sk-[A-Za-z0-9]{48}$",
+        r"^sk-(?:proj-)?[A-Za-z0-9-_]{48,}$",
         "OPENAI_API_KEY"
     )
     

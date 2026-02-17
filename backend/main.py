@@ -214,16 +214,26 @@ def _transcribe_sync(audio: bytes, api_key: str) -> str:
 
 
 async def transcribe_audio(audio: bytearray) -> str:
+    if not settings.OPENAI_API_KEY:
+        logger.warning("OpenAI API key missing or invalid - using dummy transcription")
+        # Return empty string to trigger the empty transcription handler
+        # which will respond with a friendly message
+        return ""
+    
     with LatencyTracker("OpenAI_Whisper_STT"):
-        loop = asyncio.get_running_loop()
-        return await loop.run_in_executor(
-            None,
-            functools.partial(
-                _transcribe_sync,
-                bytes(audio),
-                settings.OPENAI_API_KEY
+        try:
+            loop = asyncio.get_running_loop()
+            return await loop.run_in_executor(
+                None,
+                functools.partial(
+                    _transcribe_sync,
+                    bytes(audio),
+                    settings.OPENAI_API_KEY
+                )
             )
-        )
+        except Exception as e:
+            logger.error(f"Transcription error with OpenAI API: {e}")
+            return ""  # Return empty to trigger fallback
 
 
 # ================= WebSocket Outbound Queue =================
