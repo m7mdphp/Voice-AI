@@ -1,0 +1,23 @@
+2026-02-17 02:53:24.132 | INFO     | Static files mounted from: C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\frontend
+2026-02-17 02:53:24.435 | WARNING  | No Firebase credentials found - using in-memory fallback
+2026-02-17 02:53:24.454 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-17 02:53:59.377 | INFO     | WS Handshake Start | Path: /ws/session/test_tenant/test_user | Protocol: None | Host: localhost:8000
+2026-02-17 02:53:59.378 | SUCCESS  | WS Accepted | test_tenant | test_user
+2026-02-17 02:53:59.378 | WARNING  | DB for test_tenant not found at C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\test_tenant_db.json, using default.
+2026-02-17 02:53:59.380 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 02:53:59.634 | INFO     | Initialized dynamic engine for tenant: test_tenant
+2026-02-17 02:53:59.634 | INFO     | Connected test_tenant-test_user-1771289639
+2026-02-17 02:54:04.646 | INFO     | Finalized session test_tenant-test_user-1771289639
+2026-02-17 02:56:09.135 | INFO     | WS Handshake Start | Path: /ws/session/tiryaq_technology/user_107 | Protocol: None | Host: localhost:8000
+2026-02-17 02:56:09.137 | SUCCESS  | WS Accepted | tiryaq_technology | user_107
+2026-02-17 02:56:09.138 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 02:56:09.397 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-17 02:56:09.397 | INFO     | Connected tiryaq_technology-user_107-1771289769
+2026-02-17 02:56:17.372 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************OE8A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-02-17 02:56:17.375 | INFO     | Whisper_STT: 1383.80ms
+2026-02-17 02:56:31.953 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************OE8A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-02-17 02:56:31.955 | INFO     | Whisper_STT: 574.81ms
+2026-02-17 02:56:35.119 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************OE8A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-02-17 02:56:35.121 | INFO     | Whisper_STT: 510.74ms
+2026-02-17 02:56:44.352 | ERROR    | Whisper error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************OE8A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-02-17 02:56:44.354 | INFO     | Whisper_STT: 564.78ms

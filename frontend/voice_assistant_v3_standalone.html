@@ -3,22 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ترياق Elite V8.0</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Tajawal:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ترياق - مساعد صوتي ذكي</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
-            --accent: #0ea5e9;
-            --accent-glow: rgba(14, 165, 233, 0.4);
-            --glass: rgba(15, 15, 15, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg: #0a0a0f;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
             --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
+            --text-secondary: rgba(255, 255, 255, 0.6);
             --success: #10b981;
             --error: #ef4444;
             --warning: #f59e0b;
@@ -28,126 +24,206 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            font-family: 'Tajawal', 'Inter', sans-serif;
-            background-color: var(--bg);
-            background-image:
-                radial-gradient(circle at 50% -20%, #1e293b 0%, transparent 50%),
-                radial-gradient(circle at 0% 100%, #0f172a 0%, transparent 40%);
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background: var(--bg);
             color: var(--text-primary);
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
-        /* --- Elite Layout --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
         .app-shell {
             width: 100%;
-            max-width: 500px;
-            height: 100%;
+            max-width: 420px;
+            height: 100vh;
             max-height: 900px;
             display: flex;
             flex-direction: column;
             padding: 24px;
             position: relative;
+            z-index: 1;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 2vh;
-            animation: fadeInDown 1s ease;
+            margin-bottom: 20px;
         }
 
         .logo {
-            font-family: 'Inter';
-            font-weight: 700;
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            font-weight: 600;
             color: var(--accent);
-            opacity: 0.8;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Server Config Panel */
+        .config-panel {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .config-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .config-row {
+            display: flex;
+            gap: 8px;
             margin-bottom: 8px;
         }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+        .config-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            direction: ltr;
+            text-align: left;
         }
 
-        /* --- The Elite Orb --- */
+        .config-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .config-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .config-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .config-btn:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+
+        .config-status {
+            font-size: 0.75rem;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .config-status.connected {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .config-status.disconnected {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error);
+        }
+
+        .config-status.connecting {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        /* Orb */
         .orb-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
-            perspective: 1000px;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+        }
+
+        .visualizer-svg {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.6;
         }
 
         .orb-layers {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 100%;
+            height: 100%;
             cursor: pointer;
-            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .orb-layers:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+        }
+
+        .orb-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(20px);
+            opacity: 0.5;
+            transition: opacity 0.3s;
         }
 
         .orb-core {
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #3b82f6, #1d4ed8);
-            box-shadow: 0 0 60px rgba(59, 130, 246, 0.3);
-            z-index: 10;
+            background: radial-gradient(circle at 30% 30%, #4f46e5, #1e1b4b);
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .orb-glow {
-            position: absolute;
-            inset: -20px;
-            border-radius: 50%;
-            background: var(--accent-glow);
-            filter: blur(40px);
-            opacity: 0.4;
-            animation: orbFloat 4s infinite ease-in-out;
-        }
-
-        .visualizer-svg {
-            position: absolute;
-            inset: -40px;
-            width: 300px;
-            height: 300px;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        @keyframes orbFloat {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.4;
-            }
-
-            50% {
-                transform: scale(1.1);
-                opacity: 0.6;
-            }
-        }
-
-        /* --- Chat View --- */
+        /* Chat */
         .chat-container {
-            height: 35vh;
+            flex: 1;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 16px;
             margin-bottom: 24px;
             overflow-y: auto;
             display: flex;
@@ -185,7 +261,16 @@
             font-weight: 500;
         }
 
-        /* --- Controls --- */
+        .bubble.system {
+            align-self: center;
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: var(--warning);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* Controls */
         .controls {
             display: flex;
             flex-direction: column;
@@ -227,12 +312,16 @@
             color: white;
         }
 
+        .btn-elite:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .diagnostics {
             display: flex;
             justify-content: center;
             gap: 20px;
             font-size: 0.65rem;
-            font-family: 'Inter';
             font-weight: 600;
             color: var(--text-secondary);
             opacity: 0.5;
@@ -261,32 +350,7 @@
             box-shadow: 0 0 8px var(--error);
         }
 
-        /* --- Animations --- */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* --- States --- */
+        /* States */
         .state-listening .orb-core {
             background: radial-gradient(circle at 30% 30%, #10b981, #059669);
             box-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
@@ -301,18 +365,36 @@
             background: radial-gradient(circle at 30% 30%, #3b82f6, #2563eb);
         }
 
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes pulseRotate {
-            0% {
-                transform: scale(1);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
 
-            50% {
-                transform: scale(1.05);
-            }
+        /* Instructions */
+        .instructions {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 16px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
 
-            100% {
-                transform: scale(1);
-            }
+        .instructions strong {
+            color: var(--accent);
         }
     </style>
 </head>
@@ -324,10 +406,32 @@
             <h1>ترياق</h1>
         </div>
 
+        <!-- Server Configuration -->
+        <div class="config-panel">
+            <div class="config-title">
+                <span>⚙️</span> إعدادات السيرفر
+            </div>
+            <div class="config-row">
+                <input type="text" id="server-host" class="config-input" placeholder="أدخل IP السيرفر (مثال: 192.168.1.100)" value="localhost">
+                <input type="number" id="server-port" class="config-input" placeholder="المنفذ" value="8000" style="width: 80px; flex: none;">
+            </div>
+            <div class="config-row">
+                <button class="config-btn" onclick="testConnection()">اختبار الاتصال</button>
+                <button class="config-btn" onclick="saveConfig()">حفظ</button>
+            </div>
+            <div id="config-status" class="config-status disconnected">غير متصل</div>
+        </div>
+
+        <div class="instructions">
+            <strong>طريقة الاستخدام:</strong><br>
+            1. أدخل عنوان IP السيرفر في الخانة أعلاه<br>
+            2. اضغط "اختبار الاتصال" للتأكد من الاتصال<br>
+            3. اضغط "بدء الاستشارة" وتكلم مع المساعد
+        </div>
+
         <div class="orb-container">
             <svg class="visualizer-svg" viewbox="0 0 300 300">
-                <circle id="visualizer-circle" cx="150" cy="150" r="110" fill="none" stroke="rgba(56, 189, 248, 0.2)"
-                    stroke-width="2" />
+                <circle id="visualizer-circle" cx="150" cy="150" r="110" fill="none" stroke="rgba(56, 189, 248, 0.2)" stroke-width="2" />
                 <path id="waveform" d="" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" />
             </svg>
             <div class="orb-layers" id="orb-trigger" onclick="toggleSession()">
@@ -337,7 +441,7 @@
         </div>
 
         <div class="chat-container" id="chat">
-            <div class="bubble ai">أهلاً بك في ترياق. كيف يمكنني مساعدتك برمجياً اليوم؟</div>
+            <div class="bubble ai">أهلاً بك في ترياق. كيف يمكنني مساعدتك اليوم؟</div>
         </div>
 
         <div class="controls">
@@ -354,11 +458,60 @@
             <div class="diag-item">
                 <div id="led-mic" class="led"></div> <span>AUDIO_IN</span>
             </div>
-            <div class="diag-item"><span id="version-lbl">ULTIMA V8.0</span></div>
+            <div class="diag-item"><span id="version-lbl">STANDALONE V1.0</span></div>
         </div>
     </div>
 
     <script>
+        // ================= Configuration =================
+        let SERVER_HOST = localStorage.getItem('tiryaq_host') || 'localhost';
+        let SERVER_PORT = localStorage.getItem('tiryaq_port') || '8000';
+
+        // Load saved config on startup
+        document.getElementById('server-host').value = SERVER_HOST;
+        document.getElementById('server-port').value = SERVER_PORT;
+
+        function saveConfig() {
+            SERVER_HOST = document.getElementById('server-host').value.trim() || 'localhost';
+            SERVER_PORT = document.getElementById('server-port').value.trim() || '8000';
+            localStorage.setItem('tiryaq_host', SERVER_HOST);
+            localStorage.setItem('tiryaq_port', SERVER_PORT);
+            addBubble('تم حفظ الإعدادات', 'system');
+        }
+
+        async function testConnection() {
+            const host = document.getElementById('server-host').value.trim() || 'localhost';
+            const port = document.getElementById('server-port').value.trim() || '8000';
+            const statusEl = document.getElementById('config-status');
+            
+            statusEl.className = 'config-status connecting';
+            statusEl.textContent = 'جاري الاختبار...';
+
+            try {
+                const response = await fetch(`http://${host}:${port}/health`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    signal: AbortSignal.timeout(5000)
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    statusEl.className = 'config-status connected';
+                    statusEl.textContent = `متصل - ${data.service || 'Tiryaq Voice AI'}`;
+                    updateLED('led-ws', 'on');
+                    return true;
+                } else {
+                    throw new Error('Server returned error');
+                }
+            } catch (e) {
+                statusEl.className = 'config-status disconnected';
+                statusEl.textContent = 'فشل الاتصال - تأكد من IP والمنفذ';
+                updateLED('led-ws', 'err');
+                return false;
+            }
+        }
+
+        // ================= Audio & WebSocket =================
         let ws, audioCtx, micNode, gainNode, processorNode, stream, analyser, dataArray;
         let queue = [], isPlaying = false, leftover = null, activeAiMsg = null;
         const ORB = document.getElementById('orb-core');
@@ -371,9 +524,16 @@
         }
 
         function getWsUrl() {
-            const host = 'localhost:8000';
-            const userId = 'user_' + Math.floor(Math.random() * 1000);
-            return `ws://${host}/ws/session/tiryaq_technology/${userId}`;
+            const host = document.getElementById('server-host').value.trim() || 'localhost';
+            const port = document.getElementById('server-port').value.trim() || '8000';
+            const userId = 'user_' + Math.floor(Math.random() * 10000);
+            return `ws://${host}:${port}/ws/session/tiryaq_technology/${userId}`;
+        }
+
+        function getHttpUrl() {
+            const host = document.getElementById('server-host').value.trim() || 'localhost';
+            const port = document.getElementById('server-port').value.trim() || '8000';
+            return `http://${host}:${port}`;
         }
 
         async function initAudio() {
@@ -398,7 +558,7 @@
                 await audioCtx.audioWorklet.addModule(dataUri);
 
                 gainNode = audioCtx.createGain();
-                gainNode.gain.value = 1.0; // Normalized gain to reduce noise
+                gainNode.gain.value = 1.0;
 
                 processorNode = new AudioWorkletNode(audioCtx, 'p');
                 processorNode.port.onmessage = (e) => {
@@ -412,12 +572,16 @@
                 processorNode.connect(audioCtx.destination);
 
                 drawVisualizer();
-            } catch (e) { console.error("Audio Fail", e); }
+            } catch (e) { 
+                console.error("Audio Fail", e); 
+                addBubble('فشل تهيئة الصوت: ' + e.message, 'system');
+            }
         }
 
         function toggleSession() {
             if (audioCtx?.state === 'suspended') audioCtx.resume();
-            if (!ws || ws.readyState !== 1) connect(); else stopSession();
+            if (!ws || ws.readyState !== 1) connect(); 
+            else stopSession();
         }
 
         function stopSession() {
@@ -427,28 +591,35 @@
             if (window.pingInterval) clearInterval(window.pingInterval);
         }
 
-        function connect() {
-            fetch('http://localhost:8000/health').then(r => {
-                console.log("HTTP Health Check:", r.status);
-            }).catch(e => console.warn("HTTP Health unreachable."));
+        async function connect() {
+            // Test connection first
+            const isConnected = await testConnection();
+            if (!isConnected) {
+                addBubble('لا يمكن الاتصال بالسيرفر. تأكد من الإعدادات.', 'system');
+                return;
+            }
 
-            initAudio().then(async () => {
-                const url = getWsUrl();
-                console.log("Elite V8.5 Connecting:", url);
+            await initAudio();
+
+            const url = getWsUrl();
+            console.log("Connecting to:", url);
+            
+            try {
                 ws = new WebSocket(url);
                 setUIState('thinking');
 
                 const connTimeout = setTimeout(() => {
                     if (ws.readyState !== 1) {
                         ws.close();
-                        addBubble("فشل الاتصال. تأكد من عمل السيرفر على localhost:8000", true);
+                        addBubble('انتهت مهلة الاتصال. حاول مرة أخرى.', 'system');
                     }
-                }, 8000);
+                }, 10000);
 
                 ws.onopen = async () => {
                     clearTimeout(connTimeout);
                     updateLED('led-ws', 'on');
                     console.info("WS Connected!");
+                    
                     if (!stream) {
                         try {
                             stream = await navigator.mediaDevices.getUserMedia({
@@ -462,7 +633,7 @@
                             });
                             updateLED('led-mic', 'on');
                         } catch (e) {
-                            addBubble("يرجى تفعيل المايكروفون", true);
+                            addBubble('يرجى السماح باستخدام المايكروفون', 'system');
                             return;
                         }
                     }
@@ -479,9 +650,12 @@
                     if (typeof e.data === 'string') {
                         const m = JSON.parse(e.data);
                         if (m.type === 'state') setUIState(m.state);
-                        else if (m.type === 'user_text') { addBubble(m.content, false); activeAiMsg = null; }
+                        else if (m.type === 'user_text') { addBubble(m.content, 'user'); activeAiMsg = null; }
                         else if (m.type === 'text') streamText(m.content);
-                        else if (m.type === 'audio_end') { ws.send(JSON.stringify({ type: 'playback_done' })); setUIState('listening'); }
+                        else if (m.type === 'audio_end') { 
+                            ws.send(JSON.stringify({ type: 'playback_done' })); 
+                            setUIState('listening'); 
+                        }
                     } else {
                         queue.push(await e.data.arrayBuffer());
                         playPCM();
@@ -492,7 +666,7 @@
                     clearTimeout(connTimeout);
                     console.warn("WS Closed:", e.code, e.reason);
                     if (e.code !== 1000) {
-                        addBubble("فشل الاتصال (" + e.code + ")", true);
+                        addBubble(`انقطع الاتصال (${e.code})`, 'system');
                     }
                     stopSession();
                 };
@@ -501,20 +675,29 @@
                     clearTimeout(connTimeout);
                     console.error("WS Error:", e);
                     updateLED('led-ws', 'err');
+                    addBubble('حدث خطأ في الاتصال', 'system');
                 };
-            });
+            } catch (e) {
+                console.error("Connection error:", e);
+                addBubble('فشل الاتصال: ' + e.message, 'system');
+            }
         }
 
         function setUIState(s) {
             document.body.className = 'state-' + s;
-            const labels = { idle: 'ابدأ الاستشارة', listening: 'أنا أسمعك...', thinking: 'أفكر...', speaking: 'ترياق يتحدث...' };
+            const labels = { 
+                idle: 'اضغط لبدء الاستشارة', 
+                listening: 'أنا أسمعك...', 
+                thinking: 'أفكر...', 
+                speaking: 'ترياق يتحدث...' 
+            };
             STATUS.textContent = labels[s] || labels.idle;
             document.getElementById('btn-text').textContent = s === 'idle' ? 'بدء الاستشارة' : 'إنهاء';
         }
 
-        function addBubble(t, ai) {
+        function addBubble(t, type) {
             const b = document.createElement('div');
-            b.className = 'bubble ' + (ai ? 'ai' : 'user');
+            b.className = 'bubble ' + type;
             b.textContent = t;
             CHAT.appendChild(b);
             CHAT.scrollTop = CHAT.scrollHeight;
@@ -522,7 +705,7 @@
         }
 
         function streamText(t) {
-            if (!activeAiMsg) activeAiMsg = addBubble('', true);
+            if (!activeAiMsg) activeAiMsg = addBubble('', 'ai');
             activeAiMsg.textContent += t;
             CHAT.scrollTop = CHAT.scrollHeight;
         }
@@ -576,6 +759,11 @@
             }
             render();
         }
+
+        // Auto-test connection on load
+        setTimeout(() => {
+            testConnection();
+        }, 1000);
     </script>
 </body>
 

@@ -1,0 +1,15 @@
+2026-02-17 03:01:43.037 | INFO     | Static files mounted from: C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\frontend
+2026-02-17 03:01:43.323 | WARNING  | No Firebase credentials found - using in-memory fallback
+2026-02-17 03:01:43.337 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-17 03:02:33.164 | INFO     | WS Handshake Start | Path: /ws/session/tiryaq_technology/user_555 | Protocol: None | Host: localhost:8000
+2026-02-17 03:02:33.165 | SUCCESS  | WS Accepted | tiryaq_technology | user_555
+2026-02-17 03:02:33.166 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 03:02:33.566 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-17 03:02:33.566 | INFO     | Connected tiryaq_technology-user_555-1771290153
+2026-02-17 03:02:40.246 | INFO     | Groq_Whisper_STT: 1105.81ms
+2026-02-17 03:02:40.246 | INFO     | User:  السلام عليكم رحمة الله أكبر
+2026-02-17 03:02:41.614 | ERROR    | TTS Error [404]: {"detail":{"type":"not_found","code":"voice_not_found","message":"A voice with voice_id 'pNInz6obpgnuMvkhbuZ5' was not found.","status":"voice_not_found","request_id":"1d517276cc5b67650826b8bebde3e99a"}}
+2026-02-17 03:02:42.164 | ERROR    | TTS Error [404]: {"detail":{"type":"not_found","code":"voice_not_found","message":"A voice with voice_id 'pNInz6obpgnuMvkhbuZ5' was not found.","status":"voice_not_found","request_id":"31a6ad5654a806fef3e9fc4e54dcbd31"}}
+2026-02-17 03:02:42.702 | ERROR    | TTS Error [404]: {"detail":{"type":"not_found","code":"voice_not_found","message":"A voice with voice_id 'pNInz6obpgnuMvkhbuZ5' was not found.","status":"voice_not_found","request_id":"a7bce697bc514cd89240bca06ca5bd4b"}}
+2026-02-17 03:02:42.705 | SUCCESS  | Interaction Complete: 3565.57ms
+2026-02-17 03:02:52.925 | INFO     | Finalized session tiryaq_technology-user_555-1771290153

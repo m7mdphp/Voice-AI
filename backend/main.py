@@ -135,12 +135,11 @@ request_id_var: ContextVar[str] = ContextVar("request_id", default="unknown")
 
 # ================= Audio / VAD Constants (Elite V8.2 Calibrated) =================
 SAMPLE_RATE = 16000
-VOICE_THRESHOLD = 300   # Elite Sensitivity: Lowered for quiet voices
-SILENCE_THRESHOLD = 150
-SILENCE_DURATION_LIMIT = 1.5 
+VOICE_THRESHOLD = 500   # Increased for noisy environments
+SILENCE_THRESHOLD = 200  # Increased to filter background noise
+SILENCE_DURATION_LIMIT = 2.0  # Longer silence detection for better phrase capture
 MIN_SPEECH_DURATION = 0.5    
-MIN_BUFFER_SIZE = 8000   # Minimum 250ms of audio buffer
-
+MIN_BUFFER_SIZE = 12000   # Minimum 750ms of audio buffer for better quality
 
 # ================= Session State Management =================
 class SessionState:
@@ -176,7 +175,7 @@ class LatencyTracker:
 
 
 # ================= Speech-to-Text (STT) =================
-def _transcribe_sync(audio: bytes, api_key: str) -> str:
+def _transcribe_sync(audio: bytes, groq_api_key: str) -> str:
     path = None
     try:
         # Najm Standard: Anti-Hallucination Padding
@@ -192,16 +191,18 @@ def _transcribe_sync(audio: bytes, api_key: str) -> str:
                 w.setframerate(SAMPLE_RATE)
                 w.writeframes(processed_audio)
 
-        client = OpenAI(api_key=api_key)
+        # Use Groq Whisper API (faster and free tier available)
+        from groq import Groq
+        client = Groq(api_key=groq_api_key)
         with open(path, "rb") as audio_file:
             res = client.audio.transcriptions.create(
-                model="whisper-1",
+                model="whisper-large-v3-turbo",
                 file=audio_file,
                 language="ar"
             )
         return res.text or ""
     except Exception as e:
-        logger.error(f"Whisper error: {e}")
+        logger.error(f"Groq Whisper error: {e}")
         return ""
     finally:
         if path and os.path.exists(path):
@@ -212,14 +213,14 @@ def _transcribe_sync(audio: bytes, api_key: str) -> str:
 
 
 async def transcribe_audio(audio: bytearray) -> str:
-    with LatencyTracker("Whisper_STT"):
+    with LatencyTracker("Groq_Whisper_STT"):
         loop = asyncio.get_running_loop()
         return await loop.run_in_executor(
             None,
             functools.partial(
                 _transcribe_sync,
                 bytes(audio),
-                settings.OPENAI_API_KEY
+                settings.GROQ_API_KEY
             )
         )
 
@@ -416,16 +417,6 @@ async def websocket_endpoint(ws: WebSocket, tenant_id: str, user_id: str):
         sender_task.cancel()
         request_id_var.reset(token)
         logger.info(f"Finalized session {session_id}")
-
-
-# ================= Health Check =================
-@app.get("/health")
-async def health():
-    return {
-        "status": "healthy",
-        "service": "Tiryaq Voice AI",
-        "version": "2.2.0"
-    }
 
 
 # ================= Execution =================

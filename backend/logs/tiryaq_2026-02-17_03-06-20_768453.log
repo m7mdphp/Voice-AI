@@ -1,0 +1,39 @@
+2026-02-17 03:06:20.775 | INFO     | Static files mounted from: C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\frontend
+2026-02-17 03:06:21.044 | WARNING  | No Firebase credentials found - using in-memory fallback
+2026-02-17 03:06:21.060 | INFO     | Starting Tiryaq Voice SaaS on port 8000
+2026-02-17 03:07:07.690 | INFO     | WS Handshake Start | Path: /ws/session/tiryaq_technology/user_400 | Protocol: None | Host: localhost:8000
+2026-02-17 03:07:07.692 | SUCCESS  | WS Accepted | tiryaq_technology | user_400
+2026-02-17 03:07:07.694 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 03:07:08.162 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-17 03:07:08.163 | INFO     | Connected tiryaq_technology-user_400-1771290427
+2026-02-17 03:07:17.657 | INFO     | Finalized session tiryaq_technology-user_400-1771290427
+2026-02-17 03:07:25.754 | INFO     | WS Handshake Start | Path: /ws/session/tiryaq_technology/user_442 | Protocol: None | Host: localhost:8000
+2026-02-17 03:07:25.755 | SUCCESS  | WS Accepted | tiryaq_technology | user_442
+2026-02-17 03:07:25.756 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 03:07:26.028 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-17 03:07:26.029 | INFO     | Connected tiryaq_technology-user_442-1771290445
+2026-02-17 03:07:31.095 | INFO     | Groq_Whisper_STT: 1066.36ms
+2026-02-17 03:07:31.095 | INFO     | User:  السلام عليكم ورحمة الله وبركاته
+2026-02-17 03:07:32.382 | SUCCESS  | Interaction Complete: 2353.87ms
+2026-02-17 03:07:40.302 | INFO     | Groq_Whisper_STT: 833.38ms
+2026-02-17 03:07:40.302 | INFO     | User:  انت مين
+2026-02-17 03:07:41.698 | SUCCESS  | Interaction Complete: 2229.68ms
+2026-02-17 03:07:42.620 | INFO     | Finalized session tiryaq_technology-user_442-1771290445
+2026-02-17 03:10:26.970 | INFO     | WS Handshake Start | Path: /ws/session/tiryaq_technology/user_976 | Protocol: None | Host: localhost:8000
+2026-02-17 03:10:26.971 | SUCCESS  | WS Accepted | tiryaq_technology | user_976
+2026-02-17 03:10:26.972 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 03:10:27.246 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-17 03:10:27.247 | INFO     | Connected tiryaq_technology-user_976-1771290626
+2026-02-17 03:10:34.304 | INFO     | Groq_Whisper_STT: 723.02ms
+2026-02-17 03:10:34.305 | INFO     | User:  السلام عليكم ورحمة الله وبرك
+2026-02-17 03:10:35.699 | SUCCESS  | Interaction Complete: 2117.42ms
+2026-02-17 03:10:36.405 | INFO     | Finalized session tiryaq_technology-user_976-1771290626
+2026-02-17 03:11:42.119 | INFO     | WS Handshake Start | Path: /ws/session/tiryaq_technology/user_3970 | Protocol: None | Host: localhost:8000
+2026-02-17 03:11:42.120 | SUCCESS  | WS Accepted | tiryaq_technology | user_3970
+2026-02-17 03:11:42.122 | SUCCESS  | Loaded knowledge base from C:\Users\mrphp\OneDrive\Desktop\anti\Voice-AI\Voice-AI\backend\data\tiryaq_db.json for: ترياق للتقنية (Tiryaq Technology)
+2026-02-17 03:11:42.461 | INFO     | Initialized dynamic engine for tenant: tiryaq_technology
+2026-02-17 03:11:42.461 | INFO     | Connected tiryaq_technology-user_3970-1771290702
+2026-02-17 03:11:48.997 | INFO     | Groq_Whisper_STT: 795.06ms
+2026-02-17 03:11:48.998 | INFO     | User:  السلام عليكم ورحمة الله وبركاته
+2026-02-17 03:11:50.660 | SUCCESS  | Interaction Complete: 2458.34ms
+2026-02-17 03:11:56.385 | INFO     | Finalized session tiryaq_technology-user_3970-1771290702
