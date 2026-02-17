@@ -14,7 +14,10 @@ nixPkgs = [
   "protobuf",
   "openssl",
   "libffi",
-  "zlib"
+  "zlib",
+  "bash",
+  "coreutils",
+  "findutils"
 ]
 
 aptPkgs = [
