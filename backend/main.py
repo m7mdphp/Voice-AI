@@ -271,9 +271,23 @@ async def process_audio_buffer(
         await send_queue.put({"type": "state", "state": "thinking"})
 
         # 2. Transcription (OpenAI Whisper via Executor)
-        text = await transcribe_audio(audio)
-        if not text.strip():
-            logger.bind(request_id=request_id).debug("Empty transcription, skipping.")
+        try:
+            text = await transcribe_audio(audio)
+            if not text.strip():
+                logger.bind(request_id=request_id).debug("Empty transcription, skipping.")
+                # Send a friendly message in case of persistent errors
+                if getattr(state, "consecutive_empty_transcriptions", 0) > 2:
+                    await send_queue.put({"type": "text", "content": "عفواً، لم أتمكن من فهم ما قلت. هل يمكنك المحاولة مرة أخرى؟"})
+                    state.consecutive_empty_transcriptions = 0
+                else:
+                    state.consecutive_empty_transcriptions = getattr(state, "consecutive_empty_transcriptions", 0) + 1
+                
+                state.processing = False
+                await send_queue.put({"type": "state", "state": "listening"})
+                return
+        except Exception as e:
+            logger.error(f"Transcription failed: {e}")
+            await send_queue.put({"type": "text", "content": "أنا أسمعك لكن هناك مشكلة في معالجة الصوت حالياً. هل يمكنك المحاولة مرة أخرى؟"})
             state.processing = False
             await send_queue.put({"type": "state", "state": "listening"})
             return

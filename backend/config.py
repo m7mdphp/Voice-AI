@@ -1,9 +1,22 @@
-
 import os
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
+import re
+from loguru import logger
 
 load_dotenv()
+
+def validate_api_key(api_key: str, pattern: str, name: str) -> str:
+    """Validate API key format and return valid key or empty string"""
+    if not api_key:
+        logger.warning(f"{name} not provided in environment")
+        return ""
+    
+    if re.match(pattern, api_key):
+        return api_key
+    else:
+        logger.warning(f"Invalid {name} format detected")
+        return ""
 
 class Settings(BaseSettings):
     # Core
@@ -13,13 +26,33 @@ class Settings(BaseSettings):
     PORT: int = 8000
     
     # API Keys
-    GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
-    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
-    ELEVENLABS_API_KEY: str = os.getenv("ELEVENLABS_API_KEY", "")
+    GROQ_API_KEY: str = validate_api_key(
+        os.getenv("GROQ_API_KEY", ""), 
+        r"^gsk_[A-Za-z0-9]{48}$",
+        "GROQ_API_KEY"
+    )
+    
+    OPENAI_API_KEY: str = validate_api_key(
+        os.getenv("OPENAI_API_KEY", ""), 
+        r"^sk-[A-Za-z0-9]{48}$",
+        "OPENAI_API_KEY"
+    )
+    
+    ELEVENLABS_API_KEY: str = validate_api_key(
+        os.getenv("ELEVENLABS_API_KEY", ""), 
+        r"^[A-Za-z0-9]{32}$",
+        "ELEVENLABS_API_KEY"
+    )
     
     # Firebase / Firestore
     FIRESTORE_PROJECT_ID: str = os.getenv("FIRESTORE_PROJECT_ID", "")
     GOOGLE_APPLICATION_CREDENTIALS: str = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+    
+    # Dummy Mode (auto-enabled when API keys are invalid)
+    @property
+    def DUMMY_MODE(self) -> bool:
+        """Return True if any essential API keys are missing"""
+        return not (self.GROQ_API_KEY and self.OPENAI_API_KEY)
     
     # Voice Config
     DEFAULT_PERSONA_PATH: str = "personas/tiryaq.json"
