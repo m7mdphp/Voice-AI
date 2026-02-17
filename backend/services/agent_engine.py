@@ -74,9 +74,11 @@ class GroqEngine:
             return {"knowledge_base": {}, "persona": {}}
 
     def _init_groq(self) -> AsyncGroq:
-        if not settings.GROQ_API_KEY:
-            raise ValueError("GROQ_API_KEY is missing")
-        return AsyncGroq(api_key=settings.GROQ_API_KEY)
+        api_key = settings.GROQ_API_KEY
+        if not api_key:
+            logger.warning("GROQ_API_KEY not set - using fallback mode")
+            return None
+        return AsyncGroq(api_key=api_key)
 
     def _build_system_prompt(self) -> str:
         """
@@ -123,6 +125,12 @@ Arabic (Saudi White Dialect) ONLY. No English words.
         start_time = time.time()
         ttfb_recorded = False
         text_buffer = ""
+        
+        # Fallback if Groq client not initialized
+        if not self.client:
+            logger.warning("Groq client not available - using fallback response")
+            yield {"type": "text", "content": "أهلاً وسهلاً! الخدمة حالياً في وضع تجريبي. لحظة وأكون معك."}
+            return
         
         system_prompt = self._build_system_prompt()
         messages = [{"role": "system", "content": system_prompt}]
