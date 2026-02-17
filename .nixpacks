@@ -1,7 +1,0 @@
-{
-  "$schema": "https://nixpacks.com/schema.json",
-  "providers": ["python"],
-  "python": {
-    "version": "3.11"
-  }
-}
